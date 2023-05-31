@@ -119,47 +119,60 @@
 
                             <div class="row pb-4  ">
                                 <div class="col-6">
-                                    <label for="">Tên khách hàng</label>
-                                    <input name="name" type="text" id="nameproduct" value="<?=$khach_hang['ho_ten']?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                    <label for="">Mã khách hàng</label>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+                                        <label for="floatingInputDisabled " class="ps-2  fs-5 fw-bold"><?= $khach_hang['ma_kh'] ?></label>
+                                    </div>
                                 </div>
+                                <!-- <div class="col-6">
+                                    <label for="">Mã khách hàng</label>
+                                    <input name="ma_kh" type="text" id="nameproduct" value="<?= $khach_hang['ma_kh'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                </div> -->
                                 <div class="col-6">
-
-                                    <label for="">Email</label>
-                                    <input name="email" type="text" id="email" value="<?=$khach_hang['email']?>">
+                                    <label for="">Tên khách hàng</label>
+                                    <input name="name" type="text" id="nameproduct" value="<?= $khach_hang['ho_ten'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
                                 </div>
                             </div>
                             <div class="row pb-4  ">
-                                <div class="col-4">
+                                <div class="col-6">
+                                    <label for="">Email</label>
+                                    <input name="email" type="text" id="email" value="<?= $khach_hang['email'] ?>">
+                                </div>
+                                <div class="col-6">
                                     <label for="">Số điện thoại</label>
-                                    <input name="phone" type="text" id="nameproduct" value="<?=$khach_hang['sdt']?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                    <input name="phone" type="text" id="nameproduct" value="<?= $khach_hang['sdt'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
                                 </div>
-                                <div class="col-4">
+                            </div>
+                            <div class="row pb-4  ">
+
+                                <div class="col-6">
                                     <label for="">Mật khẩu</label>
-                                    <input name="pass" type="password" id="email" value="<?=$khach_hang['mat_khau']?>">
+                                    <input name="pass" type="password" id="email" value="<?= $khach_hang['mat_khau'] ?>">
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <label for="">Nhập lại mật khẩu</label>
-                                    <input name="repass" type="password" id="email" value="<?=$khach_hang['mat_khau']?>">
+                                    <input name="repass" type="password" id="email" value="<?= $khach_hang['mat_khau'] ?>">
                                 </div>
                             </div>
 
                             <div class="col-4 pb-4">
-                                    <label for="">Vai trò</label>
-                                    <div class="input d-flex">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault1" <?=(empty($khach_hang['vai_tro'])) ? '' : 'checked' ;?> value="1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Nhân viên
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault2" <?=(!empty($khach_hang['vai_tro'])) ? '' : 'checked' ;?>  value="0">
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Khách hàng  
-                                            </label>
-                                        </div>
+                                <label for="">Vai trò</label>
+                                <div class="input d-flex">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault1" <?= (empty($khach_hang['vai_tro'])) ? '' : 'checked'; ?> value="1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Nhân viên
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault2" <?= (!empty($khach_hang['vai_tro'])) ? '' : 'checked'; ?> value="0">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Khách hàng
+                                        </label>
                                     </div>
                                 </div>
+                            </div>
                             <div class="form-check form-switch pb-4 ">
                                 <input class="form-check-input  bg-primary" type="checkbox" name="trang_thai" role="switch" id="flexSwitchCheckChecked" checked>
                                 <label class="form-check-label" for="flexSwitchCheckChecked">Kích hoạt</label>
@@ -167,11 +180,12 @@
                             <label for="">Hình ảnh</label>
                             <input type="file" name="upload" id="file-input" accept="image/*">
                             <div class="img-product">
-                                <img style="display: block;" src="../../uploaded/<?=$khach_hang['hinh']?>" alt="" id="img-preview">
+                                <img style="display: block;" src="../../uploaded/user/<?= $khach_hang['hinh'] ?>" alt="" id="img-preview">
                             </div>
-                            <input type="hidden" name="hinh_cu" value="<?=$khach_hang['hinh']?>">
+                            <input type="hidden" name="hinh_cu" value="<?= $khach_hang['hinh'] ?>">
                             <label style="color:red;" for=""></label>
-                            <input type="hidden" name="ma_kh" value="<?=$khach_hang['ma_kh']?>">
+                            <input type="hidden" name="ma_kh" value="<?= $khach_hang['ma_kh'] ?>">
+                            <input type="hidden" name="pass_old" value="<?= $khach_hang['mat_khau'] ?>">
                             <input name="edit" type="submit" value="Sửa">
                         </form>
                     </div>

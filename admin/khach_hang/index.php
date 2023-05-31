@@ -12,9 +12,9 @@ elseif (exist_parma("btn_insert")) {
 
     $trang_thai = (empty($trang_thai)) ? 0 : 1 ;
     $pass = md5($pass);
-    $hinh = save_file('upload',$UPLOAD_URL);
+    $hinh = save_file('upload',$UPLOAD_USER_URL);
     
-    khach_hang_insert($pass,$name,$phone,$trang_thai,$hinh ,$email,$vai_tro);
+    khach_hang_insert($ma_kh,$pass,$name,$phone,$trang_thai,$hinh ,$email,$vai_tro);
     $khach_hang = khach_hang_select_all();
     $VIEW_NAME = "list.php";
 }
@@ -28,10 +28,13 @@ elseif(exist_parma("btn_update")){
     extract($_REQUEST);
 
     $trang_thai = (empty($trang_thai)) ? 0 : 1 ;
-    $pass = md5($pass);
+    if($pass != $pass_old){
+        $pass = md5($pass);
+    }
+
     if(!empty($_FILES["upload"]["name"])){
-        unlink($UPLOAD_URL.$hinh_cu);
-        $hinh = save_file('upload',$UPLOAD_URL);
+        // unlink($UPLOAD_USER_URL.$hinh_cu);
+        $hinh = save_file('upload',$UPLOAD_USER_URL);
     }else{
         $hinh = $hinh_cu;
     }

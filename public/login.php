@@ -29,6 +29,7 @@ if(!empty($_POST)){
         $check  = query_one($sql);
         if(!empty($check)){
             add_cookie('user',$email,1);
+            add_cookie('ma_kh',$check['ma_kh'],1);
             echo 'ok';
         }else {
             echo 'Email hoặc mật khẩu không chính xác!';

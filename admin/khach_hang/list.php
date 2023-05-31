@@ -79,7 +79,7 @@
 
                   foreach ($khach_hang as $value) {
                     if(!empty($value['hinh'])){
-                      $value['hinh'] = '../../uploaded/'. $value['hinh'];
+                      $value['hinh'] = '../../uploaded/user/'. $value['hinh'];
                     }else{
                       $value['hinh']= 'https://tieuhocdongphuongyen.edu.vn/wp-content/uploads/2023/02/1676245765_235_Hinh-anh-Avatar-Trang-Dep-Cho-FB-Zalo-BI-AN.jpg';
                     }

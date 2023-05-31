@@ -28,9 +28,29 @@ require_once '../../Dao/PDO.php';
         return query_one($sql,$ma_hh);
     }
 
+    function hang_hoa_select_by_ma_loai($ma_loai) {
+        $sql = "SELECT * FROM `hang_hoa` WHERE `ma_loai` = ?";
+        return query($sql,$ma_loai);
+    }
+
     function hang_hoa_exist($ma_loai){
         $sql = "SELECT count(*) FROM `hang_hoa` WHERE `ma_loai` = ?";
         return query_value($sql,$ma_loai);
+    }
+
+    function hang_hoa_select_keyword($keyword){
+        $sql = "SELECT * FROM `hang_hoa` WHERE `ten_hh` LIKE '%".$keyword."%'";
+        return query($sql);
+    }
+
+    function so_luong_hang_hoa_keyword($keyword){
+        $sql = "SELECT COUNT(*) FROM `hang_hoa` WHERE `ten_hh` LIKE '%".$keyword."%'";
+        return query_value($sql);
+    }
+
+    function so_luong_hang_hoa(){
+        $sql = "SELECT count(*) FROM `hang_hoa`";
+        return query_value($sql);
     }
 
 ?>

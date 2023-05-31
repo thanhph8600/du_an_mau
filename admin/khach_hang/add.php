@@ -116,50 +116,54 @@
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <form action="./index.php?btn_insert" enctype="multipart/form-data" method="post" onsubmit="return checkproduct()" style="display:flex;width:95%;margin:auto">
-
                             <div class="row pb-4  ">
+                                <div class="col-6">
+                                    <label for="">Mã đăng nhập</label>
+                                    <input name="ma_kh" type="text" value="" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                </div>
                                 <div class="col-6">
                                     <label for="">Tên khách hàng</label>
                                     <input name="name" type="text" id="nameproduct" value="" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
                                 </div>
+                            </div>
+                            <div class="row pb-4  ">
                                 <div class="col-6">
-
                                     <label for="">Email</label>
                                     <input name="email" type="text" id="email" value="">
                                 </div>
-                            </div>
-                            <div class="row pb-4  ">
-                                <div class="col-4">
+                                <div class="col-6">
                                     <label for="">Số điện thoại</label>
                                     <input name="phone" type="text" id="nameproduct" value="" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
                                 </div>
-                                <div class="col-4">
+                            </div>
+                            <div class="row pb-4  ">
+                                <div class="col-6">
                                     <label for="">Mật khẩu</label>
                                     <input name="pass" type="password" id="email" value="">
                                 </div>
-                                <div class="col-4">
-                                <label for="">Nhập lại mật khẩu</label>
-                                <input name="repass" type="password" id="email" value="">
+                                <div class="col-6">
+                                    <label for="">Nhập lại mật khẩu</label>
+                                    <input name="repass" type="password" id="email" value="">
+                                </div>
                             </div>
-                            </div>
-
+                            
                             <div class="col-4 pb-4">
-                                    <label for="">Vai trò</label>
-                                    <div class="input d-flex">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault1" value="1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Nhân viên
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault2" checked value="0">
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Khách hàng  
-                                            </label>
-                                        </div>
+                                <label for="">Vai trò</label>
+                                <div class="input d-flex">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault1" value="1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Nhân viên
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault2" checked value="0">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Khách hàng
+                                        </label>
                                     </div>
                                 </div>
+                            </div>
                             <div class="form-check form-switch pb-4 ">
                                 <input class="form-check-input bg-primary" type="checkbox" name="trang_thai" role="switch" id="flexSwitchCheckChecked" checked>
                                 <label class="form-check-label" for="flexSwitchCheckChecked">Kích hoạt</label>

@@ -51,35 +51,35 @@ $category = query($sql);
                         <a href="" class=" bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-truck" aria-hidden="true"></i> Đơn hàng</a>
                         <p class="  op-popup show cursor-pointer bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-user-circle-o pr-3 " aria-hidden="true"></i><?= (empty($user)) ? 'Đăng nhập' : $user['ho_ten'] ?> </p>
                         <?php
-                            if(!empty($user)){
-                                echo '
+                        if (!empty($user)) {
+                            echo '
                                 <div style=" display:none" class="panel text-center absolute top-full mt-3 p-4 rounded-xl shadow-xl right-0  z-40 bg-white border flex flex-col gap-3">
                                 ';
 
-                                if($user['vai_tro']==1){
-                                    echo '
+                            if ($user['vai_tro'] == 1) {
+                                echo '
                                     <a href="../../admin/index.php" target="_blank" class=" py-2 px-3 hover:bg-zinc-400 hover:text-white border rounded-xl"><i class="fa fa-cogs" aria-hidden="true"></i> Quản lý trang web</a>
                                     ';
-                                }
-                                echo '
+                            }
+                            echo '
                                     <a href="../pages/user.php" class=" py-2 px-3 hover:bg-zinc-400 hover:text-white border rounded-xl"><i class="fa fa-wrench" aria-hidden="true"></i> Quản lý tài khoản</a>
                                     <p class=" cursor-pointer dangXuat py-2 px-3 bg-zinc-300 hover:bg-zinc-400 hover:text-white border rounded-xl">Đăng xuất <i class="fa fa-sign-out" aria-hidden="true"></i></p>
                                 </div>
                                 ';
-                            }
+                        }
                         ?>
 
 
                     </div>
                 </div>
-<div style="display: none;" class="nenpopup fixed w-full h-full top-0 left-0 z-10"></div>
+                <div style="display: none;" class="nenpopup fixed w-full h-full top-0 left-0 z-10"></div>
                 <div class="flex gap-10 pt-4 justify-center">
                     <?php
-                        foreach ($category as $key => $value) {
-                            echo '<a href="../pages/product.php?id='.$value['ma_loai'].'">'.$value['ten_loai'].'</a>';
-                        }
+                    foreach ($category as $key => $value) {
+                        echo '<a href="../pages/product.php?id=' . $value['ma_loai'] . '">' . $value['ten_loai'] . '</a>';
+                    }
                     ?>
-                    
+
                 </div>
             </div>
         </nav>
@@ -87,17 +87,17 @@ $category = query($sql);
 
     <?php
     if (empty($user)) {
-        echo '
-            <section class="popup" style="display: none;">
+    ?>
+        <section class="popup" style="display: none;">
             <div class="close-popup fixed w-full h-full bg-slate-900 opacity-60 top-0 left-0 z-20">
-    
+
             </div>
             <div class="popup fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-30 w-1/3">
                 <i class="fa fa-close absolute top-2 right-2 cursor-pointer close-popup "></i>
                 <div class="login">
                     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
                         <h2 class=" font-bold text-2xl text-center pb-2">Đăng nhập</h2>
-    
+
                         <div class="mb-4">
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
                                 Email <span class="checkEmail text-red-600"></span>
@@ -111,7 +111,7 @@ $category = query($sql);
                             <input class="pass shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="******************">
                             <p class="check-login text-red-700 text-xs italic"></p>
                         </div>
-    
+
                         <div class="flex items-center justify-between">
                             <button class="dangNhap bg-blue-600 hover:bg-blue-dark font-bold py-2 px-4 rounded text-white hover:bg-blue-700" type="button">
                                 Đăng nhập
@@ -128,13 +128,13 @@ $category = query($sql);
                 <div class="signup bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col" style="display:none">
                     <form action="" class="signup">
                         <h2 class=" font-bold text-2xl text-center pb-2">Đăng kí</h2>
-    
+
                         <div class="mb-4">
-                            <label class="block text-grey-darker text-sm font-bold mb-2" for="">Tên  <span class="checkName-re text-red-600"></span></label>
+                            <label class="block text-grey-darker text-sm font-bold mb-2" for="">Tên <span class="checkName-re text-red-600"></span></label>
                             <input type="text" class="name-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập tên">
                         </div>
                         <div class="mb-4">
-                            <label class="block text-grey-darker text-sm font-bold mb-2" for="">Email  <span class="checkEmail-re text-red-600"></span></label>
+                            <label class="block text-grey-darker text-sm font-bold mb-2" for="">Email <span class="checkEmail-re text-red-600"></span></label>
                             <input type="text" class="email-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập email">
                         </div>
                         <div class="mb-4">
@@ -151,12 +151,12 @@ $category = query($sql);
                         </div>
                         <p class=" cursor-pointer dangky rounded-xl text-center px-3 py-2 w-2/3 m-auto bg-blue-700 hover:bg-blue-600 text-white">Đăng Ký</p>
                         <p>Bạn đã tài khoản <span class="op-dangnhap cursor-pointer text-blue-600">Đăng nhập</span></p>
-    
+
                     </form>
                 </div>
             </div>
         </section>
-            ';
+    <?php
     }
     ?>
 
@@ -166,12 +166,12 @@ $category = query($sql);
     <script>
         $('.show').click(function() {
             $(".panel").slideDown("slow");
-            $('.panel').css('z-index','30');
-            $('.nenpopup').css('display','block')
+            $('.panel').css('z-index', '30');
+            $('.nenpopup').css('display', 'block')
             $(".nenpopup").click(function() {
-                $('.nenpopup').css('display','none')
+                $('.nenpopup').css('display', 'none')
                 $(".panel").slideUp("slow");
-                $('.panel').css('z-index','0');
+                $('.panel').css('z-index', '0');
             })
         })
         $('.close-popup').click(function() {
@@ -355,16 +355,14 @@ $category = query($sql);
 
         $('.dangXuat').click(function() {
             $.ajax({
-                    url: "../../Public/login.php",
-                    type: "post",
-                    data: {
-                        name: 'dangXuat',
-                    },
-                    success: function(result) {
-                        window.location.reload(true)
-                    }
-                });
+                url: "../../Public/login.php",
+                type: "post",
+                data: {
+                    name: 'dangXuat',
+                },
+                success: function(result) {
+                    window.location.reload(true)
+                }
+            });
         })
-
-
     </script>

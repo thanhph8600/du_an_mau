@@ -1,2 +1,2 @@
 <?php
-header('location: ./site/pages/home.php');
+header('location: ./site/trang_chinh/');
