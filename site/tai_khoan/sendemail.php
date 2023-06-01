@@ -37,6 +37,7 @@ try {
         <p>Cảm ơn bạn đã dùng dịch vụ của chúng tôi</p>
 ';
     $mail->send();
+    add_cookie('mat_khau', $randum, 30);
     khach_hang_doi_mat_khau(md5($randum),$ma_kh);
 
 } catch (Exception $e) {

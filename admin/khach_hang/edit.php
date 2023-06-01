@@ -160,13 +160,13 @@
                                 <label for="">Vai trò</label>
                                 <div class="input d-flex">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault1" <?= (empty($khach_hang['vai_tro'])) ? '' : 'checked'; ?> value="1">
+                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault1" <?= (!empty($khach_hang['vai_tro'])) ? '' : 'checked'; ?> value="0">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Nhân viên
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault2" <?= (!empty($khach_hang['vai_tro'])) ? '' : 'checked'; ?> value="0">
+                                        <input class="form-check-input" type="radio" name="vai_tro" id="flexRadioDefault2" <?= (empty($khach_hang['vai_tro'])) ? '' : 'checked'; ?> value="1">
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Khách hàng
                                         </label>

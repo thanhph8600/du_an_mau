@@ -7,10 +7,13 @@ require_once '../../Dao/PDO.php';
     }
 
     function hang_hoa_update($name,$price,$sale,$hinh,$date,$category,$dacbiet,$content,$ma_hh){
-
             $sql = "UPDATE `hang_hoa` SET `ten_hh` = ?, `don_gia` = ?, `giam_gia` = ?, `ngay_nhap` = ?, `ma_loai` = ?, `dac_biet` = ?, `mo_ta` = ?,`hinh`=? WHERE `ma_hh` = ?";
-
         execute($sql,$name,$price,$sale,$date,$category,$dacbiet,$content,$hinh,$ma_hh);
+    }
+
+    function hang_hoa_up_luot_xem($so_luot_xem,$ma_hh){
+        $sql = "UPDATE `hang_hoa` SET `so_luot_xem` = ? WHERE `ma_hh` = ?";
+        execute($sql,$so_luot_xem,$ma_hh);
     }
 
     function hang_hoa_delete($ma_hh){

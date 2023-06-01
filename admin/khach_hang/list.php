@@ -100,7 +100,7 @@
                             <td>';
                             
                             
-                              if($value["vai_tro"]==1){
+                              if($value["vai_tro"]==0){
                               echo'  <span class="  badge badge-sm bg-success"">Nhân viên</span>';
 
                               }else{

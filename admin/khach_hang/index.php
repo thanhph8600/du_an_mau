@@ -33,7 +33,7 @@ elseif(exist_parma("btn_update")){
     }
 
     if(!empty($_FILES["upload"]["name"])){
-        // unlink($UPLOAD_USER_URL.$hinh_cu);
+        unlink($UPLOAD_USER_URL.$hinh_cu);
         $hinh = save_file('upload',$UPLOAD_USER_URL);
     }else{
         $hinh = $hinh_cu;

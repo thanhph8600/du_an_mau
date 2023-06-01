@@ -1,4 +1,9 @@
 <?php
+if (!session_start()) {
+    session_start();
+}
+?>
+<?php
     $ROOT_URL = "/xshop";
     $CONTENT_URL = "$ROOT_URL/content";
     $ADMIN_URL = "$ROOT_URL/admin";

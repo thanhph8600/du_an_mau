@@ -11,8 +11,8 @@
                 <div class="flex items-center pb-2">
                     <img class=" w-14 h-14 rounded-full mr-4" src="../../uploaded/user/<?= $hinh ?>" alt="Avatar of Jonathan Reinink">
                     <div class="text-sm">
-                        <p class="text-gray-900 leading-none text-lg font-semibold"><?= $ho_ten ?></p>
-                        <p class="text-gray-600"><? $ngay_bl ?></p>
+                        <p class="text-gray-900 leading-none text-lg font-semibold pb-2"><?= $ho_ten ?></p>
+                        <p class="text-gray-600"><?= $ngay_bl ?></p>
                     </div>
                 </div>
                 <p><?= $noi_dung ?></p>
@@ -25,16 +25,16 @@
 
 
     <?php
-    if (empty($_COOKIE['user'])) {
+    if (empty($_SESSION['user'])) {
 
     ?>
-        <div class="op-popup py-3 w-4/6 m-auto hover:bg-blue-500 rounded-md bg-blue-400 cursor-pointer text-center text-white font-semibold mt-4 mb-2">
+        <div class="op-dangnhap py-3 w-4/6 m-auto hover:bg-blue-500 rounded-md bg-blue-400 cursor-pointer text-center text-white font-semibold mt-4 mb-2">
             Bạn phải đăng nhập để bình luận
         </div>
     <?php
     } else {
     ?>
-        <textarea id="" cols="30" class="my-3 focus:shadow-md focus:border focus:shadow-blue-400  rounded-md w-full border p-3" placeholder="Mời bạn nhập bình luận"></textarea>
+        <textarea id="" cols="30" class="my-3 focus:outline-none focus:shadow-md focus:border focus:shadow-blue-400  rounded-md w-full border p-3" placeholder="Mời bạn nhập bình luận"></textarea>
         <div class="flex justify-end">
             <button value="" class=" text-center w-1/6 rounded-md bg-blue-400 text-white py-3 cursor-pointer hover:bg-blue-500">
                 Gửi</button>

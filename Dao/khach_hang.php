@@ -40,4 +40,9 @@ require_once '../../Dao/PDO.php';
         $sql ="UPDATE `khach_hang` SET `mat_khau` = ? WHERE `khach_hang`.`ma_kh` = ?";
         execute($sql,$newpass,$ma_kh);
     }
+
+    function khach_hang_cap_nhat_tai_khoan($name,$phone,$hinh,$email,$ma_kh){
+        $sql = "UPDATE `khach_hang` SET  `ho_ten` = ? , `sdt` = ? , `hinh` = ? , `email` = ?  WHERE `khach_hang`.`ma_kh` = ?";
+        execute($sql,$name,$phone,$hinh,$email,$ma_kh);
+    }
 ?>

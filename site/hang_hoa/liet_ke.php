@@ -13,8 +13,17 @@ if(exist_parma('ma_loai')){
     $item = hang_hoa_select_keyword($keyword);
     $tong_sp = so_luong_hang_hoa_keyword($keyword);
     $ten_sp['ten_loai'] = $keyword;
+}
+elseif(exist_parma('seach_keyword',extract($_REQUEST))){
+    $seach = $keyword;
+    $item = hang_hoa_select_keyword($keyword);
+    foreach ($item as $value) {
+        echo $vaule['ten_hh'];
+    }
+    die;
 
-}else{
+}
+else{
     $item = hang_hoa_select_all();
     $tong_sp =  so_luong_hang_hoa();
     $ten_sp['ten_loai'] = 'Tất cả sản phẩm';

@@ -3,21 +3,16 @@
     <div class="container m-auto py-8">
         <div class="flex">
             <div class=" w-1/2">
-                <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" class=" w-4/6 m-auto" alt="">
-                <!-- <div class=" border border-gray-300 rounded-md mx-4 my-8 py-3 px-5">
-                    <div class="flex justify-between gap-10 border-b pb-2">
-                        <p class=" w-3/6">Hư gì đổi nấy 12 tháng tại 3384 siêu thị toàn quốc (miễn phí tháng đầu)</p>
-                        <p class=" w-3/6">Bảo hành chính hãng điện thoại 1 năm tại các trung tâm bảo hành hãng</p>
-                    </div>
-                    <p class=" w-4/6 pt-2">Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Lightning - Type C</p>
+                <div class=" w-3/4 m-auto">
+                <img src="../../uploaded/product/<?=$sanpham['hinh']?>" alt="">
 
-                </div> -->
+                </div>
             </div>
             <div class=" w-1/2">
-                <h2 class=" font-bold text-2xl uppercase">Điện thoại Samsung Galaxy A24 6GB </h2>
+                <h2 class=" font-bold text-2xl uppercase"><?=$sanpham['ten_hh']?></h2>
                 <p>(Có 0 bình luận)</p>
 
-                <h3 class=" text-red-600 font-bold text-2xl py-2">6.888.000 đ <span class=" line-through text-gray-600 font-normal text-base">7.888.000 </span></h3>
+                <h3 class=" text-red-600 font-bold text-2xl py-2"><?=$sanpham['giam_gia']?><span class=" line-through text-gray-600 font-normal text-base"><?=$sanpham['don_gia']?> </span></h3>
                 <div class=" py-3">
                     <button class="transition ease-in-out duration-500 w-3/6 py-2 rounded-lg hover:shadow-lg text-orange-600 border border-orange-600 hover:bg-orange-600 hover:text-white text-lg">Thêm vào giỏ hàng <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                     <button class="heart transition ease-in-out duration-500 hover:shadow-xl ml-3 mr-3 border border-rose-600 text-rose-600 text-lg rounded-xl py-2 px-3 ">

@@ -36,6 +36,8 @@
             <label class="block text-grey-darker text-sm font-bold mb-2" for="">Hình ảnh</label>
             <input type="file" name="upload" id="sortpicture" accept="image/*">
         </div>
+        <input type="hidden" name="" class="vai-tro-re" value="1">
+        <input type="hidden" name="" class="trang-thai-re" value="1">
         <p class=" cursor-pointer dangky rounded-xl text-center px-3 py-2 w-2/3 m-auto bg-blue-700 hover:bg-blue-600 text-white">Đăng Ký</p>
         <p>Bạn đã tài khoản <span class="op-dangnhap cursor-pointer text-blue-600">Đăng nhập</span></p>
     </form>
@@ -130,8 +132,8 @@
             form_data.append('phone', $('.phone-re').val());
             form_data.append('pass', $('.pass-re').val());
             form_data.append('ma_kh', $('.ten-dang-nhap').val());
-            form_data.append('vai_tro', 0);
-            form_data.append('trang_thai', 1);
+            form_data.append('vai_tro', $('.vai-tro-re').val());
+            form_data.append('trang_thai', $('.trang-thai-re').val());
 
             $.ajax({
                 url: '../tai_khoan/index.php?dang_ky', // <-- point to server-side PHP script 
