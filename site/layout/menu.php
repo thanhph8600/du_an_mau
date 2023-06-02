@@ -170,6 +170,9 @@ $category = query($sql);
             },
             success: function(result) {
                 $('.show-seach').html(result)
+                if($('.seach').val() == ''){
+                    $('.show-seach').html('')
+                }
             }
         });
 

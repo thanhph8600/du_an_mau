@@ -67,6 +67,11 @@
 </style>
 
 <div class="container-fluid py-4">
+<div class="ket-qua ">
+        <?php
+        if (!empty($MESS)) echo $MESS;
+        ?>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
@@ -79,7 +84,7 @@
               </div>
             </div>
                 <div class="card-body px-0 pb-2">
-                    <div class="ps-4 py-3 fs-4">Sản phẩm: <?= $items[0]['ten_hh'] ?></div>
+                    <div class="ps-4 py-3 fs-4">Sản phẩm: <?= $name['ten_hh'] ?></div>
 
                     <div class="table-responsive p-0">
                         <table style="width: 90%;margin:auto" class="table align-items-center mb-0">
@@ -93,34 +98,37 @@
                             </thead>
                             <tbody>
                                 <?php
-                                foreach ($items as $value) {
-                                    extract($value);
-                                ?>
-                                    <tr>
-                                        <td>
-                                            <span class=""><?= $noi_dung ?></span>
-                                        </td>
-
-                                        <td>
-                                            <span class="ps-3"><?= $ngay_bl ?></span>
-                                        </td>
-
-                                        <td>
-                                            <span class="ps-4"><?php echo ten_khach_hang_binh_luan($ma_kh) ?></span>
-                                        </td>
-
-                                        <td class="align-middle">
-                                            <form action="index.php?btn_delete" method="post" onsubmit="return deletecategory()">
-                                                <i class="fa fa-trash delete" aria-hidden="true"></i>
-                                                <input type="hidden" name="ma_bl" value="<?= $ma_bl ?>">
-                                                <input type="hidden" name="ma_hh" value="<?= $ma_hh ?>">
-                                                <input name="" type="submit" value="Xóa" class="text-xs delete">
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <?php
+                                if(!empty($items)){
+                                    foreach ($items as $value) {
+                                        extract($value);
+                                    ?>
+                                        <tr>
+                                            <td>
+                                                <span class=""><?= $noi_dung ?></span>
+                                            </td>
+    
+                                            <td>
+                                                <span class="ps-3"><?= $ngay_bl ?></span>
+                                            </td>
+    
+                                            <td>
+                                                <span class="ps-4"><?php echo ten_khach_hang_binh_luan($ma_kh) ?></span>
+                                            </td>
+    
+                                            <td class="align-middle">
+                                                <form action="index.php?btn_delete" method="post" onsubmit="return deletecategory()">
+                                                    <i class="fa fa-trash delete" aria-hidden="true"></i>
+                                                    <input type="hidden" name="ma_bl" value="<?= $ma_bl ?>">
+                                                    <input type="hidden" name="ma_hh" value="<?= $ma_hh ?>">
+                                                    <input name="" type="submit" value="Xóa" class="text-xs delete">
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
                                 }
                                 ?>
+
 
                             </tbody>
                         </table>

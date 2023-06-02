@@ -26,6 +26,11 @@ require_once '../../Dao/PDO.php';
         return query_one($sql,$ma_loai);
     }
 
+    function loai_select_by_name($ten_loai) {
+        $sql = "SELECT * FROM `loai` WHERE `ten_loai` = ?";
+        return query_one($sql,$ten_loai);
+    }
+
     function loai_exist($ma_loai){
         $sql = "SELECT count(*) FROM `loai` WHERE `ma_loai` = '".$ma_loai."'";
         return query_value($sql);

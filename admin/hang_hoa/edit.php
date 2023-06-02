@@ -37,6 +37,7 @@
     input[type=date],
 
     select {
+        outline: none;
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -104,12 +105,17 @@
 
 
 <div class="container-fluid py-4">
+    <div class="ket-qua ">
+        <?php
+        if (!empty($MESS)) echo $MESS;
+        ?>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Thêm hàng hóa</h6>
+                        <h6 class="text-white text-capitalize ps-3">Sửa sản phẩm</h6>
                     </div>
                     <div class="pst-ab">
                         <a href="./index.php"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
@@ -117,21 +123,21 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
-                        <form action="./index.php?btn_update" enctype="multipart/form-data" method="post"  style="display:flex;width:95%;margin:auto">
+                        <form action="./index.php?btn_update" enctype="multipart/form-data" method="post" style="display:flex;width:95%;margin:auto">
                             <div class="row pb-4">
                                 <div class="col-6">
                                     <label for="">Tên hàng hóa</label>
-                                    <input name="name" type="text" id="nameproduct" value="<?=$item['ten_hh']?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                    <input name="name" type="text" id="nameproduct" value="<?= $item['ten_hh'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
                                 </div>
                                 <div class="col-6">
                                     <label for="">Đơn giá</label>
-                                    <input name="price" type="text" id="priceproduct" value="<?=$item['don_gia']?>">
+                                    <input name="price" type="text" id="priceproduct" value="<?= $item['don_gia'] ?>">
                                 </div>
                             </div>
                             <div class="row pb-4">
                                 <div class="col-6">
                                     <label for="">Mức giảm giá</label>
-                                    <input name="sale" type="text" id="saleproduct" value="<?=$item['giam_gia']?>">
+                                    <input name="sale" type="text" id="saleproduct" value="<?= $item['giam_gia'] ?>">
                                 </div>
                                 <div class="col-6">
                                     <label for="">Loại sản phẩm</label>
@@ -139,9 +145,9 @@
                                         <?php
                                         echo $item['ma_loai'];
                                         foreach ($category as $value) {
-                                            if($value['ma_loai'] == $item['ma_loai']){
+                                            if ($value['ma_loai'] == $item['ma_loai']) {
                                                 echo '<option selected value="' . $value['ma_loai'] . '">' . $value['ten_loai'] . '</option>';
-                                            }else {
+                                            } else {
                                                 echo '<option value="' . $value['ma_loai'] . '">' . $value['ten_loai'] . '</option>';
                                             }
                                         }
@@ -154,13 +160,13 @@
                                     <label for="">Trạng thái</label>
                                     <div class="input d-flex">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="dacbiet" id="flexRadioDefault1" <?=($item['dac_biet']==1) ? 'checked':'' ?> value="1">
+                                            <input class="form-check-input" type="radio" name="dacbiet" id="flexRadioDefault1" <?= ($item['dac_biet'] == 1) ? 'checked' : '' ?> value="1">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 Đặc biệt
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="dacbiet" id="flexRadioDefault2"  <?=($item['dac_biet']==0) ? 'checked':'' ?> value="0">
+                                            <input class="form-check-input" type="radio" name="dacbiet" id="flexRadioDefault2" <?= ($item['dac_biet'] == 0) ? 'checked' : '' ?> value="0">
                                             <label class="form-check-label" for="flexRadioDefault2">
                                                 Không đặc biệt
                                             </label>
@@ -169,25 +175,25 @@
                                 </div>
                                 <div class="col-4">
                                     <label for="">Ngày nhập</label>
-                                    <input name="date" type="date" id="" value="<?=$item['ngay_nhap']?>">
+                                    <input name="date" type="date" id="" value="<?= $item['ngay_nhap'] ?>">
                                 </div>
                                 <div class="col-4">
                                     <label for="">Lượt xem</label>
                                     <div class="form-floating mb-3">
                                         <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
-                                        <label for="floatingInputDisabled"><?=$item['so_luot_xem']?></label>
+                                        <label for="floatingInputDisabled"><?= $item['so_luot_xem'] ?></label>
                                     </div>
                                 </div>
                             </div>
                             <label for="">Mô tả</label>
-                            <textarea name="content" id="" cols="30" rows="10" value="<?=$item['mo_ta']?>"></textarea>
+                            <textarea name="content" id="" cols="30" rows="10" value="<?= $item['mo_ta'] ?>"></textarea>
 
                             <label for="">Hình ảnh</label>
                             <input type="file" name="upload" id="file-input" accept="image/*">
-                            <input type="hidden" name="hinh_cu" value="<?=$item['hinh']?>">
-                            <input type="hidden" name="id_hh" value="<?=$item['ma_hh']?>">
+                            <input type="hidden" name="hinh_cu" value="<?= $item['hinh'] ?>">
+                            <input type="hidden" name="id_hh" value="<?= $item['ma_hh'] ?>">
                             <div class="img-product">
-                                <img style="display: block;" src="../../uploaded/product/<?=$item['hinh']?>" alt="" id="img-preview">
+                                <img style="display: block;" src="../../uploaded/product/<?= $item['hinh'] ?>" alt="" id="img-preview">
                             </div>
                             <input name="" type="submit" value="Add">
                         </form>
@@ -292,43 +298,67 @@
     }
 
 
+    $.validator.addMethod('yourRule_ten_kh', function(value, element, param) {
+        value = removeAscent(value)
+        if ((/^([a-zA-Z ]){3,20}$/).test(value)) {
+            return true
+        }
+        return false;
+    }, '<div class="text-danger">Bạn phải nhập từ 3 đến 30 kí tự, không có kí tự đặt biệt</div> ');
+
+    $(function() {
+        $("form").validate({
+            rules: {
+                name: {
+                    yourRule_ten_kh: true
+                },
+                price: {
+                    required: true,
+                    digits: true
+                },
+                sale: {
+                    range:[0,1],
+                },
+                category: {
+                    required: true,
+                },
+                date: {
+                    required: true,
+                    date:true,
+                },
+                upload: {
+                    required:false,
+                    accept: "jpg,png,gif,jpeg,pjpeg,avif,jfif",
+                }
+            },
+            messages: {
+
+                price: {
+                    required:  '<div class="text-danger">Không để trống giá tiền</div>',
+                    digits: '<div class="text-danger">phải là số dương</div>',
+                },
+                sale: {
+                    range:'<div class="text-danger">Từ 0 đến 1</div>',
+                },
+                category: {
+                    required: '<div class="text-danger">Không để trống loại hàng</div>',
+                },
+                date: {
+                    required: '<div class="text-danger">Không để trống ngày nhập</div>',
+                    date:'<div class="text-danger">Phải đúng định dạng (ngày/tháng/năm)</div>',
+                },
+                upload: {
+                    required: '<div class="text-danger">Chưa chọn ảnh</div>',
+                    accept: '<div class="text-danger">Phải đúng định dạng ảnh/div>',
+                }
+            }
+
+        });
+    });
+
     const input = document.getElementById('file-input');
     const image = document.getElementById('img-preview');
 
-    function checkproduct() {
-        var lf = 0;
-        var name = document.getElementById('nameproduct')
-        var price = document.getElementById('priceproduct')
-        var category = document.getElementById('category')
-
-        if (name.value == '') {
-            name.style.border = '1px solid red'
-            lf = 1;
-        } else {
-            name.style.border = '1px solid green'
-        }
-
-        var priceRegex = /^\w([0-9.,]{1,13})$/;
-        if (!price.value.match(priceRegex)) {
-            price.style.border = '1px solid red'
-            lf = 1;
-        } else {
-            price.style.border = '1px solid green'
-        }
-
-
-        if (category.value == 0) {
-            category.style.border = '1px solid red'
-            lf = 1;
-        } else {
-            category.style.border = '1px solid green'
-        }
-
-        if (!lf == 0) {
-            return false
-        }
-    }
-    //preview img
 
 
     input.addEventListener('change', (e) => {

@@ -21,9 +21,13 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="<?=$CONTENT_URL?>/public/admin/assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
 
+    <script src="<?=$CONTENT_URL?>/js/validation.js"></script>
+
+
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 

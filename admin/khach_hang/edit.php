@@ -35,6 +35,7 @@
     input[type=password],
     select,
     .input {
+        outline: none;
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -102,12 +103,17 @@
 
 
 <div class="container-fluid py-4">
+    <div class="ket-qua ">
+        <?php
+        if (!empty($MESS)) echo $MESS;
+        ?>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Thêm khách hàng</h6>
+                        <h6 class="text-white text-capitalize ps-3">Sửa khách hàng</h6>
                     </div>
                     <div class="pst-ab">
                         <a href="./index.php"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
@@ -120,39 +126,50 @@
                             <div class="row pb-4  ">
                                 <div class="col-6">
                                     <label for="">Mã khách hàng</label>
-                                    <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
-                                        <label for="floatingInputDisabled " class="ps-2  fs-5 fw-bold"><?= $khach_hang['ma_kh'] ?></label>
-                                    </div>
+                                    <input type="text" class="form-control" name="ma_kh" value="<?= $khach_hang['ma_kh'] ?>" readonly>
+                                    <?php
+                                    if (!empty($ma_kh_err)) echo $ma_kh_err;
+                                    ?>
                                 </div>
-                                <!-- <div class="col-6">
-                                    <label for="">Mã khách hàng</label>
-                                    <input name="ma_kh" type="text" id="nameproduct" value="<?= $khach_hang['ma_kh'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
-                                </div> -->
                                 <div class="col-6">
                                     <label for="">Tên khách hàng</label>
-                                    <input name="name" type="text" id="nameproduct" value="<?= $khach_hang['ho_ten'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                    <input name="name" type="text" id="nameproduct" value="<?= $khach_hang['ho_ten'] ?>" >
+                                    <?php
+                                    if (!empty($name_err)) echo $name_err;
+                                    ?>
                                 </div>
                             </div>
                             <div class="row pb-4  ">
                                 <div class="col-6">
                                     <label for="">Email</label>
                                     <input name="email" type="text" id="email" value="<?= $khach_hang['email'] ?>">
+                                    <?php
+                                    if (!empty($email_err)) echo $email_err;
+                                    ?>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Số điện thoại</label>
-                                    <input name="phone" type="text" id="nameproduct" value="<?= $khach_hang['sdt'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                    <input name="phone" type="text" id="phone" value="<?= $khach_hang['sdt'] ?>" >
+                                    <?php
+                                    if (!empty($phone_err)) echo $phone_err;
+                                    ?>
                                 </div>
                             </div>
                             <div class="row pb-4  ">
 
                                 <div class="col-6">
                                     <label for="">Mật khẩu</label>
-                                    <input name="pass" type="password" id="email" value="<?= $khach_hang['mat_khau'] ?>">
+                                    <input name="pass" type="password" id="pass" value="<?= $khach_hang['mat_khau'] ?>">
+                                    <?php
+                                    if (!empty($pass_err)) echo $pass_err;
+                                    ?>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nhập lại mật khẩu</label>
-                                    <input name="repass" type="password" id="email" value="<?= $khach_hang['mat_khau'] ?>">
+                                    <input name="repass" type="password" id="repass" value="<?= $khach_hang['mat_khau'] ?>">
+                                    <?php
+                                    if (!empty($repass_err)) echo $repass_err;
+                                    ?>
                                 </div>
                             </div>
 
@@ -288,45 +305,88 @@
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 
+    $.validator.addMethod('yourRule_ma_kh', function(value, element, param) {
+        if ((/^([a-zA-Z0-9]){3,20}$/).test(value)) {
+            return true
+        }
+        return false;
+    }, '<div class="text-danger">Bạn phải nhập từ 3 đến 20 kí tự, không có kí tự đặt biệt, không có dấu</div>');
+
+    $.validator.addMethod('yourRule_ten_kh', function(value, element, param) {
+        value = removeAscent(value)
+        if ((/^([a-zA-Z ]){3,20}$/).test(value)) {
+            return true
+        }
+        return false;
+    }, '<div class="text-danger">Bạn phải nhập từ 3 đến 20 kí tự, không có kí tự đặt biệt</div> ');
+
+    $(function() {
+        $("form").validate({
+                rules: {
+                    ma_kh: {
+
+                        yourRule_ma_kh: true
+                    },
+                    name: {
+                        yourRule_ten_kh: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: {
+                        required: true,
+                        digits: true,
+                        minlength: 10,
+                        maxlength: 10
+                    },
+                    pass: {
+                        required: true,
+                        minlength: 8,
+                        maxlength: 32
+                    },
+                    repass: {
+                        equalTo: '#pass',
+                        minlength: 8,
+
+                    },
+                    upload: {
+                        required: false,
+                        accept: "jpg,png,gif,jpeg,pjpeg,avif,jfif",
+                    }
+            },
+            messages: {
+
+                email: {
+                    required: '<div class="text-danger">Không để trống email</div>',
+                    email: '<div class="text-danger">Phải đúng định dạng email</div>'
+                },
+                phone: {
+                    required: '<div class="text-danger">Không để trống số điện thoại</div>',
+                    digits: '<div class="text-danger">Phải là số</div>',
+                    minlength: '<div class="text-danger">Phải 10 kí tự</div>',
+                    maxlength: '<div class="text-danger">Phải 10 kí tự</div>',
+                },
+                pass: {
+                    required: '<div class="text-danger">Không để trống mật khẩu</div>',
+                    minlength: '<div class="text-danger">Ít nhất 8 kí tự</div>',
+                    maxlength: '<div class="text-danger">Ít nhất 32 kí tự</div>'
+                },
+                repass: {
+                    equalTo: '<div class="text-danger">Không giống mật khẩu đã nhập </div>',
+                    minlength: '<div class="text-danger">Ít nhất 8 kí tự</div>',
+                },
+                    upload: {
+                        accept: '<div class="text-danger">Không đúng định dạng file </div>',
+                    }
+            }
+        });
+    });
+
+
 
     const input = document.getElementById('file-input');
     const image = document.getElementById('img-preview');
-
-    // function checkproduct() {
-    //     var lf = 0;
-    //     var name = document.getElementById('nameproduct')
-    //     var price = document.getElementById('priceproduct')
-    //     var category = document.getElementById('category')
-
-    //     if (name.value == '') {
-    //         name.style.border = '1px solid red'
-    //         lf = 1;
-    //     } else {
-    //         name.style.border = '1px solid green'
-    //     }
-
-    //     var priceRegex = /^\w([0-9.,]{1,13})$/;
-    //     if (!price.value.match(priceRegex)) {
-    //         price.style.border = '1px solid red'
-    //         lf = 1;
-    //     } else {
-    //         price.style.border = '1px solid green'
-    //     }
-
-
-    //     if (category.value == 0) {
-    //         category.style.border = '1px solid red'
-    //         lf = 1;
-    //     } else {
-    //         category.style.border = '1px solid green'
-    //     }
-
-    //     if (!lf == 0) {
-    //         return false
-    //     }
-    // }
-    //preview img
-
 
     input.addEventListener('change', (e) => {
         if (e.target.files.length) {

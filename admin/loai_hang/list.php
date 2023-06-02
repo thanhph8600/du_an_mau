@@ -48,6 +48,11 @@
 </style>
 
     <div class="container-fluid py-4">
+    <div class="ket-qua">
+    <?php
+      if(!empty($MESS)) echo $MESS;
+    ?>
+  </div>
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
@@ -84,7 +89,7 @@
                           </td>
 
                           <td class="align-middle">
-                            <form action="./index.php?btn_edit" method="post">
+                            <form action="./index.php?btn_edit&ma_loai=' . $value['ma_loai'] . '" method="post">
                               <input type="hidden" name="ma_loai" value="' . $value['ma_loai'] . '">
                               <i class="fa fa-wrench edit" aria-hidden="true"></i>
 

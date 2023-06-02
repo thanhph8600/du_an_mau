@@ -35,6 +35,7 @@
     .input,
     input[type=date],
     select {
+        outline: none;
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -102,6 +103,11 @@
 
 
 <div class="container-fluid py-4">
+    <div class="ket-qua ">
+        <?php
+        if (!empty($MESS)) echo $MESS;
+        ?>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
@@ -115,33 +121,45 @@
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
-                        <form action="./index.php?btn_insert" enctype="multipart/form-data" method="post"  style="display:flex;width:95%;margin:auto">
+                        <form action="./index.php?btn_insert" enctype="multipart/form-data" method="post" style="display:flex;width:95%;margin:auto">
 
                             <div class="row pb-4">
                                 <div class="col-6">
                                     <label for="">Tên hàng hóa</label>
                                     <input name="name" type="text" id="nameproduct" value="" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                    <?php
+                                    if (!empty($name_err)) echo $name_err;
+                                    ?>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Đơn giá</label>
                                     <input name="price" type="text" id="priceproduct" value="">
+                                    <?php
+                                    if (!empty($price_err)) echo $price_err;
+                                    ?>
                                 </div>
                             </div>
                             <div class="row pb-4">
                                 <div class="col-6">
                                     <label for="">Mức giảm giá</label>
                                     <input name="sale" type="text" id="saleproduct" value="">
+                                    <?php
+                                    if (!empty($sale_err)) echo $sale_err;
+                                    ?>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Loại sản phẩm</label>
                                     <select name="category" id="category" require>
-                                        <option value="0">- - Loại sản phẩm - -</option>
+                                        <option value="">- - Loại sản phẩm - -</option>
                                         <?php
                                         foreach ($category as $value) {
                                             echo '<option value="' . $value['ma_loai'] . '">' . $value['ten_loai'] . '</option>';
                                         }
                                         ?>
                                     </select>
+                                    <?php
+                                    if (!empty($category_err)) echo $category_err;
+                                    ?>
                                 </div>
                             </div>
                             <div class="row pb-4">
@@ -165,6 +183,9 @@
                                 <div class="col-4">
                                     <label for="">Ngày nhập</label>
                                     <input name="date" type="date" id="" value="">
+                                    <?php
+                                    if (!empty($date_err)) echo $date_err;
+                                    ?>
                                 </div>
                                 <div class="col-4">
                                     <label for="">Lượt xem</label>
@@ -179,6 +200,9 @@
 
                             <label for="">Hình ảnh</label>
                             <input type="file" name="upload" id="file-input" accept="image/*">
+                            <?php
+                                    if (!empty($file_err)) echo $file_err;
+                                    ?>
                             <div class="img-product">
                                 <img style="display: block;" src="./thumb/<?php echo (!empty($id)) ? $id['hinh'] : ''; ?>" alt="" id="img-preview">
                             </div>
@@ -285,43 +309,103 @@
     }
 
 
+    $.validator.addMethod('yourRule_ten_kh', function(value, element, param) {
+        value = removeAscent(value)
+        if ((/^([a-zA-Z ]){3,20}$/).test(value)) {
+            return true
+        }
+        return false;
+    }, '<div class="text-danger">Bạn phải nhập từ 3 đến 30 kí tự, không có kí tự đặt biệt</div> ');
+
+    $(function() {
+        $("form").validate({
+            rules: {
+                name: {
+                    yourRule_ten_kh: true
+                },
+                price: {
+                    required: true,
+                    digits: true
+                },
+                sale: {
+                    range: [0, 1],
+                },
+                category: {
+                    required: true,
+                },
+                date: {
+                    required: true,
+                    date: true,
+                },
+                upload: {
+                    required: true,
+                    accept: "jpg,png,gif,jpeg,pjpeg,avif,jfif",
+                }
+            },
+            messages: {
+
+                price: {
+                    required: '<div class="text-danger">Không để trống giá tiền</div>',
+                    digits: '<div class="text-danger">phải là số dương</div>',
+                },
+                sale: {
+                    range: '<div class="text-danger">Từ 0 đến 1</div>',
+                },
+                category: {
+                    required: '<div class="text-danger">Không để trống loại hàng</div>',
+                },
+                date: {
+                    required: '<div class="text-danger">Không để trống ngày nhập</div>',
+                    date: '<div class="text-danger">Phải đúng định dạng (ngày/tháng/năm)</div>',
+                },
+                upload: {
+                    required: '<div class="text-danger">Chưa chọn ảnh</div>',
+                    accept: '<div class="text-danger">Phải đúng định dạng ảnh/div>',
+                }
+            }
+
+        });
+    });
+
+
+
+
     const input = document.getElementById('file-input');
     const image = document.getElementById('img-preview');
 
-    function checkproduct() {
-        var lf = 0;
-        var name = document.getElementById('nameproduct')
-        var price = document.getElementById('priceproduct')
-        var category = document.getElementById('category')
+    // function checkproduct() {
+    //     var lf = 0;
+    //     var name = document.getElementById('nameproduct')
+    //     var price = document.getElementById('priceproduct')
+    //     var category = document.getElementById('category')
 
-        if (name.value == '') {
-            name.style.border = '1px solid red'
-            lf = 1;
-        } else {
-            name.style.border = '1px solid green'
-        }
+    //     if (name.value == '') {
+    //         name.style.border = '1px solid red'
+    //         lf = 1;
+    //     } else {
+    //         name.style.border = '1px solid green'
+    //     }
 
-        var priceRegex = /^\w([0-9.,]{1,13})$/;
-        if (!price.value.match(priceRegex)) {
-            price.style.border = '1px solid red'
-            lf = 1;
-        } else {
-            price.style.border = '1px solid green'
-        }
+    //     var priceRegex = /^\w([0-9.,]{1,13})$/;
+    //     if (!price.value.match(priceRegex)) {
+    //         price.style.border = '1px solid red'
+    //         lf = 1;
+    //     } else {
+    //         price.style.border = '1px solid green'
+    //     }
 
 
-        if (category.value == 0) {
-            category.style.border = '1px solid red'
-            lf = 1;
-        } else {
-            category.style.border = '1px solid green'
-        }
+    //     if (category.value == 0) {
+    //         category.style.border = '1px solid red'
+    //         lf = 1;
+    //     } else {
+    //         category.style.border = '1px solid green'
+    //     }
 
-        if (!lf == 0) {
-            return false
-        }
-    }
-    //preview img
+    //     if (!lf == 0) {
+    //         return false
+    //     }
+    // }
 
 
     input.addEventListener('change', (e) => {

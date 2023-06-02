@@ -77,7 +77,7 @@
                         ghi_nho: $('.ghi_nho:checked').val(),
                     },
                     success: function(result) {
-                        if (result == 'ok') {
+                        if (result == "SS") {
                             alert('Đăng nhập thành công')
                             setTimeout(() => {
                                 window.location.reload(true)

@@ -24,7 +24,7 @@ if (exist_parma('btn_dang_nhap')) {
                 add_cookie('ma_kh', $ma_kh, 30);
                 add_cookie('mat_khau', $_POST['pass'], 30);
             }
-            echo 'ok';
+            echo "SS";
         } else {
             echo 'Mật khẩu không chính xác!';
         }

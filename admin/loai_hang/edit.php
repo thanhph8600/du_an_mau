@@ -39,6 +39,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    outline: none;
   }
 
   input[type=submit] {
@@ -80,6 +81,12 @@
 
 
     <div class="container-fluid py-4">
+    <div class="ket-qua
+">
+    <?php
+      if(!empty($MESS)) echo $MESS;
+    ?>
+  </div>
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
@@ -98,8 +105,7 @@
                   <input name="namecategory" type="text" id="namecategory" value="<?= $loai['ten_loai']?>">
                   <input type="hidden" name="ma_loai" value="<?=$loai['ma_loai']?>">
 
-                  <label style="color:red;" for="">
-                  </label>
+                  <label for="" class="text-danger check"></label>
                   <input name="addcategory" type="submit" value="Sửa">
                 </form>
               </div>
@@ -198,14 +204,33 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 
-    function checkcategory() {
-      var name = document.getElementById('namecategory')
-      if (name.value == '') {
-        name.style.border = '1px solid red'
-        return false
-      }
-
+    var check =0;
+  $("#namecategory").on('input keyup past', function() {
+    let s = $("#namecategory").val();
+    s = removeAscent(s)
+    let regex = /^([a-zA-Z ]){3,20}$/;
+    if (!regex.test(s)) {
+      $('.check').html('nhập ít nhất 3 kí tự, không vượt quá 20 kí tự và không được chứa kí tự đặt biệt')
+      $("#namecategory").css('border', '1px solid red')
+      check =1;
+    } else {
+      $('.check').html('')
+      $("#namecategory").css('border', '1px solid green')
+      check =0;
     }
+  })
+
+  function checkcategory(){
+    if($("#namecategory").val() == ''){
+      $('.ket-qua').html('<div class="alert alert-warning text-white" role="alert">Sửa sản phẩm thất bại</div>')
+      $("#namecategory").css('border', '1px solid red')
+      check =1;
+    }
+    if(check == 1){
+      return false
+    }
+  }
+
 
     $('.category').addClass('active')
     $('.category').addClass('bg-gradient-primary')
