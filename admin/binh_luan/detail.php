@@ -77,7 +77,7 @@
             <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="pst-re bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Sửa danh mục</h6>
+                <h6 class="text-white text-capitalize ps-3">Chi tiết bình luận</h6>
                 <div class="pst-ab">
                   <a href="./index.php"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
                 </div>

@@ -3,12 +3,15 @@ require_once "../../global.php";
 require_once "../../Dao/binh_luan.php";
 require_once "../../Dao/thong_ke.php";
 require_once "../../Dao/hang_hoa.php";
+check_login();
 
 
 extract($_REQUEST);
 
 if(exist_parma('btn_hang_hoa')){
     extract($_REQUEST);
+    $name = hang_hoa_select_by_id($ma_hh);
+
     $items = binh_luan_select_by_hang_hoa($ma_hh);
     $VIEW_NAME = 'detail.php';
 }elseif(exist_parma('btn_delete')){

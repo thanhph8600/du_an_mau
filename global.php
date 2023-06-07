@@ -35,6 +35,21 @@ function delete_cookie($name)
     setcookie($name, '', time() - (3600), '/');
 }
 
+function check_login()
+{
+    global $SITE_URL;
+    if (isset($_SESSION['user'])) {
+        if ($_SESSION['user']['vai_tro'] == 0) {
+            return;
+        }
+        if (strpos($_SERVER["REQUEST_URI"], '/admin/') == FALSE) {
+            return;
+        }
+    }
+    $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
+    header("location: $SITE_URL/404-not-found/");
+}
+
 
 function slugify($str)
 {
@@ -67,6 +82,13 @@ function checkDateFormat($date)
             return false;
     } else {
         return false;
+    }
+}
+
+
+function currency_format($number, $suffix = 'đ') {
+    if (!empty($number)) {
+        return number_format($number, 0, ',', '.') . "{$suffix}";
     }
 }
 ?>

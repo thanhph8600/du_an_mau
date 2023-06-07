@@ -26,6 +26,11 @@ require_once '../../Dao/PDO.php';
         return query($sql);
     }
 
+    function hang_hoa_select_so_luong($star,$limit){
+        $sql = 'SELECT * FROM `hang_hoa` LIMIT '.$star.','.$limit.'';
+        return query($sql);
+    }
+
     function hang_hoa_select_by_id($ma_hh) {
         $sql = "SELECT * FROM `hang_hoa` WHERE `ma_hh` = ?";
         return query_one($sql,$ma_hh);
@@ -36,15 +41,38 @@ require_once '../../Dao/PDO.php';
         return query($sql,$ma_loai);
     }
 
+    function hang_hoa_select_keyword($keyword){
+        $sql = "SELECT * FROM `hang_hoa` WHERE `ten_hh` LIKE '%".$keyword."%'";
+        return query($sql);
+    }
+
+    function hang_hoa_select_giam_nhieu(){
+        $sql = 'SELECT * FROM `hang_hoa` ORDER by `giam_gia` DESC LIMIT 10' ;
+        return query($sql);
+    }
+
+    function hang_hoa_select_gia_thap(){
+        $sql = 'SELECT * FROM `hang_hoa` ORDER by `don_gia` DESC  LIMIT 10' ;
+        return query($sql);
+    }
+
+    function hang_hoa_select_ngau_nhien(){
+        $sql = 'SELECT * FROM `hang_hoa` ORDER BY RAND()' ;
+        return query($sql);
+    }
+
+
+    function hang_hoa_select_top10(){
+        $sql = 'SELECT * FROM `hang_hoa` ORDER by `so_luot_xem` DESC LIMIT 10' ;
+        return query($sql);
+    }
+
+
     function hang_hoa_exist($ma_loai){
         $sql = "SELECT count(*) FROM `hang_hoa` WHERE `ma_loai` = ?";
         return query_value($sql,$ma_loai);
     }
 
-    function hang_hoa_select_keyword($keyword){
-        $sql = "SELECT * FROM `hang_hoa` WHERE `ten_hh` LIKE '%".$keyword."%'";
-        return query($sql);
-    }
 
     function so_luong_hang_hoa_keyword($keyword){
         $sql = "SELECT COUNT(*) FROM `hang_hoa` WHERE `ten_hh` LIKE '%".$keyword."%'";

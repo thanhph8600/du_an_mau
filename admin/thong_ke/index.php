@@ -2,6 +2,7 @@
 require_once "../../global.php";
 require_once "../../Dao/binh_luan.php";
 require_once "../../Dao/thong_ke.php";
+check_login();
 
 
 extract($_REQUEST);

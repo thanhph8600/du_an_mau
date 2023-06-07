@@ -128,16 +128,25 @@
                                 <div class="col-6">
                                     <label for="">Tên hàng hóa</label>
                                     <input name="name" type="text" id="nameproduct" value="<?= $item['ten_hh'] ?>" onkeydown="checkproduct()" onkeypress="checkproduct()" onkeyup="checkproduct()">
+                                    <?php
+                                    if (!empty($name_err)) echo $name_err;
+                                    ?>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Đơn giá</label>
                                     <input name="price" type="text" id="priceproduct" value="<?= $item['don_gia'] ?>">
+                                    <?php
+                                    if (!empty($price_err)) echo $price_err;
+                                    ?>
                                 </div>
                             </div>
                             <div class="row pb-4">
                                 <div class="col-6">
                                     <label for="">Mức giảm giá</label>
                                     <input name="sale" type="text" id="saleproduct" value="<?= $item['giam_gia'] ?>">
+                                    <?php
+                                    if (!empty($sale_err)) echo $sale_err;
+                                    ?>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Loại sản phẩm</label>
@@ -152,6 +161,9 @@
                                             }
                                         }
                                         ?>
+                                                                            <?php
+                                    if (!empty($category_err)) echo $category_err;
+                                    ?>
                                     </select>
                                 </div>
                             </div>
@@ -176,6 +188,9 @@
                                 <div class="col-4">
                                     <label for="">Ngày nhập</label>
                                     <input name="date" type="date" id="" value="<?= $item['ngay_nhap'] ?>">
+                                    <?php
+                                    if (!empty($date_err)) echo $date_err;
+                                    ?>
                                 </div>
                                 <div class="col-4">
                                     <label for="">Lượt xem</label>
@@ -190,12 +205,15 @@
 
                             <label for="">Hình ảnh</label>
                             <input type="file" name="upload" id="file-input" accept="image/*">
+                            <?php
+                            if (!empty($file_err)) echo $file_err;
+                            ?>
                             <input type="hidden" name="hinh_cu" value="<?= $item['hinh'] ?>">
                             <input type="hidden" name="id_hh" value="<?= $item['ma_hh'] ?>">
                             <div class="img-product">
                                 <img style="display: block;" src="../../uploaded/product/<?= $item['hinh'] ?>" alt="" id="img-preview">
                             </div>
-                            <input name="" type="submit" value="Add">
+                            <input name="edit" type="submit" value="Sửa">
                         </form>
                     </div>
                 </div>
@@ -300,11 +318,16 @@
 
     $.validator.addMethod('yourRule_ten_kh', function(value, element, param) {
         value = removeAscent(value)
-        if ((/^([a-zA-Z ]){3,20}$/).test(value)) {
+        if ((/^([a-zA-Z0-9./- ]){3,100}$/).test(value)) {
             return true
         }
         return false;
     }, '<div class="text-danger">Bạn phải nhập từ 3 đến 30 kí tự, không có kí tự đặt biệt</div> ');
+
+    $.validator.addMethod('yourRule_date', function(value, element, param) {
+        return kiem_tra_ngay()
+    }, '<div class="text-danger">Bạn không được nhập ngày tương lai</div> ');
+
 
     $(function() {
         $("form").validate({
@@ -325,6 +348,8 @@
                 date: {
                     required: true,
                     date:true,
+                    yourRule_date: true
+
                 },
                 upload: {
                     required:false,
@@ -355,6 +380,31 @@
 
         });
     });
+
+    function kiem_tra_ngay() {
+        let ngay_nhap = $('.date').val().split('-')
+        let d = new Date();
+        if (ngay_nhap.length < 2) {
+            console.log('Bạn chưa điền phần này')
+            return false
+        } else {
+            if (ngay_nhap[0] > d.getFullYear()) {
+                console.log('Bạn không được nhập ngày tương lai')
+                return false
+            } else {
+                if (ngay_nhap[1] > (d.getMonth() + 1)) {
+                    console.log('Bạn không được nhập ngày tương lais')
+                    return false
+                } else {
+                    if (ngay_nhap[2] > d.getDate()) {
+                        console.log('Bạn không được nhập ngày tương lai ss')
+                        return false
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
     const input = document.getElementById('file-input');
     const image = document.getElementById('img-preview');

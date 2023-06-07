@@ -1,23 +1,25 @@
-
 <style>
     body {
-        background-color: #6CDBFF;
+        background-color: #F3F3F3;
     }
 
     .owl-dots {
         display: none;
     }
+
     .owl-nav {
         position: absolute;
         display: flex;
         justify-content: space-between;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         width: 103%;
         /* background-color: red; */
     }
-    .owl-prev, .owl-next {
+
+    .owl-prev,
+    .owl-next {
         display: flex !important;
         justify-content: center !important;
         justify-items: center !important;
@@ -28,7 +30,9 @@
         color: #000 !important;
         background-color: #D6D6D6 !important;
     }
-    .owl-prev:hover, .owl-next:hover {
+
+    .owl-prev:hover,
+    .owl-next:hover {
         color: #fff !important;
         background-color: #1b64d2c3 !important;
     }
@@ -39,8 +43,8 @@
     }
 </style>
 <section>
-    <div class=" w-full bg-white p-8">
-        <img class="w-full object-cover" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Banner-Big-Desk-1920x450.jpg" alt="">
+    <div class=" w-full bg-white">
+        <img class=" w-full" src="../../content/img/banner/Untitled-1.jpg" alt="">
     </div>
     <div class="container m-auto relative w-full h-48">
         <div class="slide absolute overflow-hidden w-full left-0 -top-1/2">
@@ -63,23 +67,27 @@
                 </div>
             </div>
             <div class="flex flex-row gap-4 pt-5">
-                <div class="flex items-center text-2xl basis-1/4 bg-white  rounded-xl p-5 overflow-hidden">
-                    <i class=" px-3 text-3xl fa fa-mobile" aria-hidden="true"></i> <span class="break-words">GALAXY A24 Series</span>
+                <div class="flex items-center text-3xl basis-1/4 bg-white border rounded-xl p-5 overflow-hidden">
+                    <img class=" rounded-full overflow-hidden object-cover w-20" src="https://cdn-v2.didongviet.vn/files/media/catalog/product/s/a/samsung-galaxy-a23-didongviet_2.jpg" alt="">
+                    <span class="break-words pl-6">GALAXY Series</span>
                 </div>
-                <div class="flex items-center text-2xl basis-1/4 bg-white rounded-xl p-3 overflow-hidden">
-                    <i class=" px-3 text-3xl fa fa-mobile" aria-hidden="true"></i> <span class="break-words">GALAXY A24 Series</span>
+                <div class="flex items-center text-3xl basis-1/4 bg-white border rounded-xl p-5 overflow-hidden">
+                    <img class=" rounded-full overflow-hidden object-cover w-20" src="https://hanoicomputercdn.com/media/product/68198_laptop_lenovo_ideapad_slim_5_pro_37.png" alt="">
+                    <span class="break-words pl-6">Laptop xả kho</span>
                 </div>
-                <div class="flex items-center text-2xl basis-1/4 bg-white rounded-xl p-3 overflow-hidden">
-                    <i class=" px-3 text-3xl fa fa-mobile" aria-hidden="true"></i> <span class="break-words">GALAXY A24 Series</span>
+                <div class="flex items-center text-3xl basis-1/4 bg-white border rounded-xl p-5 overflow-hidden">
+                    <img class=" rounded-full overflow-hidden object-cover w-20" src="https://www.shutterstock.com/image-illustration/50-red-fifty-percent-on-260nw-1332686732.jpg" alt="">
+                    <span class="break-words pl-6">Giảm đến 50%</span>
                 </div>
-                <div class="flex items-center text-2xl basis-1/4 bg-white  rounded-xl p-3 overflow-hidden">
-                    <i class=" px-3 text-3xl fa fa-mobile" aria-hidden="true"></i> <span class="break-words">GALAXY A24 Series</span>
+                <div class="flex items-center text-3xl basis-1/4 bg-white border rounded-xl p-5 overflow-hidden">
+                    <img class=" rounded-full overflow-hidden object-cover w-20" src="https://cdn-v2.didongviet.vn/files/media/catalog/product/s/a/samsung-galaxy-a23-didongviet_2.jpg" alt="">
+                    <span class="break-words pl-6">Điện thoại rẻ quá</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container m-auto py-5 object-cover">
-        <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/1200x100-1200x100-3.png" class=" w-full" alt="">
+    <div class="container m-auto pb-5 pt-16 object-cover">
+        <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/06/banner/1200x1001-1200x100.png" class=" w-full" alt="">
     </div>
 </section>
 
@@ -87,53 +95,36 @@
 
 <section>
     <div class="container m-auto">
-        <div class="rounded-xl bg-blue-700 p-4" style="background-color: #FF685F">
+        <div class="rounded-xl bg-blue-700 p-4" style="background-color: #920101">
             <h2 style="color:#FFE818" class="text-3xl font-bold text-white uppercase py-4 ps-3">Giờ vàng giá sốc</h2>
             <div class="slide">
                 <div class="owl-carousel slide-first owl-theme owl-loaded">
-                    <div class="owl-stage-outer">
-                        <div class="owl-stage">
+                    <div class="owl-stage-outer ">
+                        <div class="owl-stage flex">
                             <?php
-                                for ($i=0; $i < 10; $i++) { 
-                                ?>
-                                    <div class="owl-item">
-                                        <a href="./detail.php" class="">
-                                            <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                                <div class="p-3 ">
-                                                    <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                                </div>
-                                                <div class="px-6 py-3">
-                                                    <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                                    <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                                    </p>
-                                                    <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                                    </p>
-                                                </div>
-                                                <div class="px-6 pt-4 pb-2">
-                                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                                </div>
+                            foreach ($gio_vang as $value) {
+                            ?>
+                                <div class="owl-item flex ">
+                                    <a href="../hang_hoa/chi_tiet.php?ma_hh=<?= $value['ma_hh'] ?>" class=" flex flex-1  hover:scale-95">
+                                        <div class=" flex flex-col bg-white rounded mb-2">
+                                            <div class="p-3 flex-auto flex justify-center items-center ">
+                                                <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="<?= $UPLOAD_PRODUCT_URL . $value['hinh'] ?>" alt="Sunset in the mountains">
                                             </div>
-                                        </a>
-                                        <!-- <a href="" class="">
-                                            <div class="  bg-white rounded overflow-hidden shadow-lg">
-                                                <div class="p-3 ">
-                                                    <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                                </div>
-                                                <div class="px-6 py-3">
-                                                    <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                                    <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                                    </p>
-                                                    <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                                    </p>
-                                                </div>
-                                                <div class="px-6 pt-4 pb-2">
-                                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                                </div>
+                                            <div class="px-6 py-3 ">
+                                                <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
+                                                <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?>
+                                                </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
+                                                <p class="text-red-500 font-bold text-lg"> <?= currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia']) ?>
+                                                </p>
                                             </div>
-                                        </a> -->
-                                    </div>
+                                            <div class="px-6 pt-4 pb-2 flex-none">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                             <?php
-                                }                            
+
+                            }
                             ?>
                         </div>
                     </div>
@@ -151,140 +142,32 @@
             <div class="slide">
                 <div class="owl-carousel slide-first owl-theme owl-loaded">
                     <div class="owl-stage-outer">
-                        <div class="owl-stage">
-                            <div class="owl-item">
-                                <a href="" class="">
-                                    <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                        <div class="p-3 ">
-                                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
+                        <div class="owl-stage flex">
+                            <?php
+                            foreach ($gia_re as $value) {
+                            ?>
+                                <div class="owl-item flex ">
+                                    <a href="../hang_hoa/chi_tiet.php?ma_hh=<?= $value['ma_hh'] ?>" class=" flex flex-1 hover:shadow hover:scale-95">
+                                        <div class=" flex flex-col bg-white rounded  shadow-lg mb-2">
+                                            <div class="p-3 flex-1 flex justify-center items-center ">
+                                                <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="<?= $UPLOAD_PRODUCT_URL . $value['hinh'] ?>" alt="Sunset in the mountains">
+                                            </div>
+                                            <div class="px-6 py-3 flex-none">
+                                                <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
+                                                <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?>
+                                                </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
+                                                <p class="text-red-500 font-bold text-lg"> <?=currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia'])?>
+                                                </p>
+                                            </div>
+                                            <div class="px-6 pt-4 pb-2 flex-none">
+
+                                            </div>
                                         </div>
-                                        <div class="px-6 py-3">
-                                            <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                            <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                            </p>
-                                            <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                            </p>
-                                        </div>
-                                        <div class="px-6 pt-4 pb-2">
-                                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="owl-item">
-                                <a href="" class="">
-                                    <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                        <div class="p-3 ">
-                                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                        </div>
-                                        <div class="px-6 py-3">
-                                            <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                            <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                            </p>
-                                            <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                            </p>
-                                        </div>
-                                        <div class="px-6 pt-4 pb-2">
-                                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="owl-item">
-                                <a href="" class="">
-                                    <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                        <div class="p-3 ">
-                                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                        </div>
-                                        <div class="px-6 py-3">
-                                            <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                            <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                            </p>
-                                            <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                            </p>
-                                        </div>
-                                        <div class="px-6 pt-4 pb-2">
-                                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="owl-item">
-                                <a href="" class="">
-                                    <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                        <div class="p-3 ">
-                                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                        </div>
-                                        <div class="px-6 py-3">
-                                            <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                            <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                            </p>
-                                            <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                            </p>
-                                        </div>
-                                        <div class="px-6 pt-4 pb-2">
-                                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="owl-item">
-                                <a href="" class="">
-                                    <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                        <div class="p-3 ">
-                                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                        </div>
-                                        <div class="px-6 py-3">
-                                            <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                            <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                            </p>
-                                            <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                            </p>
-                                        </div>
-                                        <div class="px-6 pt-4 pb-2">
-                                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="owl-item">
-                                <a href="" class="">
-                                    <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                        <div class="p-3 ">
-                                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                        </div>
-                                        <div class="px-6 py-3">
-                                            <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                            <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                            </p>
-                                            <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                            </p>
-                                        </div>
-                                        <div class="px-6 pt-4 pb-2">
-                                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="owl-item">
-                                <a href="" class="">
-                                    <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                        <div class="p-3 ">
-                                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
-                                        </div>
-                                        <div class="px-6 py-3">
-                                            <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                            <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                            </p>
-                                            <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
-                                            </p>
-                                        </div>
-                                        <div class="px-6 pt-4 pb-2">
-                                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -333,27 +216,34 @@
         <h2 class="text-3xl font-bold text-gray-950 uppercase py-4 ps-3">Gợi ý hôm nay</h2>
         <div class="py-3 grid grid-cols-5 gap-1">
             <?php
-                for ($i=0; $i < 10; $i++) { 
-                    ?>
-                    <a href="" class="">
-                        <div class="bg-white rounded overflow-hidden shadow-lg ">
-                            <div class="p-3 ">
-                                <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
+             $i=1;
+            foreach ($goi_y as $value) {
+            ?>
+                <div class="owl-item flex ">
+                    <a href="../hang_hoa/chi_tiet.php?ma_hh=<?= $value['ma_hh'] ?>" class=" flex flex-1  hover:scale-105 hover:shadow-slate-600 hover:shadow-2xl ">
+                        <div class=" flex flex-col bg-white rounded  ">
+                            <div class="p-3 flex-1 flex justify-center items-center ">
+                                <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="<?= $UPLOAD_PRODUCT_URL . $value['hinh'] ?>" alt="Sunset in the mountains">
                             </div>
-                            <div class="px-6 py-3">
-                                <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                </p>
-                                <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
+                            <div class="px-6 py-3 flex-none">
+                                <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
+                                <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?> đ
+                                </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
+                                <p class="text-red-500 font-bold text-lg">  <?=currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia'])?>
                                 </p>
                             </div>
-                            <div class="px-6 pt-4 pb-2">
-                                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
+                            <div class="px-6 pt-4 pb-2 flex-none">
+
                             </div>
                         </div>
                     </a>
-                <?php
+                </div>
+            <?php
+                if ($i == 10) {
+                    break;
                 }
+                $i++;
+            }
             ?>
 
 
@@ -365,32 +255,32 @@
 
 <script>
     var owl = $('.slide-banner');
-        owl.owlCarousel({
-            items: 2,
-            loop: true,
-            margin: 10,
-            nav:true,
-            autoplay: true,
-            autoplayTimeout: 1000,
-            autoplayHoverPause: true,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                600: {
-                    items: 2,
-                },
-                1000: {
-                    items: 2,
-                }
+    owl.owlCarousel({
+        items: 2,
+        loop: true,
+        margin: 10,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            1000: {
+                items: 2,
             }
-        });
+        }
+    });
     var owl = $('.slide-first');
     owl.owlCarousel({
         items: 1,
         loop: true,
         margin: 4,
-        nav:true,
+        nav: true,
         autoplay: true,
         autoplayTimeout: 1000,
         autoplayHoverPause: true,

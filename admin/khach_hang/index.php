@@ -1,6 +1,7 @@
 <?php
 require_once "../../global.php";
 require_once "../../Dao/khach_hang.php";
+check_login();
 extract($_REQUEST);
 
 if (exist_parma("btn_add")) {
@@ -12,11 +13,11 @@ elseif (exist_parma("btn_insert")) {
     $check = 1;
     global $ma_kh_err, $email_err, $name_err, $phone_err, $pass_err, $repass_err;
     $check_ma_kh = khach_hang_select_by_id($ma_kh);
-
+    $check_email = khach_hang_select_by_email($email);
     if (!preg_match(regex_name(), $ma_kh) || strlen($ma_kh) == 0) {
         $ma_kh_err = '<div class="text-danger">Bạn phải nhập từ 3 đến 20 kí tự, không có kí tự đặt biệt, không có dấu</div>';
         $check = 0;
-    }elseif (!empty($check_ma_kh)) {
+    } elseif (!empty($check_ma_kh)) {
         $ma_kh_err = '<div class="text-danger">Mã đăng nhập đã được dùng</div>';
         $check = 0;
     }
@@ -26,6 +27,9 @@ elseif (exist_parma("btn_insert")) {
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) == 0) {
         $email_err = '<div class="text-danger">Phải đúng định dạng email</div>';
+        $check = 0;
+    } elseif (!empty($check_email)) {
+        $email_err = '<div class="text-danger">Email đăng nhập đã được dùng</div>';
         $check = 0;
     }
     if (!preg_match(regex_phone(), $phone)) {
@@ -70,10 +74,13 @@ elseif (exist_parma("btn_edit")) {
     extract($_REQUEST);
     $check = 1;
     global $ma_kh_err, $email_err, $name_err, $phone_err, $pass_err, $repass_err;
+    $check_ma_kh = khach_hang_select_by_id($ma_kh);
+    $check_email = khach_hang_select_by_email($email);
+
     if (!preg_match(regex_name(), $ma_kh) || strlen($ma_kh) == 0) {
         $ma_kh_err = '<div class="text-danger">Bạn phải nhập từ 3 đến 20 kí tự, không có kí tự đặt biệt, không có dấu</div>';
         $check = 0;
-    } 
+    }
     if (!preg_match(regex_name(), slugify($name)) || strlen($name) == 0) {
         $name_err = '<div class="text-danger">Bạn phải nhập từ 3 đến 20 kí tự, không có kí tự đặt biệt</div>';
         $check = 0;
@@ -81,6 +88,11 @@ elseif (exist_parma("btn_edit")) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) == 0) {
         $email_err = '<div class="text-danger">Phải đúng định dạng email</div>';
         $check = 0;
+    } elseif ($check_ma_kh['email'] != $email) {
+        if (!empty($check_email)) {
+            $email_err = '<div class="text-danger">Email đăng nhập đã được dùng</div>';
+            $check = 0;
+        }
     }
     if (!preg_match(regex_phone(), $phone)) {
         $phone_err = '<div class="text-danger">Số điện thoại phải 10 kí tự</div>';
@@ -102,7 +114,7 @@ elseif (exist_parma("btn_edit")) {
             if ($pass != $pass_old) {
                 $pass = md5($pass);
             }
-        
+
             if (!empty($_FILES["upload"]["name"])) {
                 // unlink($UPLOAD_USER_URL.$hinh_cu);
                 $hinh = save_file('upload', $UPLOAD_USER_URL);
@@ -123,17 +135,13 @@ elseif (exist_parma("btn_edit")) {
         $khach_hang =  khach_hang_select_by_id($ma_kh);
         $VIEW_NAME = "edit.php";
     }
-
-
-
 }
 //xóa
 elseif (exist_parma("btn_delete")) {
     extract($_REQUEST);
-    if($ma_kh == $_SESSION['user']['ma_kh']){
+    if ($ma_kh == $_SESSION['user']['ma_kh']) {
         $MESS = '<div class="alert alert-warning text-white " role="alert">Bạn không thể xóa chính mình</div>';
-        
-    }else{
+    } else {
         khach_hang_delete($ma_kh);
         $MESS = '<div class="alert alert-success text-white " role="alert">Xóa thành công</div>';
     }

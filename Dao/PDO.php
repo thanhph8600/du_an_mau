@@ -85,4 +85,23 @@ function pdo_get_connection() {
             unset($conn);
         }
     }
+
+    function last_id($sql){ 
+
+        $sql_args =array_slice(func_get_args(),1);
+        try {
+            $conn = pdo_get_connection();
+            $stmt = $conn -> prepare($sql);
+            $stmt -> execute($sql_args);
+            $last_id = $conn->lastInsertId();
+            return $last_id;
+        }
+        catch(PDOException $e) {
+            throw $e;
+        }
+        finally {
+            unset($conn);
+        }
+
+    }
 ?>

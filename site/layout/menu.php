@@ -24,8 +24,8 @@ $category = query($sql);
                     </div>
                 </form>
                 <div class="flex items-center relative">
-                    <a href="" class=" bg-blue-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-blue-700  "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</a>
-                    <a href="" class=" bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-truck" aria-hidden="true"></i> Đơn hàng</a>
+                    <a href="../gio_hang/index.php" class=" bg-blue-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-blue-700  "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</a>
+                    <a href="../gio_hang/index.php?list" class=" bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-truck" aria-hidden="true"></i> Đơn hàng</a>
                     <p class="<?= (empty($user)) ? 'op-dangnhap' : 'show' ?> cursor-pointer bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-user-circle-o pr-3 " aria-hidden="true"></i><?= (empty($user)) ? 'Đăng nhập' : $user['ho_ten'] ?> </p>
 
 
@@ -41,7 +41,7 @@ $category = query($sql);
 
                         <a href="../tai_khoan/cap_nhat_tk.php" class=" py-2 px-3 hover:bg-zinc-400 hover:text-white border rounded-xl"><i class="fa fa-wrench" aria-hidden="true"></i> Quản lý tài khoản</a>
                         <p class="doi-mat-khau cursor-pointer py-2 px-3 hover:bg-zinc-400 hover:text-white border rounded-xl"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</p>
-                        <a href="../tai_khoan/index.php?dang_xuat" class=" cursor-pointer dangXuat py-2 px-3 bg-zinc-300 hover:bg-zinc-400 hover:text-white border rounded-xl">Đăng xuất <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                        <a href="" class=" cursor-pointer dangXuat py-2 px-3 bg-zinc-300 hover:bg-zinc-400 hover:text-white border rounded-xl">Đăng xuất <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                     </div>
                     <div style="display: none;" class="nenpopup fixed w-full h-full top-0 left-0 z-10"></div>
 
@@ -50,9 +50,9 @@ $category = query($sql);
             </div>
 
         </div>
-        <div class="flex w-4/5 pt-4 m-auto ">
+        <div class="flex w-4/5 pt-4 m-auto">
             <div class=" relative">
-                <h2 class=" font-bold text-xl py-2 w-60 text-center rounded-t-md cursor-pointer bg-blue-400 text-white show-cate">Danh mục sản phẩm <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <h2 class=" font-bold text-lg py-3 w-60 text-center rounded-t-md cursor-pointer bg-blue-400 text-white show-cate">Danh mục sản phẩm <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </h2>
                 <div style="display:none" class="cate absolute flex flex-col z-10 w-60 bg-white justify-center border">
                     <?php
@@ -62,6 +62,13 @@ $category = query($sql);
                     ?>
 
                 </div>
+            </div>
+            <div class="flex gap-1 text-white text-center justify-between w-3/5 items-center m-auto text-base font-semibold">
+                <a href="../hang_hoa/liet_ke.php" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Tất cả sản phẩm</a>
+                <a href="../trang_chinh/index.php?gioi_thieu" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Giới thiệu</a>
+                <a href="" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Liên hệ</a>
+                <a href="" class=" bg-orange-400 flex-auto  py-3 rounded-t hover:bg-orange-600">Góp ý</a>
+                <a href="" class=" bg-orange-400 flex-auto  py-3 rounded-t hover:bg-orange-600">Hỏi đáp</a>
             </div>
         </div>
 
@@ -79,6 +86,17 @@ $category = query($sql);
         </div>
     </div>
 </section>
+<div class="loading" style="display:none">
+    <div class="fixed w-full h-full top-0 left-0 z-10 opacity-25 bg-black justify-center items-center">
+
+    </div>
+    <div class="fixed w-full h-full top-0 left-0 z-10">
+    <div class="flex  w-full h-screen  justify-center items-center  z-10">
+        <i class=" fa fa-spinner fa-spin text-white text-9xl  "></i>
+    </div>
+</div>
+
+</div>
 
 
 <script>
@@ -149,7 +167,7 @@ $category = query($sql);
 
     $('.dangXuat').click(function() {
         $.ajax({
-            url: "../tai_khoan/index.php",
+            url: "../tai_khoan/index.php?dang_xuat",
             type: "post",
             data: {
                 dang_xuat: 'dang_xuat',
@@ -160,17 +178,17 @@ $category = query($sql);
         });
     })
 
-    $(document).on('input keyup  paste' , '.seach',function() {
+    $(document).on('input keyup  paste', '.seach', function() {
         $.ajax({
             url: "../hang_hoa/show_seach.php?seach_keyword",
             type: "post",
             data: {
-                seach_keyword : 'seach_keyword',
+                seach_keyword: 'seach_keyword',
                 keyword: $('.seach').val(),
             },
             success: function(result) {
                 $('.show-seach').html(result)
-                if($('.seach').val() == ''){
+                if ($('.seach').val() == '') {
                     $('.show-seach').html('')
                 }
             }

@@ -68,16 +68,16 @@
 
             if (check == 1) {
                 $.ajax({
-                    url: "../tai_khoan/index.php",
+                    url: "../tai_khoan/index.php?dang_nhap",
                     type: "post",
                     data: {
-                        dang_nhap: 'dang_nhap',
-                        email: $('.email').val(),
+                        ma_kh: $('.email').val(),
                         pass: $('.pass').val(),
                         ghi_nho: $('.ghi_nho:checked').val(),
                     },
                     success: function(result) {
-                        if (result == "SS") {
+                        if (result == " " || result.length <5) {
+                            console.log(result)
                             alert('Đăng nhập thành công')
                             setTimeout(() => {
                                 window.location.reload(true)
@@ -86,7 +86,7 @@
                         } else {
                             $('.check-login').html(result)
                         }
-
+                        console.log(result)
                         // $(location).attr("href", pageURL);
 
                     }

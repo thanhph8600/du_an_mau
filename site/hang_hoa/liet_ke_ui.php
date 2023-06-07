@@ -84,48 +84,12 @@
     });
 </script>
 
-<!-- <section>
-    <div class="container m-auto py-4">
-        <div class="flex flex-wrap gap-5">
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/IPhonelogo.svg/2560px-IPhonelogo.svg.png" alt="" class=" w-12 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Samsung_logo_blue.png" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://www.freepnglogos.com/uploads/oppo-logo-png/oppo-green-logo-transparent-0.png" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://1000logos.net/wp-content/uploads/2018/10/Xiaomi-Logo-2019.png" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://banner2.cleanpng.com/20180412/ysq/kisspng-vivo-logo-smartphone-branding-5acf57274b6e50.967449261523537703309.jpg" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Redmi_Logo.png" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://www.freepnglogos.com/uploads/nokia-logo-picture-16.png" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://masstel.vn/wp-content/uploads/2019/11/Logo-Masstel-4.png" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Itel_Mobile_logo.png" alt="" class=" w-14 object-cover">
-            </a>
-            <a href="" class="flex items-center justify-center border rounded-3xl py-2 px-12 hover:border-blue-600">
-                <img src="https://theme.hstatic.net/1000312916/1000409026/14/logo.png?v=138" alt="" class=" w-14 object-cover">
-            </a>
-        </div>
-    </div>
-</section> -->
 
 <section>
     <div class="container m-auto">
         <div class="flex gap-4 items-center justify-between">
             <div class="flex gap-4 items-center">
-                <p class=" font-bold "><?=$ten_sp['ten_loai']?> (<?=$tong_sp?>)</p>
+                <p class=" font-bold "><?= $ten_sp['ten_loai'] ?> (<?= $tong_sp ?>)</p>
                 <div>
                     <input type="checkbox" name="" id=""> <label for="">Giảm giá</label>
                 </div>
@@ -144,18 +108,18 @@
             foreach ($item as $value) {
                 extract($value);
             ?>
-                <a href="./chi_tiet.php?ma_hh=<?=$ma_hh?>" class="hover:shadow-2xl hover:z-20 border">
-                    <div class="bg-white hover:shadow-2xl  text-center">
+                <a href="./chi_tiet.php?ma_hh=<?= $ma_hh ?>" class="hover:shadow-2xl hover:z-20 border">
+                    <div class="bg-white  text-center">
                         <div class="p-3 ">
-                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="../../uploaded/product/<?=$hinh?>" alt="Sunset in the mountains">
+                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="../../uploaded/product/<?= $hinh ?>" alt="Sunset in the mountains">
                         </div>
-                        <div class="px-6 py-3">
-                            <div class=" font-bold text-lg mb-2"><?=$ten_hh?></div>
-                            <p class="text-red-500 font-bold text-lg"><?=$don_gia?> đ
-                            </p>
-                            <p class="text-neutral-600 text-base line-through"> <?=$giam_gia?> đ
-                            </p>
-                        </div>
+                        <div class="px-6 py-3 ">
+                                                <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
+                                                <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?> đ
+                                                </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
+                                                <p class="text-red-500 font-bold text-lg"> <?=currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia'])?>
+                                                </p>
+                                            </div>
                         <div class="px-6 pt-4 pb-2">
                             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
                         </div>
@@ -167,6 +131,31 @@
 
 
         </div>
+        <div class="spagination flex gap-5 justify-center py-3 text-lg">
+            <?php
+            // PHẦN HIỂN THỊ PHÂN TRANG
+
+            // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+            if(empty($_GET['ma_loai']) && empty($_GET['keyword']) ){
+                if ($current_page > 1 && $total_page > 1) {
+                    echo '<a href="liet_ke.php?page=' . ($current_page - 1) . '"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a> | ';
+                }
+    
+                // Lặp khoảng giữa
+                for ($i = 1; $i <= $total_page; $i++) {
+                    if ($i == $current_page) {
+                        echo '<span class=" bg-orange-500 rounded px-4 text-white font-bold ">' . $i . '</span> | ';
+                    } else {
+                        echo '<a href="liet_ke.php?page=' . $i . '">' . $i . '</a> | ';
+                    }
+                }
+    
+                // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                if ($current_page < $total_page && $total_page > 1) {
+                    echo '<a href="liet_ke.php?page=' . ($current_page + 1) . '"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>  ';
+                }
+            }
+            ?>
+        </div>
     </div>
 </section>
-

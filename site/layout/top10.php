@@ -40,35 +40,32 @@
             <div class="slide">
                 <div class="owl-carousel slide-first owl-theme owl-loaded">
                     <div class="owl-stage-outer">
-                        <div class="owl-stage">
+                    <div class="owl-stage flex">
                             <?php
-                            for ($i = 0; $i < 20; $i++) {
+                            $top10 = hang_hoa_select_top10();
+                            foreach ($top10 as $value) {
                             ?>
-                                <div class="owl-item">
-                                    <a href="" class="">
-                                        <div class="bg-white rounded overflow-hidden shadow-lg mb-2">
-                                            <div class="p-3 ">
-                                                <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/Products/Images/42/274018/samsung-galaxy-a24-black-thumb-600x600.jpg" alt="Sunset in the mountains">
+                                <div class="owl-item flex ">
+                                    <a href="../hang_hoa/chi_tiet.php?ma_hh=<?= $value['ma_hh'] ?>" class=" flex flex-1  hover:scale-95">
+                                        <div class=" flex flex-col bg-white rounded mb-2">
+                                            <div class="p-3 flex-auto flex justify-center items-center ">
+                                                <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="<?= $UPLOAD_PRODUCT_URL . $value['hinh'] ?>" alt="Sunset in the mountains">
                                             </div>
-                                            <div class="px-6 py-3">
-                                                <div class="font-bold text-lg mb-2">galaxy A24</div>
-                                                <p class="text-red-500 font-bold text-lg"> 7.999.999 đ
-                                                </p>
-                                                <p class="text-neutral-600 text-base line-through"> 7.999.999 đ
+                                            <div class="px-6 py-3 ">
+                                                <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
+                                                <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?> đ
+                                                </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
+                                                <p class="text-red-500 font-bold text-lg"> <?=currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia'])?>
                                                 </p>
                                             </div>
-                                            <div class="px-6 pt-4 pb-2">
-                                                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
+                                            <div class="px-6 pt-4 pb-2 flex-none">
                                             </div>
                                         </div>
                                     </a>
                                 </div>
-
                             <?php
                             }
-
                             ?>
-
                         </div>
                     </div>
                 </div>

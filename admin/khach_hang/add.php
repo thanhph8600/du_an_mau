@@ -324,7 +324,6 @@
         $("form").validate({
             rules: {
                 ma_kh: {
-
                     yourRule_ma_kh: true
                 },
                 name: {

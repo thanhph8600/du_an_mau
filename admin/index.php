@@ -1,6 +1,8 @@
 <?php
 include '../global.php';
 header('location: ./loai_hang/');
+check_login();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
