@@ -8,17 +8,17 @@
                         <div class=" flex gap-4">
                             <div class="mb-4  w-1/2">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Họ và tên <span class="checkName-re text-red-600"></span></label>
-                                <input name="name" type="text" class="name shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập tên" value="<?= (!empty($user)) ? $user['ho_ten'] : '' ?>">
+                                <input name="name" type="text" class="name shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" value="<?= (!empty($user)) ? $user['ho_ten'] : '' ?>">
                             </div>
                             <div class="mb-4  w-1/2">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Email <span class="checkEmail-re text-red-600"></span></label>
-                                <input name="email" type="text" class=" email shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập email" value="<?= (!empty($user)) ? $user['email'] : '' ?>">
+                                <input name="email" type="text" class=" email shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"  value="<?= (!empty($user)) ? $user['email'] : '' ?>">
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <div class=" mb-4  w-1/2">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Số điện thoại <span class="checkPhone-re text-red-600"></span></label>
-                                <input name="phone" type="text" class="phone shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập số điện thoại" value="<?= (!empty($user)) ? $user['sdt'] : '' ?>">
+                                <input name="phone" type="text" class="phone shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"  value="<?= (!empty($user)) ? $user['sdt'] : '' ?>">
                             </div>
                             <div class="mb-4  w-1/2">
                                 <label for="default" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tỉnh/ Thành phố</label>
@@ -52,7 +52,7 @@
                         <div class="flex gap-4">
                             <div class="mb-4   w-full">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Địa chỉ <span class="checkPhone-re text-red-600"></span></label>
-                                <input name="address" type="text" class="address shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="">
+                                <input name="address" type="text" class="address shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" >
                             </div>
 
                         </div>
@@ -174,7 +174,7 @@
                             localStorage.setItem('favorites', JSON.stringify([]));
                             // deleteShopCart();
                             // $(location).attr("href", '../gio_hang/chi_tiet_don_hang.php?ma_order=' + data)
-                            window.location.href = '../gio_hang/chi_tiet_don_hang.php?ma_order=' + data;
+                            window.location.href = '../gio_hang/chi_tiet_don_hang.php?ma_order=' + data + '&thanh_cong';
                         })
 
 

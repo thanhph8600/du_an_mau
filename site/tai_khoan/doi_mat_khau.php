@@ -1,4 +1,4 @@
-<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col  load-popup">
     <h2 class=" font-bold text-2xl text-center pb-2">Đổi mật khẩu</h2>
 
     <div class="check-doi-mat-khau my-2">
@@ -10,7 +10,7 @@
                 <label class=" block text-grey-darker text-sm font-bold mb-2" for="username">
                     Tên đăng nhập <span class="checkMakh text-red-600"></span>
                 </label>
-                <input class="ma_kh shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" placeholder="Mã đăng nhập của bạn">
+                <input class="ma_kh shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text">
             </div>
             <div class="mb-3">
                 <label class=" block text-grey-darker text-sm font-bold mb-2" for="password">
@@ -83,7 +83,7 @@
             $('.checkpass-new').html('Không được để trống')
             $('.pass-new').css('border', 'red 1px solid');
             check = 0;
-        } else if ($('.pass-new').val().length  < 8 || $('.pass-old').val().length  > 32) {
+        } else if ($('.pass-new').val().length < 8 || $('.pass-old').val().length > 32) {
             $('.checkpass-new').html('Nhập từ 8 đến 32 kí tự')
             $('.pass-new').css('border', 'red 1px solid');
             check = 0;
@@ -113,6 +113,8 @@
 
         console.log(check)
         if (check == 1) {
+            $(".loading").css('display', 'block')
+
             $.ajax({
                 url: '../tai_khoan/index.php?doi_mat_khau',
                 type: 'POST',
@@ -123,6 +125,8 @@
                     re_pass_new: $('.re-pass-new').val()
                 },
                 success: function(result) {
+                    $(".loading").css('display', 'none')
+
                     $('.check-doi-mat-khau').html(result)
                     $('.pass-old').val(''),
                         $(".pass-new").val(''),
@@ -133,11 +137,15 @@
 
     })
     $('.quen-mat-khau').click(function() {
+    $(".loading").css('display', 'block')
+
         $.ajax({
             url: "../tai_khoan/index.php?quen_mat_khau",
             type: "post",
             data: {},
             success: function(result) {
+    $(".loading").css('display', 'none')
+
                 $('.form').html(result)
             }
         });

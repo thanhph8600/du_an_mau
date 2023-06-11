@@ -1,4 +1,4 @@
-<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col load-popup">
     <h2 class=" font-bold text-2xl text-center pb-2">Quên mật khẩu</h2>
 
     <div class="check-tim-mk my-2">
@@ -9,13 +9,13 @@
             <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
                 Tên đăng nhập <span class="checkMakh text-red-500"></span>
             </label>
-            <input class="ma_kh shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" placeholder="Mã đăng nhập của bạn">
+            <input class="ma_kh shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="text" >
     </div>
     <div class="mb-3">
         <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
             Địa chỉ email <span class="check-email text-red-500"></span>
         </label>
-        <input class="email shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="email" type="text" placeholder="Địa chỉ email của bạn">
+        <input class="email shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="email" type="text" >
         <p class=" text-red-700 text-xs italic"></p>
     </div>
 
@@ -44,7 +44,6 @@
 </div>
 <script>
     $(document).on('click', ' .tim-mk', function() {
-        alert(1)
         let check = 1;
         if (!(/^([a-zA-Z ]){3,20}$/).test($('.ma_kh').val())) {
             $('.checkMakh').html('Không được chứa kí tự đặt biệt')
@@ -82,7 +81,6 @@
                 },
                 success: function(result) {
                     $('.check-tim-mk').html(result)
-
                     if (result.length < 10) {
                         $.ajax({
                             url: "../tai_khoan/sendemail.php",
@@ -116,6 +114,8 @@
     $(document).on('click', ' .doi-mat-khau', function() {
         $('.popup').css('display', 'block')
         $('.close-popup').css('display', 'block')
+        $(".loading").css('display', 'block')
+
         $.ajax({
             url: "../tai_khoan/index.php?btn_doi_mat_khau",
             type: "post",
@@ -123,6 +123,8 @@
                 doi_mat_khau: 'doi_mat_khau',
             },
             success: function(result) {
+    $(".loading").css('display', 'none')
+
                 $('.form').html(result)
                 $(".panel").slideUp("slow");
             }

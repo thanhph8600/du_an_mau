@@ -36,13 +36,18 @@
 <section>
     <div class="container m-auto py-4">
         <div class="rounded-xl p-4 " style="background-color:#FBC417">
-            <h2 class=" text-center text-3xl font-black text-white uppercase py-4 ps-3"> TOP 10 sản phẩm <span>được <span class="px-1 text-rose-500 ">yêu</span> thích</span></h2>
+        <h2 class=" text-center text-3xl font-black text-white uppercase py-4 ps-3">
+            <?=
+                (empty($top10))?'TOP 10 sản phẩm <span>được <span class="px-1 text-rose-500 ">yêu</span> thích</span>':'Các sản phẩm tương tự';
+            ?>
+             </h2>
             <div class="slide">
                 <div class="owl-carousel slide-first owl-theme owl-loaded">
                     <div class="owl-stage-outer">
                     <div class="owl-stage flex">
                             <?php
-                            $top10 = hang_hoa_select_top10();
+                            (empty($top10))? '$top10 = hang_hoa_select_top10()' : '';
+                            
                             foreach ($top10 as $value) {
                             ?>
                                 <div class="owl-item flex ">

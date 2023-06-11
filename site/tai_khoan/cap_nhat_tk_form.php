@@ -17,7 +17,7 @@
                 </div>
                 <div class="mb-4  w-1/2">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="">Họ và tên <span class="checkName-re text-red-600"></span></label>
-                    <input  type="text" class="name-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="name" placeholder="Nhập tên" value="<?= $newuser['ho_ten'] ?>">
+                    <input  type="text" class="name-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="name"  value="<?= $newuser['ho_ten'] ?>">
                     <?php
                         if (!empty($name_err)) echo $name_err;
                     ?>
@@ -26,14 +26,14 @@
             <div class="flex gap-4">
                 <div class="mb-4  w-1/2">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="">Email <span class="checkEmail-re text-red-600"></span></label>
-                    <input type="text" class="email-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="email" placeholder="Nhập email" value="<?= $newuser['email'] ?>">
+                    <input type="text" class="email-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="email" value="<?= $newuser['email'] ?>">
                     <?php
                         if (!empty($email_err)) echo $email_err;
                     ?>
                 </div>
                 <div class="mb-4  w-1/2">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="">Số điện thoại <span class="checkPhone-re text-red-600"></span></label>
-                    <input type="text" class="phone-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="phone" placeholder="Nhập số điện thoại" value="<?= $newuser['sdt'] ?>">
+                    <input type="text" class="phone-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="phone"  value="<?= $newuser['sdt'] ?>">
                     <?php
                         if (!empty($phone_err)) echo $phone_err;
                     ?>

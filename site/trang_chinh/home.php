@@ -43,6 +43,9 @@
     }
 </style>
 <section>
+    <div id="preloader" class="" style="background: #0000009d;">
+        <div class="loader "></div>
+    </div>
     <div class=" w-full bg-white">
         <img class=" w-full" src="../../content/img/banner/Untitled-1.jpg" alt="">
     </div>
@@ -156,7 +159,7 @@
                                                 <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
                                                 <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?>
                                                 </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
-                                                <p class="text-red-500 font-bold text-lg"> <?=currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia'])?>
+                                                <p class="text-red-500 font-bold text-lg"> <?= currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia']) ?>
                                                 </p>
                                             </div>
                                             <div class="px-6 pt-4 pb-2 flex-none">
@@ -216,7 +219,7 @@
         <h2 class="text-3xl font-bold text-gray-950 uppercase py-4 ps-3">Gợi ý hôm nay</h2>
         <div class="py-3 grid grid-cols-5 gap-1">
             <?php
-             $i=1;
+            $i = 1;
             foreach ($goi_y as $value) {
             ?>
                 <div class="owl-item flex ">
@@ -229,7 +232,7 @@
                                 <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
                                 <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?> đ
                                 </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
-                                <p class="text-red-500 font-bold text-lg">  <?=currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia'])?>
+                                <p class="text-red-500 font-bold text-lg"> <?= currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia']) ?>
                                 </p>
                             </div>
                             <div class="px-6 pt-4 pb-2 flex-none">
@@ -296,4 +299,16 @@
             }
         }
     });
+    $(document).on('load', function() {
+        $('.loading').fadeOut();
+        $('#preloader').delay(100).fadeOut('slow');
+    });
+    (function($) {
+
+        $(window).on('load', function() {
+
+            $('.loading').fadeOut();
+            $('#preloader').delay(50).fadeOut('slow');
+        });
+    })(jQuery);
 </script>

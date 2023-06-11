@@ -18,3 +18,86 @@ header {
   input:focus{
     outline: none;
   }
+  #preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    
+}
+
+.loader {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+    border-radius: 60px;
+    animation: loader 0.8s linear infinite;
+    -webkit-animation: loader 0.8s linear infinite;
+}
+
+@keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        border: 4px solid #f44336;
+        border-left-color: transparent;
+    }
+
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+        border: 4px solid #673ab7;
+        border-left-color: transparent;
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        border: 4px solid #f44336;
+        border-left-color: transparent;
+    }
+}
+
+
+
+.load-popup{
+  animation: load-popup 0.5s ease-in-out;
+}
+@keyframes load-popup {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+
+    }
+}
+
+
+.out-carts{
+  animation: delete-cart 0.5s ease-in-out;
+  background-color: red;
+}
+@keyframes delete-cart {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+
+  }
+}

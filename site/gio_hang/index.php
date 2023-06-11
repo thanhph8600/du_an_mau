@@ -7,10 +7,12 @@ require_once "../../Dao/hang_hoa.php";
 extract($_REQUEST);
 
 if(exist_parma('thanh_toan')){
+
     $tinh = render_Tinh();
     $VIEW_NAME ='../gio_hang/thanh_toan.php';
 }
 elseif(exist_parma('chi_tiet_don_hang')){
+    
    global $order_detail;
     $ma_order = $_GET['ma_order'];
     $order = don_hang_select_by_id($ma_order);

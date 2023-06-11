@@ -1,4 +1,4 @@
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col load-popup">
         <h2 class=" font-bold text-2xl text-center pb-2">Đăng nhập</h2>
 
         <div class="mb-4">
@@ -30,17 +30,19 @@
         </div>
     </div>
     <script>
-
         $('.quen-mat-khau').click(function() {
+            $(".loading").css('display', 'block')
+
             $.ajax({
-                    url: "../tai_khoan/index.php?quen_mat_khau",
-                    type: "post",
-                    data: {
-                    },
-                    success: function(result) {
-                        $('.form').html(result)
-                    }
-                });
+                url: "../tai_khoan/index.php?quen_mat_khau",
+                type: "post",
+                data: {},
+                success: function(result) {
+                    $(".loading").css('display', 'none')
+
+                    $('.form').html(result)
+                }
+            });
         })
 
         $('.close-popup').click(function() {
@@ -67,6 +69,7 @@
             }
 
             if (check == 1) {
+                $(".loading").css('display', 'block')
                 $.ajax({
                     url: "../tai_khoan/index.php?dang_nhap",
                     type: "post",
@@ -76,7 +79,9 @@
                         ghi_nho: $('.ghi_nho:checked').val(),
                     },
                     success: function(result) {
-                        if (result == " " || result.length <5) {
+                        $(".loading").css('display', 'none')
+
+                        if (result == " " || result.length < 5) {
                             console.log(result)
                             alert('Đăng nhập thành công')
                             setTimeout(() => {

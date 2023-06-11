@@ -137,3 +137,17 @@ function renderCheckOut() {
         $('.tong-tien').text(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sum))
     }
 }
+
+
+function so_luong_sp(){
+    var so_luong_sp = 0;
+    favorites.forEach(element => {
+        so_luong_sp += element['so_luong'];
+    });
+    $(window).on('load', function() {
+
+        $('.so-san-pham').html(so_luong_sp)
+    })
+    $('.so-san-pham').html(so_luong_sp)
+}
+

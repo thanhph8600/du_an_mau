@@ -2,9 +2,8 @@
     <div class="container m-auto py-8">
         <div class="flex">
             <div class=" w-1/2">
-                <div class=" w-3/4 m-auto">
+                <div class=" w-3/5 m-auto flex items-center justify-center">
                     <img src="../../uploaded/product/<?= $sanpham['hinh'] ?>" alt="">
-
                 </div>
             </div>
             <div class=" w-1/2">
@@ -21,7 +20,7 @@
                     <button class="heart transition ease-in-out duration-500 hover:shadow-xl ml-3 mr-3 border border-rose-600 text-rose-600 text-lg rounded-xl py-2 px-3 ">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                     </button>(Có 0 lượt thả tim)
-                    <button class="transition ease-in-out duration-500 hover:bg-red-500 uppercase w-4/6 mt-3 py-3 text-white font-semibold bg-red-600 rounded-lg">
+                    <button class="mua_ngay transition ease-in-out duration-500 hover:bg-red-500 uppercase w-4/6 mt-3 py-3 text-white font-semibold bg-red-600 rounded-lg">
                         Mua ngay giá rẻ liền tay
                     </button>
                     <button>
@@ -40,12 +39,12 @@
                 </div>
             </div>
         </div>
-        <div class="py-4 w-4/6 ">
+        <div class="py-4  border mt-10 ">
             <h2 class=" text-xl font-bold text-center py-3">Thông tin sản phẩm</h2>
-            <div class="text-center text-lg h-80 overflow-hidden read">
+            <div class=" p-5 text-lg h-80 overflow-hidden read">
                 <?= $sanpham['mo_ta'] ?>
             </div>
-            <div class="text-center py-5">
+            <div class="text-center py-5 ssss ">
                 <button class="more-read transition duration-500 ease-in-out border border-blue-600 text-blue-600 px-10 py-3 rounded-lg hover:bg-blue-600 hover:text-white">Xem thêm <i class="fa fa-caret-down" aria-hidden="true"></i></button>
             </div>
         </div>
@@ -87,5 +86,9 @@
         }
         addCart(item)
         window.location.replace("../gio_hang/");
+    })
+
+    $('.mua_ngay').click(function(){
+        
     })
 </script>

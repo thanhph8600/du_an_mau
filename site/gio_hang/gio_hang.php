@@ -12,6 +12,17 @@
     }
   </style>
 
+  <!-- <div style="display:none" class="popup-xoa-sp z-20 flex bg-white p-3 gap-3 rounded-md fixed top-1/5 left-1/2 -translate-y-1/4 -translate-x-1/2">
+    <img class=" w-16" src="../../uploaded/product/amazfit-t-rex-ultra-thumb-new-den-600x600.jpg" alt="">
+    <div>
+      <p class=" w-60">Bạn có muốn xóa sản phẩm ra khỏi giỏ hàng không</p>
+      <div class="flex justify-between px-5 pt-2">
+        <span class="xac-nha-xoa p-1 bg-green-500 text-white cursor-pointer rounded-md">Xác nhận</span>
+        <span  class=" p-1 bg-red-500 text-white cursor-pointer rounded-md">Hủy</span>
+      </div>
+    </div>
+  </div> -->
+
   <body>
     <div class=" min-h-screen gio-hang-trong bg-gray-100 pt-6">
       <h1 class="mb-10 text-center text-3xl uppercase  font-bold">Giỏ hàng</h1>
@@ -50,12 +61,22 @@
     var id = $(this).attr('data-id');
     updateCart(id, 'up')
     renderCart();
+    let so_luong_sp = 0;
+    favorites.forEach(element => {
+      so_luong_sp += element['so_luong'];
+    });
+    $('.so-san-pham').html(so_luong_sp)
   })
 
   $(document).on('click', '.down-cart', function() {
     var id = $(this).attr('data-id');
     updateCart(id, 'down')
     renderCart();
+    let so_luong_sp = 0;
+    favorites.forEach(element => {
+      so_luong_sp += element['so_luong'];
+    });
+    $('.so-san-pham').html(so_luong_sp)
   })
 
   $(document).on('keyup past', '.so_luong', function() {
@@ -71,10 +92,21 @@
 
       }
     }
+    let so_luong_sp = 0;
+    favorites.forEach(element => {
+      so_luong_sp += element['so_luong'];
+    });
+    $('.so-san-pham').html(so_luong_sp)
   })
 
   $(document).on('click', '.delete-cart', function() {
     deleteCart($(this).attr('data-id'))
     renderCart();
+    let so_luong_sp = 0;
+    favorites.forEach(element => {
+      so_luong_sp += element['so_luong'];
+    });
+    $('.so-san-pham').html(so_luong_sp)
   })
+
 </script>

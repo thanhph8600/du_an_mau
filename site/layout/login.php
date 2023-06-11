@@ -176,6 +176,8 @@ if (empty($user)) {
         }
 
         if (check == 1) {
+            $(".loading").css('display', 'block')
+
             $.ajax({
                 url: "../../Public/login.php",
                 type: "post",
@@ -187,6 +189,8 @@ if (empty($user)) {
                     pass: $('.pass-re').val(),
                 },
                 success: function(result) {
+                    $(".loading").css('display', 'none')
+
                     if (result == 'ok') {
                         $('.name-re').val('')
                         $('.email-re').val('')
@@ -231,6 +235,8 @@ if (empty($user)) {
         }
 
         if (check == 1) {
+    $(".loading").css('display', 'block')
+
             $.ajax({
                 url: "../../Public/login.php",
                 type: "post",
@@ -240,6 +246,8 @@ if (empty($user)) {
                     pass: $('.pass').val(),
                 },
                 success: function(result) {
+    $(".loading").css('display', 'none')
+
                     if (result == 'ok') {
                         alert('Đăng nhập thành công')
                         setTimeout(() => {
@@ -258,15 +266,19 @@ if (empty($user)) {
         }
     })
     $('.dangXuat').click(function() {
-    $.ajax({
-        url: "../../Public/login.php",
-        type: "post",
-        data: {
-            name: 'dangXuat',
-        },
-        success: function(result) {
-            window.location.reload(true)
-        }
-    });
-})
+    $(".loading").css('display', 'block')
+
+        $.ajax({
+            url: "../../Public/login.php",
+            type: "post",
+            data: {
+                name: 'dangXuat',
+            },
+            success: function(result) {
+    $(".loading").css('display', 'none')
+
+                window.location.reload(true)
+            }
+        });
+    })
 </script>

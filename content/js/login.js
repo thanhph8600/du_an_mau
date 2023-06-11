@@ -78,6 +78,7 @@ $('.dangky').click(function() {
     }
 
     if (check == 1) {
+        $(".loading").css('display', 'block')
         $.ajax({
             url: "../../Public/login.php",
             type: "post",
@@ -89,6 +90,8 @@ $('.dangky').click(function() {
                 pass: $('.pass-re').val(),
             },
             success: function(result) {
+                $(".loading").css('display', 'none')
+
                 if (result == 'ok') {
                     $('.name-re').val('')
                     $('.email-re').val('')
@@ -133,7 +136,10 @@ $('.dangNhap').click(function() {
     }
 
     if (check == 1) {
+        $(".loading").css('display', 'block')
+
         $.ajax({
+            
             url: "../../Public/login.php",
             type: "post",
             data: {
@@ -142,6 +148,8 @@ $('.dangNhap').click(function() {
                 pass: $('.pass').val(),
             },
             success: function(result) {
+                $(".loading").css('display', 'none')
+
                 if (result == 'ok') {
                     alert('Đăng nhập thành công')
                     setTimeout(() => {
@@ -161,6 +169,8 @@ $('.dangNhap').click(function() {
 })
 
 $('.dangXuat').click(function() {
+    $(".loading").css('display', 'block')
+
     $.ajax({
         url: "../../Public/login.php",
         type: "post",
@@ -168,7 +178,11 @@ $('.dangXuat').click(function() {
             name: 'dangXuat',
         },
         success: function(result) {
-            window.location.reload(true)
+        $(".loading").css('display', 'none')
+
+            setTimeout(() => {
+                window.location.reload(true)
+            }, 0);
         }
     });
 })

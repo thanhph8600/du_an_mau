@@ -67,6 +67,11 @@ require_once '../../Dao/PDO.php';
         return query($sql);
     }
 
+    function hang_hoa_select_top10_where_ma_loai($ma_loai){
+        $sql = 'SELECT * FROM `hang_hoa` WHERE ma_loai = ?' ;
+        return query($sql,$ma_loai);
+    }
+
 
     function hang_hoa_exist($ma_loai){
         $sql = "SELECT count(*) FROM `hang_hoa` WHERE `ma_loai` = ?";

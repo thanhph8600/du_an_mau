@@ -1,4 +1,4 @@
-<div class="signup bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+<div class="signup bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col  load-popup">
     <div class="w-full mb-4 m-auto check-form">
     </div>
     <form action="" class="signup">
@@ -6,32 +6,32 @@
         <div class=" flex gap-4">
             <div class="mb-4 w-1/2">
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="">Tên đăng nhập <span class="checkMakh-re text-red-600"></span></label>
-                <input type="text" name="ma_kh" class="ten-dang-nhap shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập tên đăng nhâp">
+                <input type="text" name="ma_kh" class="ten-dang-nhap shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
 
             </div>
             <div class="mb-4  w-1/2">
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="">Họ và tên <span class="checkName-re text-red-600"></span></label>
-                <input type="text" class="name-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập tên">
+                <input type="text" class="name-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
             </div>
         </div>
         <div class="flex gap-4">
             <div class="mb-4  w-1/2">
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="">Email <span class="checkEmail-re text-red-600"></span></label>
-                <input type="text" class="email-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập email">
+                <input type="text" class="email-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
             </div>
             <div class="mb-4  w-1/2">
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="">Số điện thoại <span class="checkPhone-re text-red-600"></span></label>
-                <input type="text" class="phone-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập số điện thoại">
+                <input type="text" class="phone-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
             </div>
         </div>
         <div class="flex gap-4">
             <div class="mb-4  w-1/2">
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="">Mật khẩu <span class="checkPass-re text-red-600"></span></label>
-                <input name="pass" type="password" class="pass-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập mật khẩu">
+                <input name="pass" type="password" class="pass-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
             </div>
             <div class="mb-4 w-1/2 ">
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="">Nhập lại mật khẩu <span class="checkRepass-re text-red-600"></span></label>
-                <input type="password" class="repass-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Nhập lại mật khẩu">
+                <input type="password" class="repass-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
             </div>
         </div>
 
@@ -143,6 +143,8 @@
         }
 
         if (check == 1) {
+            $(".loading").css('display', 'block')
+
             var file_data = $('#sortpicture').prop('files')[0];
             var form_data = new FormData();
             form_data.append('hinh', file_data);
@@ -164,7 +166,9 @@
                 data: form_data,
                 type: 'POST',
                 success: function(php_script_response) {
-                    if (php_script_response == ' ok' || php_script_response.length<5) {
+                    $(".loading").css('display', 'none')
+
+                    if (php_script_response == ' ok' || php_script_response.length < 5) {
                         alert('đăng kí thành công')
                         setTimeout(() => {
                             window.location.reload(true)

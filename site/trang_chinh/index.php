@@ -7,6 +7,15 @@ extract($_REQUEST);
 if(exist_parma('gioi_thieu',extract($_REQUEST))){
     $VIEW_NAME = 'gioi_thieu.php';
     
+}elseif(exist_parma('lien_he',extract($_REQUEST))){
+    $VIEW_NAME = 'lien_he.php';
+    
+}elseif(exist_parma('gop_y',extract($_REQUEST))){
+    $VIEW_NAME = 'gop_y.php';
+    
+}elseif(exist_parma('hoi_dap',extract($_REQUEST))){
+    $VIEW_NAME = 'hoi_dap.php';
+    
 }else {
     $gio_vang = hang_hoa_select_giam_nhieu();
     $gia_re = hang_hoa_select_gia_thap();

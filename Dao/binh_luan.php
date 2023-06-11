@@ -1,9 +1,9 @@
 <?php
 require_once '../../Dao/PDO.php';
 
-function binh_luan_insert($noi_dung,$ma_kh,$ma_hh,$date){
-    $sql = "INSERT INTO `binh_luan` (`ma_bl`, `noi_dung`, `ma_kh`, `ma_hh`, `ngay_bl`) VALUES (NULL, ? , ? ,? ,?)";
-    execute($sql,$noi_dung,$ma_kh,$ma_hh,$date);
+function binh_luan_insert($noi_dung,$ma_kh,$ma_hh,$date,$vote){
+    $sql = "INSERT INTO `binh_luan` ( `noi_dung`, `ma_kh`, `ma_hh`, `ngay_bl`,`vote`) VALUES ( ? , ? ,? ,?,?)";
+    execute($sql,$noi_dung,$ma_kh,$ma_hh,$date,$vote);
 }
 
 function binh_luan_delete($ma_bl){

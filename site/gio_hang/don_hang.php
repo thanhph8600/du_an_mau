@@ -218,7 +218,7 @@ require_once "../../Dao/hang_hoa.php";
                     </div>
                 </form>
             </div>
-            <div <?= (!empty($_GET['ma_order'])) ? '' : 'style="display:none"' ?> class=" chi-tiet w-4/5 m-auto mt-3 py-5 flex gap-3">
+            <div <?= (!empty($order)) ? '' : 'style="display:none"' ?> class=" chi-tiet w-4/5 m-auto mt-3 py-5 flex gap-3">
                 <div class=" w-7/12 bg-white rounded-md border">
                     <div class="border border-b-gray-400 font-medium flex justify-between">
                         <h2 class=" p-4 text-lg ">Thông tin đơn hàng</h2>
@@ -352,7 +352,7 @@ require_once "../../Dao/hang_hoa.php";
                     </table>
                 </div>
             </div>
-            <div <?= ( empty($_GET['list']) && !empty($_SESSION['user']) &&(!empty($don_hang)) || !empty($_GET['ma_order']) ) ? 'style="display:none"': '' ?> class="main">
+            <div <?= ( empty($_GET['list']) && !empty($_SESSION['user']) &&(!empty($don_hang)) || !empty($_GET['ma_order']) &&  (!empty($order))) ? 'style="display:none"': '' ?> class="main">
                 <div>
                     <svg class=" rounded-xl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 355">
                         <g id="ocean">

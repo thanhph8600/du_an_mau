@@ -10,6 +10,7 @@ $category = query($sql);
 
 ?>
 <header>
+
     <nav class=" bg-white border-b-2">
         <div class="container m-auto  pt-3 ">
             <div class="flex justify-between items-center">
@@ -24,8 +25,10 @@ $category = query($sql);
                     </div>
                 </form>
                 <div class="flex items-center relative">
-                    <a href="../gio_hang/index.php" class=" bg-blue-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-blue-700  "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</a>
+                    <a href="../gio_hang/index.php" class=" relative bg-blue-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-blue-700  "><span class=" absolute flex items-center justify-center -top-2 -right-1 bg-red-500 w-6 h-6 rounded-full so-san-pham">0</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</a>
+
                     <a href="../gio_hang/index.php?list" class=" bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-truck" aria-hidden="true"></i> Đơn hàng</a>
+
                     <p class="<?= (empty($user)) ? 'op-dangnhap' : 'show' ?> cursor-pointer bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-user-circle-o pr-3 " aria-hidden="true"></i><?= (empty($user)) ? 'Đăng nhập' : $user['ho_ten'] ?> </p>
 
 
@@ -66,9 +69,9 @@ $category = query($sql);
             <div class="flex gap-1 text-white text-center justify-between w-3/5 items-center m-auto text-base font-semibold">
                 <a href="../hang_hoa/liet_ke.php" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Tất cả sản phẩm</a>
                 <a href="../trang_chinh/index.php?gioi_thieu" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Giới thiệu</a>
-                <a href="" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Liên hệ</a>
-                <a href="" class=" bg-orange-400 flex-auto  py-3 rounded-t hover:bg-orange-600">Góp ý</a>
-                <a href="" class=" bg-orange-400 flex-auto  py-3 rounded-t hover:bg-orange-600">Hỏi đáp</a>
+                <a href="../trang_chinh/index.php?lien_he" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Liên hệ</a>
+                <a href="../trang_chinh/index.php?gop_y" class=" bg-orange-400 flex-auto  py-3 rounded-t hover:bg-orange-600">Góp ý</a>
+                <a href="../trang_chinh/index.php?hoi_dap" class=" bg-orange-400 flex-auto  py-3 rounded-t hover:bg-orange-600">Hỏi đáp</a>
             </div>
         </div>
 
@@ -79,23 +82,21 @@ $category = query($sql);
     <div class="close-popup fixed w-full h-full bg-slate-900 opacity-60 top-0 left-0 z-20">
 
     </div>
-    <div class=" popup fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-30 w-2/4">
+    <div class=" popup  fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-30 w-2/4">
         <i class="fa fa-close absolute top-2 right-2 cursor-pointer close-popup "></i>
-        <div class="form">
+        <div class="form " >
 
         </div>
     </div>
 </section>
 <div class="loading" style="display:none">
     <div class="fixed w-full h-full top-0 left-0 z-10 opacity-25 bg-black justify-center items-center">
-
     </div>
     <div class="fixed w-full h-full top-0 left-0 z-10">
-    <div class="flex  w-full h-screen  justify-center items-center  z-10">
-        <i class=" fa fa-spinner fa-spin text-white text-9xl  "></i>
+        <div class="flex  w-full h-screen  justify-center items-center  z-10">
+            <i class=" fa fa-spinner fa-spin text-white text-9xl  "></i>
+        </div>
     </div>
-</div>
-
 </div>
 
 
@@ -124,7 +125,12 @@ $category = query($sql);
 
 
     $(document).on('click', '.op-dangnhap', function() {
+
         $('.popup').css('display', 'block')
+        $('.nenpopup').css('display', 'block')
+        $(".close-popup").css('display', 'block')
+
+
         $.ajax({
             url: "../tai_khoan/index.php",
             type: "post",
@@ -137,6 +143,8 @@ $category = query($sql);
         });
     })
     $(document).on('click', '.op-dangky', function() {
+        $(".loading").css('display', 'block')
+
         $.ajax({
             url: "../tai_khoan/index.php",
             type: "post",
@@ -144,6 +152,8 @@ $category = query($sql);
                 btn_dang_ky: 'btn_dang_ky',
             },
             success: function(result) {
+                $(".loading").css('display', 'none')
+
                 $('.form').html(result)
             }
         });
@@ -152,6 +162,8 @@ $category = query($sql);
     $(document).on('click', ' .doi-mat-khau', function() {
         $('.popup').css('display', 'block')
         $('.close-popup').css('display', 'block')
+        $(".loading").css('display', 'block')
+
         $.ajax({
             url: "../tai_khoan/index.php?btn_doi_mat_khau",
             type: "post",
@@ -159,6 +171,8 @@ $category = query($sql);
                 doi_mat_khau: 'doi_mat_khau',
             },
             success: function(result) {
+                $(".loading").css('display', 'none')
+
                 $('.form').html(result)
                 $(".panel").slideUp("slow");
             }
@@ -166,6 +180,7 @@ $category = query($sql);
     })
 
     $('.dangXuat').click(function() {
+        $(".loading").css('display', 'block')
         $.ajax({
             url: "../tai_khoan/index.php?dang_xuat",
             type: "post",
@@ -173,6 +188,8 @@ $category = query($sql);
                 dang_xuat: 'dang_xuat',
             },
             success: function(result) {
+                $(".loading").css('display', 'none')
+
                 window.location.reload(true)
             }
         });
@@ -193,6 +210,16 @@ $category = query($sql);
                 }
             }
         });
-
     })
+
+
+    var so_luong_sp = 0;
+    favorites.forEach(element => {
+        so_luong_sp += element['so_luong'];
+    });
+    $(window).on('load', function() {
+
+        $('.so-san-pham').html(so_luong_sp)
+    })
+    $('.so-san-pham').html(so_luong_sp)
 </script>
