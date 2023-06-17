@@ -210,19 +210,19 @@ require_once "../../Dao/hang_hoa.php";
             </div>
 
             <div class="flex justify-between w-4/5 py-4 m-auto">
-                <h2 class=" text-2xl st8 st10  uppercase font-bold text-rose-500 border-b border-b-rose-500">đơn hàng</h2>
-                <form action="../gio_hang/chi_tiet_don_hang.php" class=" relative flex items-center bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:ring-1 sm:text-sm">
+                <h2 class=" text-base lg:text-2xl lg:st8 lg:st10  uppercase font-bold text-rose-500 border-b border-b-rose-500">đơn hàng</h2>
+                <form action="../gio_hang/chi_tiet_don_hang.php" class=" relative flex items-center bg-white border border-slate-300 rounded-md py-1 pl-1 pr-1 lg:py-2 lg:pl-3 lg:pr-3 shadow-sm focus:outline-none focus:ring-1 sm:text-sm">
                     <input name="ma_order" class="seach placeholder:italic placeholder:text-slate-400 w-56 block focus:outline-none focus:border-sky-500 focus:ring-sky-500 " placeholder="mã đơn hàng" type="text" name="" />
                     <button><i class="fa fa-search text-slate-400" aria-hidden="true"></i></button>
                     <div class=" absolute top-10 w-full left-0">
                     </div>
                 </form>
             </div>
-            <div <?= (!empty($order)) ? '' : 'style="display:none"' ?> class=" chi-tiet w-4/5 m-auto mt-3 py-5 flex gap-3">
-                <div class=" w-7/12 bg-white rounded-md border">
+            <div <?= (!empty($order)) ? '' : 'style="display:none"' ?> class=" chi-tiet w-full py-2 lg:w-4/5 m-auto mt-3 lg:py-5 lg:flex gap-3">
+                <div class=" lg:w-7/12 bg-white rounded-md border">
                     <div class="border border-b-gray-400 font-medium flex justify-between">
-                        <h2 class=" p-4 text-lg ">Thông tin đơn hàng</h2>
-                        <p class=" p-4 text-base">Mã đơn hàng: <?= $ma_order ?></p>
+                        <h2 class=" p-4 text-base lg:text-lg ">Thông tin đơn hàng</h2>
+                        <p class=" p-4 text-sm lg:text-base">Mã đơn hàng: <?= $ma_order ?></p>
                     </div>
                     <div class=" border border-b-gray-500 ">
                         <?php
@@ -230,7 +230,7 @@ require_once "../../Dao/hang_hoa.php";
                             $product = hang_hoa_select_by_id($value['id_hang_hoa']);
                         ?>
 
-                            <div class="flex border-b py-2 px-4 items-center">
+                            <div class=" text-sm flex border-b py-2 px-4 items-center">
                                 <img class=" w-1/6" src="../../uploaded/product/<?= $product['hinh'] ?>" alt="">
                                 <h2 class=" w-2/5 font-medium "><?= $product['ten_hh'] ?></h2>
                                 <div class="w-2/6 flex justify-between ml-auto">
@@ -244,15 +244,15 @@ require_once "../../Dao/hang_hoa.php";
                         ?>
 
                     </div>
-                    <div class="flex justify-between pt-4 w-4/5 m-auto px-4 text-lg font-bold pb-4">
+                    <div class="flex justify-between pt-4 w-4/5 m-auto px-2 text-sm lg:px-4 lg:text-lg font-bold pb-4">
                         <p>Tổng tiền</p>
                         <p><?= currency_format($order['tong_tien']) ?></p>
                     </div>
                 </div>
-                <div class=" w-5/12  bg-white rounded-md border">
+                <div class=" mt-2 lg:mt-0 lg:w-5/12  bg-white rounded-md border">
                     <div class=" p-4">
-                        <h2 class=" py-2 text-lg font-medium">Thông tin khách hàng</h2>
-                        <div class="">
+                        <h2 class=" py-2 lg:text-lg font-medium">Thông tin khách hàng</h2>
+                        <div class=" text-sm">
                             <div class=" flex py-2">
                                 <div class=" w-2/5">
                                     <p>Người nhận</p>
@@ -298,24 +298,24 @@ require_once "../../Dao/hang_hoa.php";
                 </div>
             </div>
 
-            <div <?= (empty($_SESSION['user'])||(empty($don_hang))  || !empty($_GET['ma_order'])) ? 'style="display:none"' : '' ?> class=" w-4/5 m-auto mt-3 p-5 gap-3 ">
+            <div <?= (empty($_SESSION['user'])||(empty($don_hang))  || !empty($_GET['ma_order'])) ? 'style="display:none"' : '' ?> class=" lg:w-4/5 m-auto mt-3 lg:p-5 gap-3 ">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg rounded-xl overflow-hidden">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-2 py-1 lg:px-6 lg:py-3">
                                     Mã đơn hàng
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-2 py-1 lg:px-6 lg:py-3 hidden lg:block">
                                     Ngày mua
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-2 py-1 lg:px-6 lg:py-3">
                                     Tổng tiền
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-2 py-1 lg:px-6 lg:py-3">
                                     Trình trạng
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-2 py-1 lg:px-6 lg:py-3">
                                     <span class="sr-only">Chi tiết</span>
                                 </th>
                             </tr>
@@ -325,19 +325,19 @@ require_once "../../Dao/hang_hoa.php";
                             foreach ($don_hang as $key => $value) {
                             ?>
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <th scope="row" class=" px-3 py-2 lg:px-6 lg:py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <?=$value['ma_order']?>
                                     </th>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 py-2 lg:px-6 lg:py-4 hidden lg:block">
                                     <?=$value['ngay_mua']?>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 py-2 lg:px-6 lg:py-4">
                                     <?=currency_format($value['tong_tien'])?>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 py-2 lg:px-6 lg:py-4">
                                     <?=tinh_trang_don_hang($value['tinh_trang'])?>
                                     </td>
-                                    <td class="px-6 py-4 text-right">
+                                    <td class="px-3 py-2 lg:px-6 lg:py-4 text-right">
                                         <a href="../gio_hang/chi_tiet_don_hang.php?ma_order=<?=$value['ma_order']?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chi tiết</a>
                                     </td>
                                 </tr>

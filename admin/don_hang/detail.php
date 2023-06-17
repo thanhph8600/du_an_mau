@@ -136,19 +136,6 @@ if (!empty($MESS)) echo $MESS;
                             </div>
                         </li>
                     </ul>
-                    <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Xác nhận lấy hàng</h6>
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-
-                                <form action="index.php?xac_nhan" method="post">
-                                    <input type="hidden" name="active" value="3">
-                                    <input type="hidden" name="ma_order" value="<?=$order['ma_order']?>">
-                                    <input <?=($order['tinh_trang']>2)?'style="background:green;color:white;"':''?> class="btn-xacnhan  btn d-flex align-items-center justify-content-center" name="xacNhan" type="submit" value="Đã lấy hàng">
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
 
                     <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Đơn hàng đã được gửi</h6>
                     <ul class="list-group">

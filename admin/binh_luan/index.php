@@ -24,12 +24,18 @@ if(exist_parma('btn_hang_hoa')){
 }
 else{
     $items = thong_ke_binh_luan();
-    $VIEW_NAME = 'list.php';
+        if(empty($vote)){
+            $danh_gia = select_nhan_xet_all();
+        }else{
+            $danh_gia = select_nhan_xet_by_vote($vote);
+        }
+    // echo $vote;
+        $VIEW_NAME = 'list.php';
 
 }
 
 function ten_khach_hang_binh_luan($ma_kh){
     $sql = "SELECT kh.ho_ten FROM binh_luan bl JOIN khach_hang kh ON bl.ma_kh = kh.ma_kh WHERE bl.ma_kh = ?";
-    return query_value($sql,$ma_kh);
+    return pdo_query_value($sql,$ma_kh);
 }
 require '../layout.php';

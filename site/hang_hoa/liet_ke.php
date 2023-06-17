@@ -25,7 +25,7 @@ if (exist_parma('ma_loai')) {
     // phân trang
     // tìm tổng sản phẩm
     $result = "select count(`ma_hh`) as total from `hang_hoa`";
-    $count = query($result);
+    $count = pdo_query($result);
     $total_records = $count[0]['total'];
 
     //limit va current_page
@@ -52,7 +52,7 @@ if (exist_parma('ma_loai')) {
     $tong_sp =  so_luong_hang_hoa();
     $ten_sp['ten_loai'] = 'Tất cả sản phẩm';
 }
-$top10 = hang_hoa_select_top10();
+// $top10 = hang_hoa_select_top10();
 $TOP10 = '../layout/top10.php';
 $VIEW_NAME = 'liet_ke_ui.php';
 

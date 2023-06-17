@@ -84,7 +84,7 @@
                 </div>
                 <div class="card-body px-0 pb-2">
 
-                    <div class="table-responsive p-0">
+                    <div class="p-0">
                         <div id="myChart" style="width:100%; max-width:800px; height:500px;">
                         </div>
 
@@ -115,6 +115,59 @@
                             }
                         </script>
                     </div>
+                    <canvas id="gia_tien" style="width:100%;max-width:700px" class="px-5"></canvas>
+
+                        <script>
+                            const xValues = [
+                                <?php
+                                foreach ($items as $key => $value) {
+                                    echo "'" . $value['ten_loai'] . "',";
+                                }
+                                ?>
+                            ];
+
+                            new Chart("gia_tien", {
+                                type: "line",
+                                data: {
+                                    labels: xValues,
+                                    datasets: [{
+                                        data: [
+                                            <?php
+                                            foreach ($items as $key => $value) {
+                                                echo "'" . $value['gia_min'] . "',";
+                                            }
+                                            ?>  
+                                        ],
+                                        borderColor: "red",
+
+                                        fill: false
+                                    }, {
+                                        data: [<?php
+                                                foreach ($items as $key => $value) {
+                                                    echo "'" . $value['gia_max'] . "',";
+                                                }
+                                                ?>],
+                                        borderColor: "green",
+                                        fill: false
+                                    }, {
+                                        data: [<?php
+                                                foreach ($items as $key => $value) {
+                                                    echo "'" . $value['gia_avg'] . "',";
+                                                }
+                                                ?>],
+                                        borderColor: "blue",
+                                        fill: false,
+                                        labels: 'gia'
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Bảng giá cả trung bình của hàng hóa"
+                                    }
+                                }
+                            });
+                        </script>
                 </div>
             </div>
         </div>

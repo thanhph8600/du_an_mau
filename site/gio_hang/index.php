@@ -33,6 +33,9 @@ elseif(exist_parma('chi_tiet_don_hang')){
     $VIEW_NAME = "../gio_hang/don_hang.php";
 
 }
+elseif(exist_parma('thanh_toan_ngay')){
+    $VIEW_NAME = "../gio_hang/thanh_toan_ngay.php";
+}
 else{
     $VIEW_NAME ='../gio_hang/gio_hang.php';
 

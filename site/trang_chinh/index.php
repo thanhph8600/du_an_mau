@@ -23,6 +23,5 @@ if(exist_parma('gioi_thieu',extract($_REQUEST))){
     $VIEW_NAME = 'home.php';
     $TOP10 = '../layout/top10.php';
 }
-$top10 = hang_hoa_select_top10();
 
 require "../layout.php";

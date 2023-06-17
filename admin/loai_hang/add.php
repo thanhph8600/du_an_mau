@@ -111,6 +111,8 @@
               <label for="" class="text-danger check"></label>
               <input name="addcategory" type="submit" value="Thêm">
             </form>
+             <input type="submit" class="reset ms-5 bg-primary" value="Nhập lại" readonly >
+
           </div>
         </div>
       </div>
@@ -233,6 +235,10 @@
       return false
     }
   }
+
+  $('.reset').click(function(){
+    $("#namecategory").val('');
+  })
 
 
 

@@ -18,9 +18,9 @@ function pdo_get_connection() {
 
 //   function select_one($table, $column, $pield){
 //     $sql = "SELECT * FROM `".$table."` WHERE `".$column."` ='".$pield."' " ;
-//     return query_one($sql);
+//     return pdo_query_one($sql);
 //   }
-    function execute($sql) {
+    function pdo_execute($sql) {
         $sql_args =array_slice(func_get_args(),1);
         try {
             $conn = pdo_get_connection();
@@ -35,7 +35,7 @@ function pdo_get_connection() {
         }
     }
 
-    function query($sql) {
+    function pdo_query($sql) {
         $sql_args =array_slice(func_get_args(),1);
         try {
             $conn = pdo_get_connection();
@@ -52,7 +52,7 @@ function pdo_get_connection() {
         }
     }
 
-    function query_one($sql) {
+    function pdo_query_one($sql) {
         $sql_args =array_slice(func_get_args(),1);
         try {
             $conn = pdo_get_connection();
@@ -69,7 +69,7 @@ function pdo_get_connection() {
         }
     }
 
-    function query_value($sql) {
+    function pdo_query_value($sql) {
         $sql_args =array_slice(func_get_args(),1);
         try {
             $conn = pdo_get_connection();

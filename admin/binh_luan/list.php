@@ -62,6 +62,7 @@
                                 <tr class="fs-22">
                                     <th class="text-secondary opacity-7">Hàng hóa</th>
                                     <th class="text-secondary opacity-7">Số bình luận</th>
+                                    <th class="text-secondary opacity-7">Số đánh giá</th>
                                     <th class="text-secondary opacity-7">mới nhất</th>
                                     <th class="text-secondary opacity-7">cũ nhất</th>
                                     <th class="text-secondary opacity-7"></th>
@@ -80,7 +81,9 @@
                                         <td>
                                             <span class="namecategory badge "><?=$so_luong?></span>
                                         </td>
-
+                                        <td>
+                                            <span class="namecategory badge "><?=$so_vote?></span>
+                                        </td>
                                         <td>
                                             <span class="namecategory badge "><?=$moi_nhat?></span>
                                         </td>
@@ -109,7 +112,80 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-body pb-2">
+                    <div class="table-responsive ">
+                        <h4 class="ps-4">Đánh giá</h4>
+                        <div  style="width: 70%;margin:auto" class="d-flex gap-4 py-2">
+                            <a href="index.php" <?=(empty($_GET['vote']))?'class="text-primary border-bottom border-primary"':''?>>Tất cả</a>
+                            <a href="index.php?vote=1" <?=(!empty($_GET['vote']) && $_GET['vote']==1)?'class="text-primary border-bottom border-primary"':''?>>Rất tệ</a>
+                            <a href="index.php?vote=2"  <?=(!empty($_GET['vote']) && $_GET['vote']==2)?'class="text-primary border-bottom border-primary"':''?>>Tệ</a>
+                            <a href="index.php?vote=3"   <?=(!empty($_GET['vote']) && $_GET['vote']==3)?'class="text-primary border-bottom border-primary"':''?>>Bình thường</a>
+                            <a href="index.php?vote=4"  <?=(!empty($_GET['vote']) && $_GET['vote']==4)?'class="text-primary border-bottom border-primary"':''?>>Tốt</a>
+                            <a href="index.php?vote=5"  <?=(!empty($_GET['vote']) && $_GET['vote']==5)?'class="text-primary border-bottom border-primary"':''?>>Rất tốt</a>
+                        </div>
+                        <hr>
 
+
+                        <table style="width: 90%;margin:auto" class="table align-items-center mb-0">
+                            <thead>
+                                <tr class="fs-22">
+                                    <th class="text-secondary opacity-7">Vote</th>
+                                    <th class="text-secondary opacity-7">Người bình đánh giá</th>
+                                    <th class="text-secondary opacity-7">thời gian</th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($danh_gia as $value) { 
+                                    extract($value);
+                                    ?>
+                                    <tr>
+                                        <td>
+                                        <?php
+                                                if (!empty($vote)) {
+                                                    for ($i = 0; $i < 5; $i++) {
+                                                        if ($i < $vote) {
+                                                            echo '<i style="color:#FFE818" class="fa fa-star cursor-pointer text-yellow-400 text-xl"  aria-hidden="true"></i>';
+                                                        } else {
+                                                            echo '<i  style="color:#FFE818" class="fa fa-star-o cursor-pointer text-yellow-400 text-xl" aria-hidden="true"></i>';
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                        </td>
+
+                                        <td>
+                                            <span class="namecategory badge "><?=$ho_ten?></span>
+                                        </td>
+
+                                        <td>
+                                            <span class="namecategory badge "><?=$ngay_bl?></span>
+                                        </td>
+
+                                        <td class="align-middle">
+                                            <form action="./index.php?btn_hang_hoa" method="post">
+                                                <input type="hidden" name="ma_hh" value="<?=$ma_hh?>">
+
+                                                <input name="" type="submit" value="Chi tiết" class="btn btn-primary">
+
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </main>
 <div class="fixed-plugin">

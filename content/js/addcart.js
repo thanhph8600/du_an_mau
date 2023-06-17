@@ -111,20 +111,18 @@ function renderCheckOut() {
             let tong = element['gia']*element['so_luong']
             sum += tong;
             so_luong++;
-            template += (`<div class="flex items-center gap-2 py-3 border-b-gray-300 pr-4">
+            template += (`<div class="flex items-center gap-2 py-3 border-b-gray-300 px-2">
                             <div class=" w-1/6">
                                 <img src="../../uploaded/product/${element['hinh']}" alt="">
                             </div>
-                            <div class="w-3/6 font-semibold text-lg">
+                            <div class="w-3/6 text-base">
                             ${element['name']}
                             </div>
-                            <div class=" w-2/6 flex justify-between">
-                                <div class=" w-1/4 text-center">
-                                x ${element['so_luong']}
-                                </div>
-                                <div class=" w-2/4  text-center">
+                            <div class=" w-2/6">
+                                <div class="pb-2">x ${element['so_luong']}</div>
+                                <div>x ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(element['gia'])}</div>
                                 
-                                ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(element['gia'])}
+                                
                                 </div>
                             </div>
                         </div>

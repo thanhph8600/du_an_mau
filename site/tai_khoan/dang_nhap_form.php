@@ -1,5 +1,5 @@
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col load-popup">
-        <h2 class=" font-bold text-2xl text-center pb-2">Đăng nhập</h2>
+    <div class="bg-white shadow-md rounded px-4 pt-3 pb-4 mb-2 lg:px-8 lg:pt-6 lg:pb-8 lg:mb-4 flex flex-col load-popup">
+        <h2 class=" font-bold text-base lg:text-2xl text-center pb-2">Đăng nhập</h2>
 
         <div class="mb-4">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
@@ -17,15 +17,15 @@
         <div class="flex mb-3 gap-2">
             <input type="checkbox" name="ghi_nho" id="" class="ghi_nho" value="ghi_nho"> Ghi nhớ tài khoản?
         </div>
-        <div class="flex items-center justify-between">
+        <div class="lg:flex items-center justify-between">
             <button class="dangNhap bg-blue-600 hover:bg-blue-dark font-bold py-2 px-4 rounded text-white hover:bg-blue-700" type="button">
                 Đăng nhập
             </button>
-            <p class="quen-mat-khau inline-block cursor-pointer align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
+            <p class="py-2 lg:py-0 quen-mat-khau inline-block cursor-pointer align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
                 Quên mật khẩu?
             </p>
         </div>
-        <div class="pt-4">
+        <div class=" lg:pt-4">
             <p>Bạn chưa có tài khoản <span class=" text-blue-700 cursor-pointer op-dangky"> Đăng ký</span></p>
         </div>
     </div>

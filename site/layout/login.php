@@ -3,7 +3,7 @@
 $user = false;
 if (!empty($_COOKIE['user'])) {
     $sql = "SELECT * from `khach_hang` where `email` = '" . $_COOKIE['user'] . "'";
-    $user = query_one($sql);
+    $user = pdo_query_one($sql);
 }
 if (empty($user)) {
 ?>

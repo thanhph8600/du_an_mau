@@ -1,6 +1,6 @@
-<div class="border px-4 py-6 rounded-md">
+<div class="border px-1 py-2 lg:px-4 lg:py-6 rounded-md">
 
-    <h2 class=" text-xl pl-3 pb-2 font-bold">Bình luận</h2>
+    <h2 class="text-base  pl-3 lg:pb-2 lg:text-xl font-bold">Bình luận</h2>
 
     <div class="form-bl">
         <?php
@@ -9,10 +9,10 @@
         ?>
 
             <div class="py-3 border-y p-2">
-                <div class="flex items-center pb-2">
-                    <img class=" w-14 h-14 rounded-full mr-4" src="../../uploaded/user/<?= $hinh ?>" alt="Avatar of Jonathan Reinink">
+                <div class="flex items-center pb-2 flex-wrap">
+                    <img class=" w-8 h-8 lg:w-14 lg:h-14 rounded-full mr-4" src="../../uploaded/user/<?= $hinh ?>" alt="Avatar of Jonathan Reinink">
                     <div class="text-sm">
-                        <p class="text-gray-900 leading-none text-lg font-semibold pb-2"><?= $ho_ten ?></p>
+                        <p class="text-gray-900 leading-none text-sm lg:text-lg font-semibold pb-2"><?= $ho_ten ?></p>
                         <p class="text-gray-600"><?= $ngay_bl ?></p>
                     </div>
                     <div class=" pl-4 flex gap-4 px-2 py-1">
@@ -20,9 +20,9 @@
                         if (!empty($value['vote'])) {
                             for($i=0;$i<5;$i++){
                                 if($i<$value['vote']){
-                                    echo '<i class="fa fa-star cursor-pointer text-yellow-400 text-xl"  aria-hidden="true"></i>';
+                                    echo '<i class="fa fa-star cursor-pointer text-yellow-400 text-sm lg:text-xl"  aria-hidden="true"></i>';
                                 }else{
-                                    echo '<i class="fa fa-star-o cursor-pointer text-yellow-400 text-xl" aria-hidden="true"></i>';
+                                    echo '<i class="fa fa-star-o cursor-pointer text-yellow-400 text-sm lg:text-xl" aria-hidden="true"></i>';
                                 }
                             }
                         }
@@ -43,25 +43,25 @@
     if (empty($_SESSION['user'])) {
 
     ?>
-        <div class="op-dangnhap py-3 w-4/6 m-auto hover:bg-blue-500 rounded-md bg-blue-400 cursor-pointer text-center text-white font-semibold mt-4 mb-2">
+        <div class="op-dangnhap text-sm py-2 lg:py-3 w-4/6 m-auto hover:bg-blue-500 rounded-md bg-blue-400 cursor-pointer text-center text-white font-semibold mt-4 mb-2">
             Bạn phải đăng nhập để bình luận
         </div>
     <?php
     } else {
     ?>
-        <h2 class=" text-lg pl-3 pb-2 font-bold pt-4">Xếp hạng</h2>
+        <h2 class=" text-base lg:text-lg pl-3 pb-2 font-bold pt-4">Đánh giá</h2>
 
         <div class="flex gap-4 px-2 py-1">
-            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-xl" data-vote="1" aria-hidden="true"></i>
-            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-xl" data-vote="2" aria-hidden="true"></i>
-            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-xl" data-vote="3" aria-hidden="true"></i>
-            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-xl" data-vote="4" aria-hidden="true"></i>
-            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-xl" data-vote="5" aria-hidden="true"></i>
+            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-sm lg:text-xl" data-vote="1" aria-hidden="true"></i>
+            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-sm lg:text-xl" data-vote="2" aria-hidden="true"></i>
+            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-sm lg:text-xl" data-vote="3" aria-hidden="true"></i>
+            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-sm lg:text-xl" data-vote="4" aria-hidden="true"></i>
+            <i class="fa fa-star-o vote cursor-pointer text-yellow-400 text-sm lg:text-xl" data-vote="5" aria-hidden="true"></i>
             <span class=" text-yellow-400 font-semibold danh-gia"></span>
         </div>
         <form class="pt-3">
             <div class="w-full mb-4 border  border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-                <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+                <div class="px-2 lg:px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                     <label for="comment" class="sr-only">Your comment</label>
                     <textarea id="comment" rows="4" class="w-full px-0 text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment..." required></textarea>
                 </div>

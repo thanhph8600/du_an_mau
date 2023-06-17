@@ -12,13 +12,13 @@
                             </div>
                             <div class="mb-4  w-1/2">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Email <span class="checkEmail-re text-red-600"></span></label>
-                                <input name="email" type="text" class=" email shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"  value="<?= (!empty($user)) ? $user['email'] : '' ?>">
+                                <input name="email" type="text" class=" email shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" value="<?= (!empty($user)) ? $user['email'] : '' ?>">
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <div class=" mb-4  w-1/2">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Số điện thoại <span class="checkPhone-re text-red-600"></span></label>
-                                <input name="phone" type="text" class="phone shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"  value="<?= (!empty($user)) ? $user['sdt'] : '' ?>">
+                                <input name="phone" type="text" class="phone shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" value="<?= (!empty($user)) ? $user['sdt'] : '' ?>">
                             </div>
                             <div class="mb-4  w-1/2">
                                 <label for="default" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tỉnh/ Thành phố</label>
@@ -52,7 +52,7 @@
                         <div class="flex gap-4">
                             <div class="mb-4   w-full">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Địa chỉ <span class="checkPhone-re text-red-600"></span></label>
-                                <input name="address" type="text" class="address shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" >
+                                <input name="address" type="text" class="address shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker">
                             </div>
 
                         </div>
@@ -143,42 +143,44 @@
             submitHandler: function(form) {
                 $(".loading").css('display', 'block')
                 $.ajax({
-                        url: '../gio_hang/hoang_thanh.php',
+                    url: '../gio_hang/hoang_thanh.php',
+                    data: {
+                        don_hang: 'don_hang',
+                        thanh_toan: 'thanh_toan',
+                        ma_kh: $('.ma_kh').val(),
+                        name: $('.name').val(),
+                        email: $('.email').val(),
+                        phone: $('.phone').val(),
+                        tong_tien: $('.tong_tien').val(),
+                        tinh: $('.tinh option:selected').val(),
+                        quan: $('.quan_huyen option:selected').val(),
+                        xa: $('.phuong_xa option:selected').val(),
+                        address: $('.address').val(),
+                        favorites: JSON.parse(localStorage.getItem('favorites'))
+                    }
+
+                }).done(function(data) {
+                    $.ajax({
+                        url: "../tai_khoan/sendemail.php?gui_email_don_hang",
+                        type: "POST",
                         data: {
-                            don_hang: 'don_hang',
-                            thanh_toan: 'thanh_toan',
-                            ma_kh: $('.ma_kh').val(),
                             name: $('.name').val(),
                             email: $('.email').val(),
                             phone: $('.phone').val(),
                             tong_tien: $('.tong_tien').val(),
-                            tinh: $('.tinh option:selected').val(),
-                            quan: $('.quan_huyen option:selected').val(),
-                            xa: $('.phuong_xa option:selected').val(),
-                            address: $('.address').val(),
-                            favorites: JSON.parse(localStorage.getItem('favorites'))
+                            favorites: JSON.parse(localStorage.getItem('favorites')),
+                            ma_order: data
                         }
-
-                    }).done(function(data) {
-                        $.ajax({
-                            url: "../tai_khoan/sendemail.php?gui_email_don_hang",
-                            type: "POST",
-                            data: {
-                                name: $('.name').val(),
-                                email: $('.email').val(),
-                                favorites: JSON.parse(localStorage.getItem('favorites')),
-                                ma_order :data
-                            }
-                        }).done(function(datass) {
-                            $(".loading").css('display', 'none')
-                            localStorage.setItem('favorites', JSON.stringify([]));
-                            // deleteShopCart();
-                            // $(location).attr("href", '../gio_hang/chi_tiet_don_hang.php?ma_order=' + data)
-                            window.location.href = '../gio_hang/chi_tiet_don_hang.php?ma_order=' + data + '&thanh_cong';
-                        })
-
-
+                    }).done(function(datass) {
+                        $(".loading").css('display', 'none')
+                        localStorage.setItem('favorites', JSON.stringify([]));
+                        // deleteShopCart();
+                        // $(location).attr("href", '../gio_hang/chi_tiet_don_hang.php?ma_order=' + data)
+                        window.location.href = '../gio_hang/chi_tiet_don_hang.php?ma_order=' + data + '&thanh_cong';
                     })
+
+
+                })
             },
             rules: {
                 name: {

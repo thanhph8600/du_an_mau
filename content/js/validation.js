@@ -14,3 +14,9 @@ function removeAscent(str) {
   function regex_name(){
     return  /^([a-zA-Z ]){3,20}$/;
   }
+
+  function nhap_lai(){
+    $('input').val('')
+  }
+
+  

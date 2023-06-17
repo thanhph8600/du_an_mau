@@ -1,21 +1,21 @@
 <section>
-    <div class="container m-auto pt-6 pb-2 min-h-screen">
-        <div class="w-4/5 mb-4 m-auto ">
+    <div class="container m-auto pt-1 lg:pt-6 pb-2 min-h-screen">
+        <div class="w-full mb-2 lg:w-4/5 lg:mb-4 m-auto ">
             <?php
             if (!empty($MESS)) {
                 echo $MESS;
             } ?>
         </div>
 
-        <form action="../tai_khoan/cap_nhat_tk.php?cap_nhat_tk" class=" w-4/5 m-auto border rounded-md p-4" enctype="multipart/form-data" method="post" id="cap_nhat_tk">
-            <h2 class=" text-xl font-bold uppercase pb-2 border-b">Thông tin tài khoản</h2>
-            <div class=" flex gap-4 py-2">
-                <div class="mb-4 w-1/2">
+        <form action="../tai_khoan/cap_nhat_tk.php?cap_nhat_tk" class="w-full p-2 m-auto border rounded-md lg:w-4/5 lg:p-4" enctype="multipart/form-data" method="post" id="cap_nhat_tk">
+            <h2 class=" text-base lg:text-xl font-bold uppercase pb-2 border-b">Thông tin tài khoản</h2>
+            <div class=" lg:flex gap-4 py-2 texts">
+                <div class="mb-2 lg:mb-4 lg:w-1/2">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="">Tên đăng nhập <span class="checkMakh-re text-red-600"></span></label>
                     <input name="ma_kh" type="text" class=" border-none bg-gray-300 focus:border-none active:border-none  ten-dang-nhap shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" readonly value="<?= $user['ma_kh'] ?>">
 
                 </div>
-                <div class="mb-4  w-1/2">
+                <div class="mb-2 lg:mb-4 lg:w-1/2">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="">Họ và tên <span class="checkName-re text-red-600"></span></label>
                     <input  type="text" class="name-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="name"  value="<?= $newuser['ho_ten'] ?>">
                     <?php
@@ -23,15 +23,15 @@
                     ?>
                 </div>
             </div>
-            <div class="flex gap-4">
-                <div class="mb-4  w-1/2">
+            <div class="lg:flex gap-4">
+                <div class="mb-2 lg:mb-4  lg:w-1/2">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="">Email <span class="checkEmail-re text-red-600"></span></label>
                     <input type="text" class="email-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="email" value="<?= $newuser['email'] ?>">
                     <?php
                         if (!empty($email_err)) echo $email_err;
                     ?>
                 </div>
-                <div class="mb-4  w-1/2">
+                <div class="mb-2 lg:mb-4  lg:w-1/2">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="">Số điện thoại <span class="checkPhone-re text-red-600"></span></label>
                     <input type="text" class="phone-re shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="phone"  value="<?= $newuser['sdt'] ?>">
                     <?php
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="mb-4  ">
+            <div class="mb-2 lg:mb-4  ">
                 <label class="block text-grey-darker text-sm font-bold mb-2" for="">Hình ảnh</label>
                 <input type="file" name="upload" id="imgUpload" accept="image/*">
             </div>

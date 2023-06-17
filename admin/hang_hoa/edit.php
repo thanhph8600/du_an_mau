@@ -446,7 +446,7 @@
     });
 
     $('.product').addClass('active')
-    $('.product').addClass('bg-gradient-primary')
+  $('.product').addClass('bg-gradient-primary')
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

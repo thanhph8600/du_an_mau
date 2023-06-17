@@ -170,14 +170,15 @@ elseif (exist_parma("btn_delete")) {
     $products = hang_hoa_select_all();
     $MESS = '<div class="alert alert-success text-white " role="alert">Xóa thành công</div>';
     $VIEW_NAME = "list.php";
-} else {
+}
+ else {
     $VIEW_NAME = "list.php";
 }
 
     // phân trang
     // tìm tổng sản phẩm
     $result = "select count(`ma_hh`) as total from `hang_hoa`";
-    $count = query($result);
+    $count = pdo_query($result);
     $total_records = $count[0]['total'];
 
     //limit va current_page
@@ -198,5 +199,16 @@ elseif (exist_parma("btn_delete")) {
     $start = ($current_page - 1) * $limit;
 
     // Có limit và start rồi thì truy vấn CSDL lấy danh sách san pham
-    $products = hang_hoa_select_so_luong($start,$limit);
+    $i=0;
+    if (exist_parma("select")){
+        if(!empty($ma_loai)){
+            $products = hang_hoa_select_by_ma_loai($ma_loai);
+            $i=1;
+        }else{
+        $products = hang_hoa_select_so_luong($start,$limit);
+        }
+    }else{
+        $products = hang_hoa_select_so_luong($start,$limit);
+    }
+    $loai = loai_select_all();
 require '../layout.php';

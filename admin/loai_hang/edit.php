@@ -109,6 +109,9 @@
                   <input name="addcategory" type="submit" value="Sửa">
                 </form>
               </div>
+
+             <input type="submit" class="reset ms-5 bg-primary" value="Nhập lại" readonly >
+
             </div>
           </div>
         </div>
@@ -230,6 +233,10 @@
       return false
     }
   }
+
+  $('.reset').click(function(){
+    $("#namecategory").val('');
+  })
 
 
     $('.category').addClass('active')

@@ -43,31 +43,35 @@
         background: none;
         color: #212123;
     }
-    .pst-re{
-    position: relative;
-  }
-  .pst-ab {
-    position: absolute;
-    top: 50%;
-    right: 10%;
-    transform: translate(100%,-50%);
-    color: #fff;
-    font-size: 25px;
-  }
-  a{
-    color: #fff;
-    text-decoration: none;
-    transition: all .2s ease-in-out;
-  }
-  .pst-ab a:hover {
-    color: #4CAF50;
-    font-size: 30px;
 
-  }
+    .pst-re {
+        position: relative;
+    }
+
+    .pst-ab {
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        transform: translate(100%, -50%);
+        color: #fff;
+        font-size: 25px;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        transition: all .2s ease-in-out;
+    }
+
+    .pst-ab a:hover {
+        color: #4CAF50;
+        font-size: 30px;
+
+    }
 </style>
 
 <div class="container-fluid py-4">
-<div class="ket-qua ">
+    <div class="ket-qua ">
         <?php
         if (!empty($MESS)) echo $MESS;
         ?>
@@ -75,14 +79,14 @@
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="pst-re bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Chi tiết bình luận</h6>
-                <div class="pst-ab">
-                  <a href="./index.php"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="pst-re bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Chi tiết bình luận</h6>
+                        <div class="pst-ab">
+                            <a href="./index.php"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
                 <div class="card-body px-0 pb-2">
                     <div class="ps-4 py-3 fs-4">Sản phẩm: <?= $name['ten_hh'] ?></div>
 
@@ -91,6 +95,7 @@
                             <thead>
                                 <tr class="fs-22">
                                     <th class="text-secondary opacity-7">Nội dung</th>
+                                    <th class="text-secondary opacity-7">Đánh giá</th>
                                     <th class="text-secondary opacity-7">Ngày bình luận</th>
                                     <th class="text-secondary opacity-7">Người bình luận</th>
                                     <th class="text-secondary opacity-7"></th>
@@ -98,23 +103,35 @@
                             </thead>
                             <tbody>
                                 <?php
-                                if(!empty($items)){
+                                if (!empty($items)) {
                                     foreach ($items as $value) {
                                         extract($value);
-                                    ?>
+                                ?>
                                         <tr>
                                             <td>
                                                 <span class=""><?= $noi_dung ?></span>
                                             </td>
-    
+                                            <td>
+                                                <?php
+                                                if (!empty($value['vote'])) {
+                                                    for ($i = 0; $i < 5; $i++) {
+                                                        if ($i < $value['vote']) {
+                                                            echo '<i  style="color:#FFE818" class="fa fa-star cursor-pointer text-yellow-400 text-xl"  aria-hidden="true"></i>';
+                                                        } else {
+                                                            echo '<i  style="color:#FFE818" class="fa fa-star-o cursor-pointer text-yellow-400 text-xl" aria-hidden="true"></i>';
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                            </td>
                                             <td>
                                                 <span class="ps-3"><?= $ngay_bl ?></span>
                                             </td>
-    
+
                                             <td>
                                                 <span class="ps-4"><?php echo ten_khach_hang_binh_luan($ma_kh) ?></span>
                                             </td>
-    
+
                                             <td class="align-middle">
                                                 <form action="index.php?btn_delete" method="post" onsubmit="return deletecategory()">
                                                     <i class="fa fa-trash delete" aria-hidden="true"></i>
@@ -124,7 +141,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    <?php
+                                <?php
                                     }
                                 }
                                 ?>

@@ -4,11 +4,11 @@ include '../../Dao/PDO.php';
 $user = false;
 if (!empty($_COOKIE['user'])) {
     $sql = "SELECT * from `khach_hang` where `email` = '" . $_COOKIE['user'] . "'";
-    $user = query_one($sql);
+    $user = pdo_query_one($sql);
 }
 
 $sql = "SELECT * from `loai`";
-$category = query($sql);
+$category = pdo_query($sql);
 // setcookie('user','', time() - (86400 * 30), "/");
 
 ?>

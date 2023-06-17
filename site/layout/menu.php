@@ -6,25 +6,25 @@ if (!empty($_SESSION['user'])) {
 
 
 $sql = "SELECT * from `loai`";
-$category = query($sql);
+$category = pdo_query($sql);
 
 ?>
 <header>
 
     <nav class=" bg-white border-b-2">
         <div class="container m-auto  pt-3 ">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center md:flex-wrap sm:relative">
                 <div class="logo">
-                    <a class=" text-blue-700 italic text-5xl font-bold text-center" href="../trang_chinh/">X-shop</a>
+                    <a class=" text-blue-700 italic lg:text-5xl text-2xl font-bold text-center" href="../trang_chinh/">X-shop</a>
                 </div>
-                <form action="../hang_hoa/liet_ke.php?keyword" class=" relative flex items-center bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:ring-1 sm:text-sm">
-                    <input class="seach placeholder:italic placeholder:text-slate-400 w-56 block focus:outline-none focus:border-sky-500 focus:ring-sky-500 " placeholder="tìm kiếm" type="text" name="keyword" />
-                    <button><i class="fa fa-search text-slate-400" aria-hidden="true"></i></button>
+                <form action="../hang_hoa/liet_ke.php?keyword" class=" relative flex items-center bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:ring-1 sm:text-sm md:flex-initial ">
+                    <input class="seach placeholder:italic placeholder:text-slate-400 w-56 block focus:outline-none focus:border-sky-500 focus:ring-sky-500 " placeholder="tìm kiếm sản phẩm" type="text" name="keyword" />
+                    <button class=" ml-auto"><i class=" fa fa-search text-slate-400" aria-hidden="true"></i></button>
                     <div class="show-seach absolute top-10 z-20 w-full left-0">
 
                     </div>
                 </form>
-                <div class="flex items-center relative">
+                <div class="lg:flex lg:flex-row lg:top-0 lg:shadow-none z-10 items-menu items-center lg:relative absolute hidden flex-col gap-2 top-12 right-0 bg-white p-2 shadow-blue-300 shadow-sm rounded-md text-sm lg:text-base">
                     <a href="../gio_hang/index.php" class=" relative bg-blue-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-blue-700  "><span class=" absolute flex items-center justify-center -top-2 -right-1 bg-red-500 w-6 h-6 rounded-full so-san-pham">0</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</a>
 
                     <a href="../gio_hang/index.php?list" class=" bg-blue-500 text-white py-2 px-4  mr-2 rounded-md hover:bg-blue-700 "><i class="fa fa-truck" aria-hidden="true"></i> Đơn hàng</a>
@@ -50,14 +50,15 @@ $category = query($sql);
 
 
                 </div>
+                <div class=""><i class="fa fa-bars  py-2 px-4 rounded-full cursor-pointer sm:block lg:hidden bg-blue-400 text-white" aria-hidden="true"></i></div>
             </div>
 
         </div>
         <div class="flex w-4/5 pt-4 m-auto">
             <div class=" relative">
-                <h2 class=" font-bold text-lg py-3 w-60 text-center rounded-t-md cursor-pointer bg-blue-400 text-white show-cate">Danh mục sản phẩm <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <h2 class=" font-bold text-sm py-3 w-40 lg:text-base lg:w-60 text-center rounded-t-md cursor-pointer bg-blue-400 text-white show-cate">Danh mục sản phẩm <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </h2>
-                <div style="display:none" class="cate absolute flex flex-col z-10 w-60 bg-white justify-center border">
+                <div style="display:none" class="cate absolute flex flex-col z-10 bg-white justify-center border text-sm w-40 lg:text-base lg:w-60">
                     <?php
                     foreach ($category as $key => $value) {
                         echo '<a class="py-2 px-4 border-b hover:bg-blue-400 hover:text-white" href="../hang_hoa/liet_ke.php?ma_loai=' . $value['ma_loai'] . '">' . $value['ten_loai'] . '</a>';
@@ -66,7 +67,7 @@ $category = query($sql);
 
                 </div>
             </div>
-            <div class="flex gap-1 text-white text-center justify-between w-3/5 items-center m-auto text-base font-semibold">
+            <div class=" gap-1 hidden lg:flex text-white text-center justify-between w-3/5 items-center m-auto text-sm font-semibold ">
                 <a href="../hang_hoa/liet_ke.php" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Tất cả sản phẩm</a>
                 <a href="../trang_chinh/index.php?gioi_thieu" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Giới thiệu</a>
                 <a href="../trang_chinh/index.php?lien_he" class=" bg-orange-400 flex-auto py-3 rounded-t hover:bg-orange-600">Liên hệ</a>
@@ -82,9 +83,9 @@ $category = query($sql);
     <div class="close-popup fixed w-full h-full bg-slate-900 opacity-60 top-0 left-0 z-20">
 
     </div>
-    <div class=" popup  fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-30 w-2/4">
+    <div class=" popup  fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-30 w-full lg:w-2/4">
         <i class="fa fa-close absolute top-2 right-2 cursor-pointer close-popup "></i>
-        <div class="form " >
+        <div class="form ">
 
         </div>
     </div>
@@ -110,11 +111,12 @@ $category = query($sql);
         $(".panel").slideDown("slow");
         $('.panel').css('z-index', '30');
         $('.nenpopup').css('display', 'block')
-        $(".nenpopup").click(function() {
-            $('.nenpopup').css('display', 'none')
-            $(".panel").slideUp("slow");
-            $('.panel').css('z-index', '0');
-        })
+
+    })
+    $(".nenpopup").click(function() {
+        $('.nenpopup').css('display', 'none')
+        $(".panel").slideUp("slow");
+        $('.panel').css('z-index', '0');
     })
 
     $('.close-popup').click(function() {
@@ -129,7 +131,6 @@ $category = query($sql);
         $('.popup').css('display', 'block')
         $('.nenpopup').css('display', 'block')
         $(".close-popup").css('display', 'block')
-
 
         $.ajax({
             url: "../tai_khoan/index.php",
@@ -163,7 +164,6 @@ $category = query($sql);
         $('.popup').css('display', 'block')
         $('.close-popup').css('display', 'block')
         $(".loading").css('display', 'block')
-
         $.ajax({
             url: "../tai_khoan/index.php?btn_doi_mat_khau",
             type: "post",
@@ -222,4 +222,11 @@ $category = query($sql);
         $('.so-san-pham').html(so_luong_sp)
     })
     $('.so-san-pham').html(so_luong_sp)
+
+    $(document).ready(function() {
+        $(".fa-bars").click(function() {
+            $(".items-menu").slideToggle("slow");
+            $(".items-menu").css('display', 'flex');
+        });
+    });
 </script>

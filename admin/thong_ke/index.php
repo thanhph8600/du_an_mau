@@ -13,7 +13,7 @@ if(exist_parma('chart',$_REQUEST)){
 }
 else{
     $items = thong_ke_hang_hoa();
-    $VIEW_NAME = 'list.php';
+    $VIEW_NAME = 'detail.php';
 }
 
 require '../layout.php';

@@ -90,12 +90,12 @@
         <div class="flex gap-4 items-center justify-between">
             <div class="flex gap-4 items-center">
                 <p class=" font-bold "><?= $ten_sp['ten_loai'] ?> (<?= $tong_sp ?>)</p>
-                <div>
+                <!-- <div>
                     <input type="checkbox" name="" id=""> <label for="">Giảm giá</label>
                 </div>
                 <div><input type="checkbox" name="" id=""> <label for="">Góp 0% - 1%</label></div>
                 <div><input type="checkbox" name="" id=""> <label for="">Độc quyền</label></div>
-                <div><input type="checkbox" name="" id=""> <label for="">Mới</label></div>
+                <div><input type="checkbox" name="" id=""> <label for="">Mới</label></div> -->
             </div>
             <div>
                 <section>
@@ -103,25 +103,24 @@
                 </section>
             </div>
         </div>
-        <div class="grid grid-cols-5 my-3">
+        <div class="grid grid-cols-3 lg:grid-cols-5  my-3">
             <?php
             foreach ($item as $value) {
                 extract($value);
             ?>
-                <a href="./chi_tiet.php?ma_hh=<?= $ma_hh ?>" class="hover:shadow-2xl hover:z-20 border">
-                    <div class="bg-white  text-center">
-                        <div class="p-3 ">
-                            <img class="w-full transition ease-in-out delay-150 hover:-translate-y-1" src="../../uploaded/product/<?= $hinh ?>" alt="Sunset in the mountains">
+                <a href="../hang_hoa/chi_tiet.php?ma_hh=<?= $value['ma_hh'] ?>" class=" flex flex-1  hover:scale-105 hover:shadow-2xl hover:z-20 border">
+                    <div class=" flex flex-col bg-white rounded ">
+                        <div class="p-1 lg:p-3 flex-auto flex justify-center items-center ">
+                            <img class="w-full rounded-md transition ease-in-out delay-150 hover:-translate-y-1" src="<?= $UPLOAD_PRODUCT_URL . $value['hinh'] ?>" alt="Sunset in the mountains">
                         </div>
-                        <div class="px-6 py-3 ">
-                                                <div class="font-bold text-lg mb-2"><?= $value['ten_hh'] ?></div>
-                                                <span class="text-neutral-600 text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?> đ
-                                                </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
-                                                <p class="text-red-500 font-bold text-lg"> <?=currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia'])?>
-                                                </p>
-                                            </div>
-                        <div class="px-6 pt-4 pb-2">
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Quà 500.000 đ</span>
+                        <div class="px-2 py-1 text-sm lg:px-6 lg:py-3 ">
+                            <div class="font-bold text-xs lg:text-sm lg:mb-2"><?= $value['ten_hh'] ?></div>
+                            <span class="text-neutral-600 text-xs lg:text-base line-through pr-2"> <?= currency_format($value['don_gia']) ?>
+                            </span> <span> -<?= $value['giam_gia'] * 100 ?>%</span>
+                            <p class="text-red-500 font-bold text-sm lg:text-lg"> <?= currency_format($value['don_gia'] - $value['don_gia'] * $value['giam_gia']) ?>
+                            </p>
+                        </div>
+                        <div class="lg:px-6 lg:pt-4 lg:pb-2 flex-none">
                         </div>
                     </div>
                 </a>
@@ -136,11 +135,11 @@
             // PHẦN HIỂN THỊ PHÂN TRANG
 
             // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-            if(empty($_GET['ma_loai']) && empty($_GET['keyword']) ){
+            if (empty($_GET['ma_loai']) && empty($_GET['keyword'])) {
                 if ($current_page > 1 && $total_page > 1) {
                     echo '<a href="liet_ke.php?page=' . ($current_page - 1) . '"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a> | ';
                 }
-    
+
                 // Lặp khoảng giữa
                 for ($i = 1; $i <= $total_page; $i++) {
                     if ($i == $current_page) {
@@ -149,7 +148,7 @@
                         echo '<a href="liet_ke.php?page=' . $i . '">' . $i . '</a> | ';
                     }
                 }
-    
+
                 // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
                 if ($current_page < $total_page && $total_page > 1) {
                     echo '<a href="liet_ke.php?page=' . ($current_page + 1) . '"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>  ';

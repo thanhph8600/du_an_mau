@@ -1,6 +1,6 @@
     <footer class=" bg-white border-t">
         <div class="container py-3 m-auto">
-            <div class="grid grid-cols-4">
+            <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
                 <ul>
                     <li class=" py-1"><a href="">Tích điểm quà tặng VIP</a></li>
                     <li class=" py-1"><a href="">Lịch sử mua hàng</a></li>

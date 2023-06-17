@@ -87,7 +87,7 @@
         }
 
         if ($('.name-re').val() != '') {
-            if (!regexName.test($('.name-re').val())) {
+            if (!removeAscent($('.name-re').val())) {
                 $('.name-re').css('border', '1px solid red')
                 $('.checkName-re').html(' không được có kí tự đặt biệt')
                 check = 0

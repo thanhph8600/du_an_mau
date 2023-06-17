@@ -63,9 +63,23 @@
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-0">
-            <form action="./index.php?btn_add" method="post" style="display:flex;justify-content:flex-end;width:95%">
-              <input name="next" type="submit" value="Thêm sản phẩm" class="input_Addproduct">
-            </form>
+            <div class="d-flex justify-content-between col-11 m-auto">
+              <form action="./index.php?select" method="post">
+                <select name="ma_loai" id="" class="p-1">
+                  <option value="">Tất cả</option>';
+                  <?php
+                  foreach ($loai as $key => $value) {
+                    echo '<option value="' . $value['ma_loai'] . '">' . $value['ten_loai'] . '</option>';
+                  }
+                  ?>
+                </select>
+                <input type="submit" value="Cập nhật" class="input_Addproduct">
+              </form>
+
+              <form action="./index.php?btn_add" method="post" >
+                <input name="next" type="submit" value="Thêm sản phẩm" class="input_Addproduct">
+              </form>
+            </div>
             <table class="table align-items-center mb-0" style="width:99%;margin:auto">
               <thead>
                 <tr>
@@ -101,7 +115,7 @@
                       </p>
                     </td>
                     <td>
-                      <p class="text-xl font-weight-bold mb-0 ps-4 "><?php echo $giam_gia*100 ?> %</p>
+                      <p class="text-xl font-weight-bold mb-0 ps-4 "><?php echo $giam_gia * 100 ?> %</p>
                     </td>
                     <td>
                       <p class="text-xl font-weight-bold mb-0 ps-5"><?= $so_luot_xem ?></p>
@@ -140,22 +154,24 @@
         // PHẦN HIỂN THỊ PHÂN TRANG
 
         // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-        if ($current_page > 1 && $total_page > 1) {
-          echo '<a href="index.php?page=' . ($current_page - 1) . '"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a> | ';
-        }
-
-        // Lặp khoảng giữa
-        for ($i = 1; $i <= $total_page; $i++) {
-          if ($i == $current_page) {
-            echo '<span>' . $i . '</span> | ';
-          } else {
-            echo '<a href="index.php?page=' . $i . '">' . $i . '</a> | ';
+        if($i==0){
+          if ($current_page > 1 && $total_page > 1) {
+            echo '<a href="index.php?page=' . ($current_page - 1) . '"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a> | ';
           }
-        }
-
-        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-        if ($current_page < $total_page && $total_page > 1) {
-          echo '<a href="index.php?page=' . ($current_page + 1) . '"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>  ';
+  
+          // Lặp khoảng giữa
+          for ($i = 1; $i <= $total_page; $i++) {
+            if ($i == $current_page) {
+              echo '<span>' . $i . '</span> | ';
+            } else {
+              echo '<a href="index.php?page=' . $i . '">' . $i . '</a> | ';
+            }
+          }
+  
+          // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+          if ($current_page < $total_page && $total_page > 1) {
+            echo '<a href="index.php?page=' . ($current_page + 1) . '"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>  ';
+          }
         }
         ?>
       </div>

@@ -51,7 +51,7 @@
     var check = 1;
 
     $(document).on('keyup  paste', '.ma_kh , .pass-old, .pass-new, .re-pass-new', function() {
-        if (!(/^([a-zA-Z0-9 ]){3,20}$/).test($('.ma_kh').val())) {
+        if (!(/^([a-zA-Z0-9]){3,20}$/).test($('.ma_kh').val())) {
             $('.checkMakh').html('Không được chứa kí tự đặt biệt')
             $('.ma_kh').css('border', 'red 1px solid');
             check = 0;

@@ -28,6 +28,8 @@
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 </head>
 
@@ -38,4 +40,5 @@
 
     include $VIEW_NAME;
 ?>
+
 
