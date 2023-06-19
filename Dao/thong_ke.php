@@ -11,3 +11,9 @@ function thong_ke_binh_luan() {
 
     return pdo_query($sql);
 }
+
+function thong_ke_don_hang() {
+    $sql = "SELECT tinh_trang  ,tong_tien,count(*) so_luong FROM `order` GROUP BY tinh_trang";
+
+    return pdo_query($sql);
+}

@@ -4,6 +4,7 @@ require_once "../../global.php";
 require_once "../../Dao/PDO.php";
 require_once "../../Dao/khach_hang.php";
 
+//nhận các giá trị được gửi từ trang web theo các phương thức HTML (GET POST COOKIE)
 extract($_REQUEST);
 
 //Đăng nhập

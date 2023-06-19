@@ -19,4 +19,52 @@ function removeAscent(str) {
     $('input').val('')
   }
 
-  
+
+
+
+ $(document).ready(function(){
+  $.validator.addMethod('yourRule_ten_kh', function(value, element, param) {
+        value = removeAscent(value)
+        if ((/^([a-zA-Z ]){3,20}$/).test(value)) {
+            return true
+        }
+        return false;
+    }, '<div class="text-red-500">Bạn phải nhập từ 3 đến 20 kí tự, không có kí tự đặt biệt</div> ');
+      $("#cap_nhat_tk").validate({
+          rules: {
+              name: {
+                  yourRule_ten_kh: true
+              },
+              email: {
+                  required: true,
+                  email: true
+              },
+              phone: {
+                  required: true,
+                  digits: true,
+                  minlength: 10,
+                  maxlength: 10
+              },
+              upload: {
+                  required: false,
+                  accept: "jpg,png,gif,jpeg,pjpeg,avif,jfif",
+              }
+          },
+          messages: {
+
+              email: {
+                  required: '<div class="text-red-500">Không để trống email</div>',
+                  email: '<div class="text-red-500">Phải đúng định dạng email</div>'
+              },
+              phone: {
+                  required: '<div class="text-red-500">Không để trống số điện thoại</div>',
+                  digits: '<div class="text-red-500">Phải là số</div>',
+                  minlength: '<div class="text-red-500">Phải 10 kí tự</div>',
+                  maxlength: '<div class="text-red-500">Phải 10 kí tự</div>',
+              },
+              upload: {
+                  accept: '<div class="text-red-500">Không đúng định dạng file </div>',
+              }
+          }
+      });
+ })

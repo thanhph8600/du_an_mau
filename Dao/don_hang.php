@@ -57,7 +57,7 @@ function tinh_trang_don_hang($tinh_trang)
             $tinh_trang = '<span  class=" text-dark w-full p-2 col-12 rounded-3 fw-bold ">Chờ xác nhận</span>';
             break;
         case 2:
-            $tinh_trang = '<span class="  text-light w-full col-12  bg-secondary p-2 rounded-3 fw-bold text-white rounded-md bg-gray-400">Chờ lấy hàng</span>';
+            $tinh_trang = '<span class="  text-dark w-full col-12  bg-secondary p-2 rounded-3 fw-bold text-black rounded-md bg-gray-400">Chờ lấy hàng</span>';
             break;
         case 3:
             $tinh_trang =  '<span  class="  text-light p-2 w-full col-12  bg-success rounded-3 fw-bold text-white rounded-md bg-green-500">Đang giao</span>';

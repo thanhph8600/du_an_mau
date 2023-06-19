@@ -32,7 +32,7 @@ if (exist_parma("btn_add")) {
                     $VIEW_NAME = "list.php";
                 }
             }
-        } catch (\Throwable $th) {
+        } catch (Exception $th) {
             $VIEW_NAME = "add.php";
         }
     }else{
@@ -42,11 +42,18 @@ if (exist_parma("btn_add")) {
     
 } elseif (exist_parma("btn_delete")) {
 
-    if(!empty($_POST['slug'])){
-        $slug = $_POST['slug'];
-        loai_delete($slug);
-        $MESS = '<div class="alert alert-success text-white " role="alert">Xóa thành công</div>';
+    try {
+        if(!empty($_POST['slug'])){
+            $slug = $_POST['slug'];
+            loai_delete($slug);
+            $MESS = '<div class="alert alert-success text-white " role="alert">Xóa thành công</div>';
+
+        }
+    } catch (Exception $th) {
+        $MESS = '<div class="alert alert-warning text-white " role="alert">Xóa thất bại </div>';
+
     }
+
 
     $VIEW_NAME = "list.php";
 } elseif (exist_parma("btn_edit")) {

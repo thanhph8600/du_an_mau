@@ -50,11 +50,12 @@ $category = pdo_query($sql);
 
 
                 </div>
-                <div class=""><i class="fa fa-bars  py-2 px-4 rounded-full cursor-pointer sm:block lg:hidden bg-blue-400 text-white" aria-hidden="true"></i></div>
+                <div class="lg:hidden"><i class="fa fa-bars  py-2 px-4 rounded-full cursor-pointer sm:block  bg-blue-400 text-white" aria-hidden="true"></i></div>
             </div>
 
         </div>
-        <div class="flex w-4/5 pt-4 m-auto">
+        <div class="container m-auto">
+        <div class="flex pt-4 m-auto">
             <div class=" relative">
                 <h2 class=" font-bold text-sm py-3 w-40 lg:text-base lg:w-60 text-center rounded-t-md cursor-pointer bg-blue-400 text-white show-cate">Danh mục sản phẩm <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </h2>
@@ -75,6 +76,8 @@ $category = pdo_query($sql);
                 <a href="../trang_chinh/index.php?hoi_dap" class=" bg-orange-400 flex-auto  py-3 rounded-t hover:bg-orange-600">Hỏi đáp</a>
             </div>
         </div>
+        </div>
+
 
         </div>
     </nav>
@@ -166,10 +169,8 @@ $category = pdo_query($sql);
         $(".loading").css('display', 'block')
         $.ajax({
             url: "../tai_khoan/index.php?btn_doi_mat_khau",
-            type: "post",
-            data: {
-                doi_mat_khau: 'doi_mat_khau',
-            },
+            type: "GET",
+            
             success: function(result) {
                 $(".loading").css('display', 'none')
 
@@ -189,7 +190,6 @@ $category = pdo_query($sql);
             },
             success: function(result) {
                 $(".loading").css('display', 'none')
-
                 window.location.reload(true)
             }
         });

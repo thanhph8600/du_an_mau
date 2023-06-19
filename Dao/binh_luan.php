@@ -25,7 +25,11 @@ function binh_luan_moi(){
 }
 
 function binh_luan_select_by_hang_hoa($ma_hh) {
-    $sql = "SELECT kh.ho_ten,kh.hinh, b.* , h.ten_hh FROM binh_luan b join hang_hoa h on h.ma_hh = b.ma_hh join khach_hang kh on b.ma_kh = kh.ma_kh where b.ma_hh=? order by ngay_bl desc" ;
+    $sql = "SELECT kh.ho_ten,kh.hinh, b.* , h.ten_hh FROM binh_luan b join hang_hoa h on h.ma_hh = b.ma_hh join khach_hang kh on b.ma_kh = kh.ma_kh where b.ma_hh=? order by ngay_bl desc " ;
+    return pdo_query($sql,$ma_hh);
+}
+function binh_luan_select_by_hang_hoa_limit_5($ma_hh) {
+    $sql = "SELECT kh.ho_ten,kh.hinh, b.* , h.ten_hh FROM binh_luan b join hang_hoa h on h.ma_hh = b.ma_hh join khach_hang kh on b.ma_kh = kh.ma_kh where b.ma_hh=? order by ngay_bl desc LIMIT 5" ;
     return pdo_query($sql,$ma_hh);
 }
 
@@ -42,4 +46,12 @@ function select_so_luong_nhan_xet($vote) {
     return pdo_query_value($sql,$vote);
 }
 
+function select_vote_by_ma_hh($ma_hh){
+    $sql = "SELECT vote,COUNT(*) so_luong FROM `binh_luan` WHERE ma_hh = ? GROUP BY vote" ;
+    return pdo_query($sql,$ma_hh);
+}
+function exist_vote_by_ma_hh($ma_hh){
+    $sql = "SELECT COUNT(*) so_luong FROM `binh_luan` WHERE ma_hh = ?" ;
+    return pdo_query_value($sql,$ma_hh);
+}
 ?>

@@ -43,6 +43,31 @@
         background: none;
         color: #212123;
     }
+
+    .pst-re {
+        position: relative;
+    }
+
+    .pst-ab {
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        transform: translate(100%, -50%);
+        color: #fff;
+        font-size: 25px;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        transition: all .2s ease-in-out;
+    }
+
+    .pst-ab a:hover {
+        color: #4CAF50;
+        font-size: 30px;
+
+    }
 </style>
 
 <div class="container-fluid py-4">
@@ -50,103 +75,112 @@
         <div class="col-12">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Thống kê loại hàng</h6>
+                    <div class="pst-re bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">BIỂU ĐỒ ĐỒ ĐƠN HÀNG</h6>
+                        <div class="pst-ab">
+                            <a href="./index.php"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <div class="add"><a class="input_Addproduct" href="./index.php?chart_loai">Xem biểu đồ</a></div>
-                        <table style="width: 90%;margin:auto" class="table align-items-center mb-0">
-                            <thead>
-                                <tr class="fs-22">
-                                    <th class="text-secondary opacity-7">Loại hàng</th>
-                                    <th class="text-secondary opacity-7">Số lượng</th>
-                                    <th class="text-secondary opacity-7">Giá thấp nhất</th>
-                                    <th class="text-secondary opacity-7">Giá cao nhất</th>
-                                    <th class="text-secondary opacity-7">giá Trung bình</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($items as $value) { 
-                                    extract($value);
+
+                    <div class="p-0">
+                        <div id="myChart" style="width:100%; max-width:800px; height:500px;">
+                        </div>
+
+                        <script>
+                            google.charts.load('current', {
+                                'packages': ['corechart']
+                            });
+                            google.charts.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable([
+                                    ['Loại', 'Số lượng'],
+                                    <?php
+                                    foreach ($don_hang as $item) {
+                                        if ($item['tinh_trang'] == 0) {
+                                            $item['tinh_trang'] = 'Đã hủy';
+                                        } elseif ($item['tinh_trang'] == 1) {
+                                            $item['tinh_trang'] = 'Chờ xác nhận';
+                                        } elseif ($item['tinh_trang'] == 2) {
+                                            $item['tinh_trang'] = 'Chờ lấy hàng';
+                                        } elseif ($item['tinh_trang'] == 3) {
+                                            $item['tinh_trang'] = 'Đang giao';
+                                        } else {
+                                            $item['tinh_trang'] = 'Đã giao';
+                                        }
+                                        echo "['$item[tinh_trang]', $item[so_luong]],";
+                                    }
+
                                     ?>
-                                    <tr>
-                                        <td>
-                                            <span class="namecategory badge badge-sm bg-gradient-secondary"><?=$ten_loai?></span>
-                                        </td>
+                                ]);
 
-                                        <td>
-                                            <span class="namecategory badge "><?=$so_luong?></span>
-                                        </td>
+                                var options = {
+                                    title: 'Tỷ lệ đơn hàng',
+                                    is3D: true
+                                };
 
-                                        <td>
-                                            <span class="namecategory badge "><?=currency_format($gia_min)?></span>
-                                        </td>
-
-                                        <td>
-                                            <span class="namecategory badge "><?=currency_format($gia_max)?></span>
-                                        </td>
-                                        <td>
-                                            <span class="namecategory badge "><?=currency_format($gia_avg)?></span>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-
-                            </tbody>
-                        </table>
+                                var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+                                chart.draw(data, options);
+                            }
+                        </script>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Thống kê đơn hàng</h6>
-                    </div>
+
+
                 </div>
                 <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <div class="add"><a class="input_Addproduct" href="./index.php?chart_don_hang">Xem biểu đồ</a></div>
-                        <table style="width: 90%;margin:auto" class="table align-items-center mb-0">
-                            <thead>
-                                <tr class="fs-22">
-                                    <th class="text-secondary opacity-7">Tình trạng</th>
-                                    <th class="text-secondary opacity-7">Tổng đơn</th>
-                                    <th class="text-secondary opacity-7">Số tiền</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($don_hang as $value) { 
-                                    extract($value);
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <span class="namecategory badge badge-sm bg-gradient-secondary"><?=tinh_trang_don_hang($value['tinh_trang'])?></span>
-                                        </td>
-                                        <td>
-                                            <span class="namecategory badge badge-sm bg-gradient-secondary"><?=$value['so_luong']?></span>
-                                        </td>
-                                        <td>
-                                            <span class="namecategory badge "><?=currency_format($value['tong_tien'])?></span>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-
-                            </tbody>
-                        </table>
-                    </div>
+                    <canvas id="myChartss" style="width:100%;max-width:600px"></canvas>
                 </div>
+
+                <script>
+                    var xxValues = [
+                        <?php
+                        foreach ($don_hang as $key => $item) {
+                            if ($item['tinh_trang'] == 0) {
+                                $item['tinh_trang'] = 'Đã hủy';
+                            } elseif ($item['tinh_trang'] == 1) {
+                                $item['tinh_trang'] = 'Chờ xác nhận';
+                            } elseif ($item['tinh_trang'] == 2) {
+                                $item['tinh_trang'] = 'Chờ lấy hàng';
+                            } elseif ($item['tinh_trang'] == 3) {
+                                $item['tinh_trang'] = 'Đang giao';
+                            } else {
+                                $item['tinh_trang'] = 'Đã giao';
+                            }
+                            echo "'" . $item['tinh_trang'] . "',";
+                        }
+                        ?>
+                    ];
+                    var yValues = [
+                        <?php
+                        foreach ($don_hang as $key => $value) {
+                            echo "'" . $value['tong_tien'] . "',";
+                        }
+                        ?>
+                    ];
+                    var barColors = ["red", "green", "blue", "orange", "brown"];
+
+                    new Chart("myChartss", {
+                        type: "bar",
+                        data: {
+                            labels: xxValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: "Tổng số tiền"
+                            }
+                        }
+                    });
+                </script>
             </div>
         </div>
     </div>

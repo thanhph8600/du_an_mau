@@ -50,7 +50,7 @@
             $(this).css('display', 'none')
         })
         $('.dangNhap').click(function() {
-            var regexEmail = /^([a-zA-Z0-9_-]{5,20})*$/
+            var regexEmail = /^([a-zA-Z0-9_-]{3,20})*$/
             var check = 1
 
             if ($('.email').val() != '') {

@@ -1,10 +1,85 @@
 <div class="border px-1 py-2 lg:px-4 lg:py-6 rounded-md">
+    <div class="flex p-2  mb-3">
+        <div class="w-1/3 text-center text-base">
+            <h2>Đánh giá trung bình</h2>
+            <p class="text-5xl text-yellow-400 font-bold  m-auto py-3">
+                <?php
+                if (!empty($sum)) {
+                    echo round($sum / $tong_vote, 1) . '/5';
+                } else {
+                    echo '0/5';
+                }
 
+                ?>
+            </p>
+            <div class="flex gap-2 justify-center">
+                <?php
+                for ($i = 0; $i < 5; $i++) {
+                    if (!empty($sum)) {
+                        if ($i < floor($sum / $tong_vote)) {
+                            echo '<i class="fa fa-star  text-yellow-400 text-sm lg:text-xl"  aria-hidden="true"></i>';
+                        } else {
+                            echo '<i class="fa fa-star-o  text-yellow-400 text-sm lg:text-xl" aria-hidden="true"></i>';
+                        }
+                    } else {
+                        echo '<i class="fa fa-star-o  text-yellow-400 text-sm lg:text-xl" aria-hidden="true"></i>';
+                    }
+                }
+                ?>
+            </div>
+
+            <p>Tất cả <?= $tong_vote ?> đánh giá</p>
+        </div>
+        <div class="w-2/3 border-l ps-10">
+            <?php
+            for ($i = 1; $i < 6; $i++) {
+
+            ?>
+                <div class="flex items-center gap-2">
+                    <div>
+                        <?= $i ?> <i class="fa fa-star  text-yellow-400 text-xs lg:text-sm" aria-hidden="true"></i>
+                    </div>
+                    <div class="w-1/3">
+                        <div class="p-1 bg-gray-200 relative rounded overflow-hidden">
+                            <div style="width:<?php
+                                                foreach ($vote as $key => $value) {
+                                                    if ($value['vote'] == $i) {
+                                                        echo (100 / $tong_vote) * $value['so_luong'];
+                                                        break;
+                                                    }
+                                                }
+                                                ?>%;" class=" absolute h-full bg-yellow-400 top-0 left-0"></div>
+                        </div>
+                    </div>
+                    <div class="w-1/2 text-orange-500 text-lg">
+                        <?php
+                        $so_luong = 0;
+                        foreach ($vote as $key => $value) {
+                            if ($value['vote'] == $i) {
+                                echo round((100 / $tong_vote) * $value['so_luong'], 1) . '%';
+                                $so_luong = 1;
+                                break;
+                            }
+                        }
+                        if ($so_luong == 0) {
+                            echo '0%';
+                        }
+                        ?>
+                    </div>
+                </div>
+            <?php
+            }
+            ?>
+
+        </div>
+    </div>
     <h2 class="text-base  pl-3 lg:pb-2 lg:text-xl font-bold">Bình luận</h2>
 
     <div class="form-bl">
         <?php
+        $check = 0;
         foreach ($binh_luan as $value) {
+            $check++;
             extract($value);
         ?>
 
@@ -18,11 +93,11 @@
                     <div class=" pl-4 flex gap-4 px-2 py-1">
                         <?php
                         if (!empty($value['vote'])) {
-                            for($i=0;$i<5;$i++){
-                                if($i<$value['vote']){
-                                    echo '<i class="fa fa-star cursor-pointer text-yellow-400 text-sm lg:text-xl"  aria-hidden="true"></i>';
-                                }else{
-                                    echo '<i class="fa fa-star-o cursor-pointer text-yellow-400 text-sm lg:text-xl" aria-hidden="true"></i>';
+                            for ($i = 0; $i < 5; $i++) {
+                                if ($i < $value['vote']) {
+                                    echo '<i class="fa fa-star  text-yellow-400 text-sm lg:text-xl"  aria-hidden="true"></i>';
+                                } else {
+                                    echo '<i class="fa fa-star-o  text-yellow-400 text-sm lg:text-xl" aria-hidden="true"></i>';
                                 }
                             }
                         }
@@ -32,10 +107,21 @@
                 </div>
                 <p><?= $noi_dung ?></p>
             </div>
+            <div class="more-bls hidden">
+
+            </div>
         <?php
+
         }
         ?>
     </div>
+    <?php
+    if($check>5){
+        echo '    <div class="flex justify-center py-2">
+        <span class="more-bl text-sm transition cursor-pointer duration-500 ease-in-out border border-blue-600 text-blue-600 px-10 py-1 lg:py-3 rounded-lg hover:bg-blue-600 hover:text-white">Xem thêm <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+    </div>';
+    }
+    ?>
 
 
 
@@ -122,7 +208,7 @@
                 danhGia = "Rất tốt"
                 break;
             default:
-            danhGia = ""
+                danhGia = ""
                 break;
         }
         $('.danh-gia').html(danhGia)
@@ -153,12 +239,28 @@
                 success: function(result) {
                     $(".loading").css('display', 'none')
                     $('.form-bl').append(result)
-                $('.vote').removeClass('fa-star').addClass('fa-star-o');
+                    $('.vote').removeClass('fa-star').addClass('fa-star-o');
 
                 }
             });
-            
+
             $('textarea').val('')
         }
+    })
+    $('.more-bl').click(function() {
+        $.ajax({
+            url: "./them_bl.php?show_bl",
+            type: "post",
+            data: {
+                noi_dung: 'noi_dung',
+                nhap_binh_luan: $('textarea').val(),
+                ma_hh: <?= $ma_hh ?>,
+                vote: vote,
+            },
+            success: function(result) {
+                $('.form-bl').html(result)
+                $('.more-bl').css('display', 'none')
+            }
+        });
     })
 </script>

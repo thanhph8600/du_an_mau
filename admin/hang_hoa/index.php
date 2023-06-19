@@ -23,7 +23,7 @@ elseif (exist_parma("btn_insert")) {
             $check = 0;
         }
         if (!preg_match('/^([0-9]){1,40}$/', $price) || strlen($price) == 0) {
-            $price_err = '<div class="text-danger">Bạn phải nhập số từ 0 -> 1</div>';
+            $price_err = '<div class="text-danger">Bạn phải nhập số</div>';
             $check = 0;
         }
         $ngay_nhap = explode('-', $date);
@@ -47,7 +47,7 @@ elseif (exist_parma("btn_insert")) {
             }
         }
         if ($sale < 0 || $sale > 1) {
-            $sale_err = '<div class="text-danger">Bạn phải nhập số</div>';
+            $sale_err ='<div class="text-danger">Bạn phải nhập số từ 0 -> 1</div>';
             $check = 0;
         }
         if (strlen($category) == 0) {

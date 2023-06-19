@@ -31,6 +31,21 @@ require_once '../../Dao/PDO.php';
         return pdo_query($sql);
     }
 
+    function hang_hoa_select_decs($star,$limit){
+        $sql = 'SELECT * FROM `hang_hoa` ORDER BY `don_gia` DESC  LIMIT '.$star.','.$limit.'';
+        return pdo_query($sql);
+    }
+
+    function hang_hoa_select_asc($star,$limit){
+        $sql = 'SELECT * FROM `hang_hoa` ORDER BY `don_gia` ASC  LIMIT '.$star.','.$limit.'';
+        return pdo_query($sql);
+    }
+
+    function hang_hoa_select_don_gia($star,$limit){
+        $sql = 'SELECT * FROM `hang_hoa` WHERE `don_gia` > ? AND don_gia < ? ORDER BY don_gia ASC';
+        return pdo_query($sql,$star,$limit);
+    }
+
     function hang_hoa_select_by_id($ma_hh) {
         $sql = "SELECT * FROM `hang_hoa` WHERE `ma_hh` = ?";
         return pdo_query_one($sql,$ma_hh);

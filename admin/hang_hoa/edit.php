@@ -318,7 +318,7 @@
 
     $.validator.addMethod('yourRule_ten_kh', function(value, element, param) {
         value = removeAscent(value)
-        if ((/^([a-zA-Z0-9./- ]){3,100}$/).test(value)) {
+        if ((/^([a-zA-Z0-9\.\/\- ]){3,100}$/).test(value)) {
             return true
         }
         return false;

@@ -143,7 +143,6 @@ function so_luong_sp(){
         so_luong_sp += element['so_luong'];
     });
     $(window).on('load', function() {
-
         $('.so-san-pham').html(so_luong_sp)
     })
     $('.so-san-pham').html(so_luong_sp)

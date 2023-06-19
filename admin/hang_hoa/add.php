@@ -311,9 +311,12 @@
 
     $.validator.addMethod('yourRule_ten_kh', function(value, element, param) {
         value = removeAscent(value)
-        if ((/^([a-zA-Z0-9./- ]){3,100}$/).test(value)) {
+        if ((/^([a-zA-Z0-9\.\/\- ]){3,100}$/).test(value)) {
             return true
         }
+        // if ((/^([a-zA-Z0-9./- ]){3,100}$/).test(value)) {
+        //     return true
+        // }
         return false;
     }, '<div class="text-danger">Bạn phải nhập từ 3 đến 30 kí tự, không có kí tự đặt biệt</div> ');
 

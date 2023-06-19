@@ -111,7 +111,7 @@
                     </td>
 
                     <td>
-                      <p class="text-xl font-weight-bold mb-0 "><?= $don_gia ?><span>đ</span>
+                      <p class="text-xl font-weight-bold mb-0 "><?= currency_format($don_gia) ?>
                       </p>
                     </td>
                     <td>

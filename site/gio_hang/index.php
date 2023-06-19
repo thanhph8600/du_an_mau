@@ -45,4 +45,5 @@ if(!empty($_SESSION['user'])){
     $user = $_SESSION['user'];
 }
 
+// $MAIN404 ="../gio_hang/gio_hang_trong.html";
 require "../layout.php";

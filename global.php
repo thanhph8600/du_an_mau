@@ -13,14 +13,17 @@ $UPLOAD_USER_URL = "../../uploaded/user/";
 
 function exist_parma($fieldname)
 {
+    //kiểm tra key có trong mảng hay không (trả về true or false)
     return array_key_exists($fieldname, $_REQUEST);
 }
 
 function save_file($fieldname, $target_dir)
 {
     $file_upload = $_FILES[$fieldname];
+    //lấy tên của tập tin
     $file_name = basename($file_upload['name']);
     $target_path = $target_dir . $file_name;
+    //di chuyển file đến thư mục chỉ định
     move_uploaded_file($file_upload['tmp_name'], $target_path);
     return $file_name;
 }
@@ -39,9 +42,11 @@ function check_login()
 {
     global $SITE_URL;
     if (isset($_SESSION['user'])) {
+        //kiểm tra có phải là admin không
         if ($_SESSION['user']['vai_tro'] == 0) {
             return;
         }
+        //kiểm tra đường dẫn có /admin/ hay không
         if (strpos($_SERVER["REQUEST_URI"], '/admin/') == FALSE) {
             return;
         }
@@ -50,7 +55,7 @@ function check_login()
     header("location: $SITE_URL/404-not-found/");
 }
 
-
+//cắt chuỗi tiếng việt
 function slugify($str)
 {
     $str = trim(mb_strtolower($str));
@@ -85,7 +90,7 @@ function checkDateFormat($date)
     }
 }
 
-
+//định dạng số thành giá tiền
 function currency_format($number, $suffix = 'đ') {
     if (!empty($number)) {
         return number_format($number, 0, ',', '.') . "{$suffix}";
